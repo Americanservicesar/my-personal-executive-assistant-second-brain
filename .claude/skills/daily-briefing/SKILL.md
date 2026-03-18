@@ -1,220 +1,153 @@
 ---
 name: daily-briefing
 description: >
-  Delivers Anthony's complete daily operations briefing by pulling live data from
-  Google Calendar and Gmail, then formatting it into a structured morning command
-  center. Use this skill whenever Anthony wants to start his day, check what's
-  on his plate, get a morning summary, or needs a snapshot of the day ahead.
-  Trigger for requests like "good morning", "what's my day look like", "morning
-  briefing", "what do I have today", "run my briefing", "what's on the calendar",
-  "check my emails", "what's going on today", "give me a rundown", "what should
-  I focus on today", or any variation of starting the day or getting a daily
-  summary. Also trigger automatically when Anthony opens a new session in the
-  morning without a specific task — this is the default morning behavior.
+  Delivers a structured daily operations briefing for Anthony by pulling live data
+  from Google Calendar and Gmail, then combining it with current priorities and
+  agent routing. Use this skill whenever Anthony wants a morning briefing, daily
+  summary, or overview of what's on his plate. Trigger for requests like "give me
+  my briefing", "what does my day look like", "morning briefing", "what's on my
+  calendar today", "what do I need to focus on today", "catch me up", "what's
+  happening today", "run my briefing", "daily update", or any variation asking
+  for a combined view of schedule, email, and priorities. Also trigger first thing
+  in the morning when Anthony opens a new session — proactively run the briefing
+  without being asked if no prior context exists in the conversation.
 ---
 
 # Daily Briefing
 
-Pulls live data from Google Calendar and Gmail, then delivers a complete
-morning command center for Anthony to start each day with full clarity.
+Pulls live data from Google Calendar and Gmail, then delivers a crisp daily
+operations briefing covering schedule, email priorities, focus for the day,
+and any agent actions needed.
 
 ---
 
-## Execution Workflow
+## Workflow
 
-### Step 1 — Pull Calendar Data
+### Step 1 — Pull Live Data (run all three in parallel)
 
-Use **Google Calendar MCP** to fetch:
-- All events for TODAY (full day — 12:00 AM to 11:59 PM Central)
-- Any events for TOMORROW that affect today's planning (early starts, prep needed)
-- Any events marked as "all day" (deadlines, reminders)
-
-**Calendar tool calls:**
+**Calendar — Today's events:**
 ```
-gcal_list_events:
-  - time_min: [today 00:00 CT]
-  - time_max: [today 23:59 CT]
-  - calendar_id: primary
+gcal_list_events(
+  timeMin = today 00:00:00 CT,
+  timeMax = today 23:59:59 CT,
+  timeZone = America/Chicago
+)
 ```
 
-If calendar is empty or returns no events — note "No scheduled events" and continue.
-
----
-
-### Step 2 — Pull Email Data
-
-Use **Gmail MCP** to fetch:
-- Unread emails from the last 24 hours
-- Any emails flagged or starred
-- Subject lines + sender names only (no need to read full body unless flagging)
-
-**Gmail tool calls:**
+**Calendar — Tomorrow preview:**
 ```
-gmail_search_messages:
-  - query: "is:unread newer_than:1d"
-  - max_results: 20
+gcal_list_events(
+  timeMin = tomorrow 00:00:00 CT,
+  timeMax = tomorrow 23:59:59 CT,
+  timeZone = America/Chicago
+)
 ```
 
-Triage each email into:
-- 🔴 **Urgent** — customer issue, payment, time-sensitive bid, crew problem
-- 🟡 **Action needed** — estimate follow-up, vendor reply, scheduling request
-- 🟢 **FYI** — receipts, confirmations, reports, newsletters
-
----
-
-### Step 3 — Determine Top 3 Priorities
-
-Based on calendar + email data, plus knowledge of Anthony's current priorities
-from context (commercial scaling, AI systems, SEO, lead gen, financial optimization):
-
-1. Surface anything time-sensitive from calendar or email
-2. Add the highest-impact business task if no urgent items exist
-3. Add one forward-momentum item (something that moves a project forward)
-
----
-
-### Step 4 — Deliver the Briefing
-
-Use this exact format — no deviations:
-
+**Gmail — Unread priority emails:**
 ```
-☀️ GOOD MORNING, ANTHONY — [Full Day, Date]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📅 TODAY'S SCHEDULE
-  [Time CT] — [Event Title] | [Location or "Virtual"]
-  [Time CT] — [Event Title]
-  [All day]  — [All-day event or deadline]
-  (If empty: No scheduled events — wide open day.)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📬 INBOX — [X] unread in last 24 hrs
-
-  🔴 Urgent (handle today):
-    → [Sender] — "[Subject]" — [1-line action]
-
-  🟡 Action needed:
-    → [Sender] — "[Subject]" — [route to agent or action]
-
-  🟢 FYI:
-    → [X] reports/receipts/confirmations — no action needed
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🔥 TOP 3 PRIORITIES TODAY
-  1. [Most urgent or high-impact task]
-  2. [Second priority — moves a project forward]
-  3. [Third — quick win or open loop to close]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📋 OPEN LOOPS — NEEDS YOUR ATTENTION
-  → [Item from email or context needing a decision]
-  → [Stalled task or pending approval]
-  → [Opportunity with a clock on it]
-  (If none: All clear — no blockers identified.)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🤝 AGENT ROUTING — tasks identified today
-  → [Agent]: [Task to route based on email/calendar intel]
-  → [Agent]: [Task to route]
-  (If none: No agent tasks identified — clean slate.)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-💡 GIGI NOTE
-  [One personal reminder — workout, hydration, recovery, focus block]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+gmail_search_messages(
+  q = "is:unread -category:promotions -from:amazon.com -from:paddle.com",
+  maxResults = 15
+)
 ```
 
 ---
 
-## Triage Rules
+### Step 2 — Classify Email
 
-### Email Routing Logic
-When triaging emails, route to the right agent automatically:
+Sort unread emails into three buckets:
+
+**🔴 Needs Action** — Leads, customer replies, bids, invoices, anything requiring a response
+**🟡 Review** — Newsletters, digests, order updates worth scanning
+**⚪ Noise** — Promotions, automated receipts, marketing — skip entirely
+
+Rules:
+- Amazon shipping confirmations → skip (noise)
+- Promotional emails → skip (noise)
+- Anything from a real person or company → flag
+- Bid alerts, RFP notices → 🔴 immediately
+- Customer or lead messages → 🔴 immediately
+- Tool receipts / subscription notices → 🟡 only if amount is unexpected
+
+---
+
+### Step 3 — Build the Briefing
+
+Deliver in this exact format:
+
+---
+
+## 🌅 Daily Briefing — [Day], [Date]
+*Generated [time] CT*
+
+### 📅 Today's Schedule
+[List each event with time and any prep note if relevant]
+→ If calendar is clear: "No scheduled events — open day, good for deep work."
+
+### 📬 Email — Needs Action ([count])
+[For each 🔴 email: Sender | Subject | One-line summary | Suggested action]
+→ Route to agent if applicable (Cassie for customer, Milli for leads, etc.)
+
+### 📬 Email — Worth Reviewing ([count])
+[Brief list only — sender and subject, no detail]
+
+### 🎯 Today's Focus
+Based on current priorities, the top 3 things to move forward today:
+1. [Most critical item from current-priorities.md]
+2. [Second priority]
+3. [Third — often a quick win or scheduled task]
+
+### ⚡ Agent Actions
+Any tasks that should be routed today:
+- **→ [Agent]**: [Task]
+
+### 📌 On the Radar
+Upcoming items in the next 48–72 hours worth knowing about now.
+
+---
+
+### Step 4 — Tone & Length Rules
+
+- Total briefing: under 300 words
+- No bullet padding — every line earns its place
+- If nothing urgent in email: say so clearly, don't list noise
+- If calendar is empty: say so, suggest what to use the open time for
+- Never list Amazon shipping emails or promotional emails in the briefing
+- Flag anything business-critical immediately at the top with 🚨
+
+---
+
+## Priority Context
+
+Anthony's standing priorities (from context/current-priorities.md):
+1. Scale commercial & industrial work → $5K–$50K projects
+2. Build AI-first operations system → n8n agents
+3. Local SEO domination → 7 AR websites
+4. Automate lead generation → always-on pipeline
+5. Financial optimization → cash flow + owner pay
+
+Use these to frame "Today's Focus" — connect the open day to what moves the needle.
+
+---
+
+## Agent Routing for Email Actions
 
 | Email Type | Route To |
 |---|---|
-| Customer inquiry or booking request | Cassie |
-| Estimate or proposal follow-up | Milli |
-| Vendor / subcontractor issue | Anthony directly |
-| SEO report or ranking update | Seomi (FYI) |
-| Email campaign results | Emmie (FYI) |
-| Invoice or payment | Robbie / Anthony |
-| Job scheduling request | Vizzy → Calendar |
-| Lead or business opportunity | Buddy |
-| Hiring / applicant | Scouty |
-| Data report or dashboard | Dexter (FYI) |
-
-### Priority Logic
-Always surface to Top 3 first:
-1. Anything with a same-day deadline
-2. Revenue-generating tasks (bids, estimates, proposals, bookings)
-3. Anything blocking a crew or job from executing
-
-Never surface to Top 3:
-- Newsletter signups
-- Auto-generated reports (unless containing an alert)
-- Routine receipts
-
----
-
-## Context Always Applied
-
-Anthony's standing priorities (always in scope for daily briefing):
-1. Commercial lead pipeline — any bid, outreach, or proposal opportunity gets flagged
-2. AI system buildout — any n8n or automation task gets noted
-3. SEO — any ranking drop or opportunity gets surfaced
-4. Cash flow — any invoice, payment, or financial item gets 🔴 or 🟡 tag
-5. Field ops — any crew or job issue gets flagged immediately
-
----
-
-## Handling Edge Cases
-
-**No calendar events:**
-> "No scheduled events today — wide open for deep work or proactive outreach."
-
-**No unread email:**
-> "Inbox is clean. No action items from email."
-
-**Large inbox (20+ unread):**
-> Summarize by category — don't list every email. Show counts by urgency tier.
-
-**Weekend briefing:**
-> Lighter format — skip agent routing section unless urgent. Add Gigi personal note.
-
-**MCP connection issue:**
-> "Couldn't pull live calendar/email data. Here's your briefing based on current
-> priorities — run again once connected or paste any items to triage."
-
----
-
-## Post-Briefing Behavior
-
-After delivering the briefing, wait for Anthony's direction.
-
-If Anthony says **"let's go"** or **"ok"** → ask what to tackle first from the Top 3.
-
-If Anthony says **"handle the emails"** → work through the inbox triage list one by one,
-drafting replies or routing each to the appropriate agent.
-
-If Anthony says **"schedule [X]"** → immediately use Google Calendar MCP to book it.
-
-Do NOT auto-execute any calendar changes or email sends without confirmation.
+| Customer complaint / question | → Cassie |
+| New lead inquiry | → Milli |
+| Marketing / campaign task | → Emmie or Soshie |
+| Bid / RFP opportunity | → Buddy + Penn |
+| SEO / website task | → Seomi |
+| Data / reporting question | → Dexter |
+| Recruiting / hiring | → Scouty |
 
 ---
 
 ## Example Trigger Phrases
-- "Good morning"
-- "Run my briefing"
-- "What's my day look like?"
-- "What do I have today?"
-- "Morning rundown"
-- "What should I focus on today?"
-- "Check my calendar and emails"
-- "What's going on today?"
+- "Morning briefing"
+- "What does my day look like?"
+- "Catch me up"
+- "Run my daily update"
+- "What's on my plate today?"
+- "Give me a briefing"
