@@ -43,11 +43,40 @@ gcal_list_events(
 )
 ```
 
-**Gmail — Unread priority emails:**
+**Gmail — Unread priority emails (check ALL business accounts):**
 ```
+# Check sales@americanservicesar.com
 gmail_search_messages(
-  q = "is:unread -category:promotions -from:amazon.com -from:paddle.com",
-  maxResults = 15
+  q = "is:unread -category:promotions -from:amazon.com -from:paddle.com to:sales@americanservicesar.com",
+  maxResults = 10
+)
+
+# Check office@americanservicesar.com
+gmail_search_messages(
+  q = "is:unread -category:promotions -from:amazon.com to:office@americanservicesar.com",
+  maxResults = 10
+)
+
+# Check asons@americanservicesar.com
+gmail_search_messages(
+  q = "is:unread -category:promotions -from:amazon.com to:asons@americanservicesar.com",
+  maxResults = 10
+)
+
+# Check sonsfamily2012@gmail.com (family — flag events and personal items)
+gmail_search_messages(
+  q = "is:unread -category:promotions to:sonsfamily2012@gmail.com",
+  maxResults = 5
+)
+```
+
+**Family Calendar — Check for upcoming events:**
+```
+gcal_list_events(
+  calendarId = "sonsfamily2012@gmail.com",
+  timeMin = today 00:00:00 CT,
+  timeMax = today+7 23:59:59 CT,
+  timeZone = America/Chicago
 )
 ```
 
@@ -141,6 +170,18 @@ Use these to frame "Today's Focus" — connect the open day to what moves the ne
 | SEO / website task | → Seomi |
 | Data / reporting question | → Dexter |
 | Recruiting / hiring | → Scouty |
+| Family event / personal | → Gigi |
+| HomeAdvisor/Thumbtack/Nextdoor lead | → Milli + Soshie |
+
+## Email Account Routing
+
+| Account | Route Priority |
+|---------|---------------|
+| sales@ | Milli (leads), Emmie (campaign replies) |
+| office@ | Cassie (support), Vizzy (operations) |
+| asons@ | Buddy (partnerships), Vizzy (executive) |
+| sonsfamily2012@ | Gigi (family events), add to family calendar |
+| Instantly replies | Emmie monitors → warm leads to Milli |
 
 ---
 
@@ -151,3 +192,14 @@ Use these to frame "Today's Focus" — connect the open day to what moves the ne
 - "Run my daily update"
 - "What's on my plate today?"
 - "Give me a briefing"
+
+---
+
+## Learning Protocol
+
+1. **Before briefing:** Check `memory/feedback-loops.md` for any unresolved items from yesterday
+2. **Before briefing:** Check `memory/agent-performance.md` for any stalled metrics to flag
+3. **During briefing:** If the same priority appears unaddressed for 3+ days, escalate it with a warning
+4. **After briefing:** Log what was planned in today's briefing to `memory/feedback-loops.md`
+5. **End of day (if triggered):** Compare planned vs accomplished; log patterns to `memory/ceo-performance.md`
+6. **Weekly:** Flag if any email account consistently has unread items piling up — suggests a routing gap

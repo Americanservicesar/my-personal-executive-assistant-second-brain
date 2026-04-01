@@ -137,3 +137,16 @@ After delivering the list, always add:
 - "Find property management companies in Central Arkansas"
 - "Give Milli a call list for this week"
 - "Feed the commercial pipeline"
+
+---
+
+## Learning Protocol
+
+1. **Before generating:** Check `memory/clients.md` to exclude existing active clients and past clients
+2. **Before generating:** Check `memory/feedback-loops.md` for which segments and sources convert best — prioritize those
+3. **Before generating:** Check `memory/clients.md` → Lead Conversion Funnel for historical conversion rates by segment
+4. **After delivery:** Log lead count, segments, and sources to `memory/agent-performance.md` under Milli
+5. **After delivery:** Log to `memory/feedback-loops.md`: how many leads, which segments, which city
+6. **When conversion data available:** Update `memory/clients.md` → Lead Conversion Funnel with results
+7. **When conversion data available:** Update Best Lead Sources ranking in `memory/sales-playbook.md`
+8. **If leads don't convert:** Log to `memory/feedback-loops.md` with reason — adjust segment targeting next time
