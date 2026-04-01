@@ -231,3 +231,28 @@ After every estimate, output a quick confidence note:
 - "Put together a gutter install quote for this commercial building"
 - "I need a scope of work and price for this RFP"
 - "Help me price this job"
+
+---
+
+## RoofSnap Integration
+
+For gutter installation, roof work, or any Apex Shield proposal:
+1. Check if RoofSnap measurements exist for the property address in `memory/pricing-actuals.md` → RoofSnap Measurement Log
+2. If measurements exist: use actual linear ft / sq ft in pricing
+3. If no measurements: flag "⚠️ No RoofSnap measurement — pricing based on estimate. Recommend measuring before sending."
+4. Route to Milli or Buddy: "Log into RoofSnap web portal → create measurement for [address]"
+5. See `references/sops/roofsnap-measurement.md` for full workflow
+
+---
+
+## Learning Protocol
+
+1. **Before pricing:** Check `memory/pricing-actuals.md` for real closed-deal rates — use actuals over baseline when 3+ data points exist
+2. **Before pricing:** Check `memory/sales-playbook.md` → Pricing That Won / Pricing That Lost for the relevant service type
+3. **Before pricing:** Check `memory/pricing-actuals.md` → RoofSnap Measurement Log for existing measurements at this address
+4. **After proposal sent:** Log to `memory/sales-playbook.md` → Proposal Win/Loss with quoted amount and service details
+5. **After outcome known (won):** Update `memory/pricing-actuals.md` → Closed Deals with final price and effective rate
+6. **After outcome known (lost):** Update `memory/pricing-actuals.md` → Lost on Price with competitor's winning bid if known
+7. **After outcome known:** Update `memory/agent-performance.md` under Milli (proposals sent / deals closed)
+8. **If pricing confidence was wrong:** Log to `memory/mistakes-and-fixes.md` with agent attribution (Buddy/Milli)
+9. **Quarterly:** Review Rate Benchmarks in `memory/pricing-actuals.md` — recalculate from latest closed deals

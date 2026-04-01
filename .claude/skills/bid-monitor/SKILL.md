@@ -193,3 +193,15 @@ Some bid types are predictable by season:
 - "What should we be bidding on this month?"
 - "Find construction cleanup bids near Conway"
 - "Any snow removal contracts coming up?"
+
+---
+
+## Learning Protocol
+
+1. **Before searching:** Check `memory/sales-playbook.md` → Bid History section for past win/loss patterns
+2. **Before scoring:** Check `memory/pricing-actuals.md` for actual winning bid prices to calibrate value estimates
+3. **After delivery:** Log bid count and top opportunities to `memory/agent-performance.md` under Buddy
+4. **After bid submitted:** Update `memory/sales-playbook.md` → Bid History with submission details
+5. **After bid outcome known:** Update with won/lost/why + winning price if available
+6. **Quarterly:** Review bid win rate by service type and source — adjust scoring weights if patterns shift
+7. **If bid lost on price:** Log to `memory/pricing-actuals.md` → Lost on Price section with competitor's winning bid

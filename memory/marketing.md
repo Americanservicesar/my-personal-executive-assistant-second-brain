@@ -56,3 +56,56 @@
 | Instagram | | | |
 | Google Business | | | |
 | LinkedIn | | | |
+| Nextdoor | | | |
+
+---
+
+## Email Campaign Results
+
+> Emmie updates after every campaign. Tracks Instantly cold outreach + GHL nurture sequences.
+
+### Instantly Campaigns
+
+| Date | Campaign Name | Segment | Emails Sent | Open Rate | Click Rate | Reply Rate | Warm Leads | Sending Account | Notes |
+|------|-------------|---------|------------|-----------|-----------|-----------|-----------|----------------|-------|
+| | | | | | | | | | |
+
+### GHL/Service Robot Nurture Sequences
+
+| Date | Sequence Name | Segment | Contacts | Open Rate | Click Rate | Conversions | Notes |
+|------|-------------|---------|----------|-----------|-----------|------------|-------|
+| | | | | | | | |
+
+### Email Learnings
+<!-- Example: "Subject lines with specific dollar amounts outperform generic ones by 2x" -->
+
+## Content Performance Scores
+
+> Penn and Soshie update after content goes live. Track what converts, not just what gets likes.
+
+| Date | Content Piece | Channel | Type | Impressions | Clicks | Leads | Conversions | Notes |
+|------|-------------|---------|------|------------|--------|-------|------------|-------|
+| | | | | | | | | |
+
+## SEO Ranking Changes
+
+> Seomi updates weekly/monthly. Track across all 7 domains.
+
+| Date | Domain | Keyword | Previous Rank | Current Rank | Change | Page URL | Notes |
+|------|--------|---------|-------------|-------------|--------|---------|-------|
+| | | | | | | | |
+
+## Lead Platform Performance
+
+> Track leads and engagement from HomeAdvisor, Nextdoor, Thumbtack, Angi, Yelp.
+
+| Month | Platform | Leads Received | Leads Converted | Revenue | Cost | ROI | Notes |
+|-------|----------|---------------|----------------|---------|------|-----|-------|
+| | HomeAdvisor | | | | | | |
+| | Nextdoor | | | | | | |
+| | Thumbtack | | | | | | |
+| | Angi | | | | | | |
+| | Yelp | | | | | | |
+
+### Platform Learnings
+<!-- Example: "Thumbtack leads close 2x faster than HomeAdvisor but cost 50% more per lead" -->

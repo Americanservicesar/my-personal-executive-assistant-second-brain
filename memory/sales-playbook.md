@@ -55,3 +55,42 @@
 | May-Aug | All exterior services peak | | Highest revenue months |
 | Sep-Oct | Fall cleanup, gutters | | Pre-winter maintenance push |
 | Nov-Dec | Gutter cleaning, holiday prep | Most exterior | Slow — focus on contracts for Q1 |
+
+---
+
+## Bid History & Outcomes
+
+> Buddy updates after every bid submission. Track what we bid on and what happened.
+
+| Date | Bid Source | Project | Service | Our Bid | Won/Lost/Pending | Winning Bid | Why Won/Lost | Notes |
+|------|----------|---------|---------|---------|-----------------|------------|-------------|-------|
+| | | | | | | | | |
+
+### Bid Win Patterns
+<!-- Auto-updated. Example:
+- "We win 60% of construction cleanup bids under $5K"
+- "Government bids: we lose when pricing above $0.08/sq ft for parking lots"
+-->
+
+## Proposal Win/Loss Analysis
+
+> Proposal-builder updates after every proposal outcome.
+
+| Date | Client | Service | Quoted Amount | Accepted? | Final Price | Days to Decision | Notes |
+|------|--------|---------|-------------|-----------|------------|-----------------|-------|
+| | | | | | | | |
+
+### Pricing That Won
+<!-- Log the prices that closed deals — these become the new baseline -->
+
+### Pricing That Lost
+<!-- Log the prices that were rejected — learn the ceiling -->
+
+## Sales Training Reference
+
+> Full sales training PDF stored on **Google Drive** (Anthony's Google Workspace).
+> Key frameworks and scripts extracted into Milli's `sales-closer` skill.
+> Penn references this for sales-facing copy tone.
+>
+> **Location:** Google Drive > [Anthony to confirm exact folder/filename]
+> **Last reviewed:** [TBD]
