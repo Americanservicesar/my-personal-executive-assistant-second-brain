@@ -12,5 +12,14 @@
 - Task assignment automation
 - Email outreach sequencing
 
+## Built Workflows
+
+### Vizzy Command Bot - Telegram Interface
+- **File:** `vizzy-command-bot-telegram.json` (importable n8n workflow)
+- **Purpose:** Routes Telegram messages from @Vizzycommandbot through the Vizzy autonomous agent
+- **Flow:** Telegram Trigger → Extract Message → POST to Vizzy Agent webhook → Send reply back via Telegram
+- **Credential needed:** "Vizzy Telegram Bot" (Telegram Bot API)
+- **Status:** Ready to import and activate
+
 ## Integration
-americanservicesar.app.n8n.cloud → GoHighLevel, Google Sheets, Gmail, Housecall Pro
+americanservicesar.app.n8n.cloud → GoHighLevel, Google Sheets, Gmail, Housecall Pro, Telegram
