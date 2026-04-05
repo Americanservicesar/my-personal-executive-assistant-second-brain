@@ -5,7 +5,7 @@ node_name: Emmie - Email Agent
 node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: cbf22621-f1e7-4a8e-b822-4bddb189229d
 workflow_id: JAYrzGWR8A0tCBzB
-model: [object Object]
+model: claude-sonnet-4-6
 tool_count: 8
 system_message_chars: 4936
 last_synced: 2026-04-05
@@ -15,7 +15,7 @@ last_synced: 2026-04-05
 
 **Agent #4** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: [object Object] (Emmie Claude Model)
+**Model**: claude-sonnet-4-6 (Emmie Claude Model)
 **Node ID**: cbf22621-f1e7-4a8e-b822-4bddb189229d
 
 ## Tool Description (what Vizzy sees)
