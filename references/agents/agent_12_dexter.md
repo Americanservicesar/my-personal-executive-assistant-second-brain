@@ -5,7 +5,7 @@ node_name: Dexter - Technical Agent
 node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: 9302c6ee-6dbb-4c71-bb56-7937c61b6e7c
 workflow_id: JAYrzGWR8A0tCBzB
-model: [object Object]
+model: claude-sonnet-4-6
 tool_count: 16
 system_message_chars: 6215
 last_synced: 2026-04-05
@@ -15,7 +15,7 @@ last_synced: 2026-04-05
 
 **Agent #12** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: [object Object] (Dexter Claude Model)
+**Model**: claude-sonnet-4-6 (Dexter Claude Model)
 **Node ID**: 9302c6ee-6dbb-4c71-bb56-7937c61b6e7c
 
 ## Tool Description (what Vizzy sees)
