@@ -5,7 +5,7 @@ node_name: Scouty - Competitive Analysis Agent
 node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: 2de5b503-41d2-4866-b9aa-243c1ca12082
 workflow_id: JAYrzGWR8A0tCBzB
-model: [object Object]
+model: claude-sonnet-4-6
 tool_count: 10
 system_message_chars: 4009
 last_synced: 2026-04-05
@@ -15,7 +15,7 @@ last_synced: 2026-04-05
 
 **Agent #9** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: [object Object] (Scouty Claude Model)
+**Model**: claude-sonnet-4-6 (Scouty Claude Model)
 **Node ID**: 2de5b503-41d2-4866-b9aa-243c1ca12082
 
 ## Tool Description (what Vizzy sees)
