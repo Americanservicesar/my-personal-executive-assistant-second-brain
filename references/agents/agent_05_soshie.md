@@ -5,7 +5,7 @@ node_name: Soshie - Social Media Agent
 node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: 8a58138e-20b0-4a64-81f5-d8289ebcdeae
 workflow_id: JAYrzGWR8A0tCBzB
-model: [object Object]
+model: claude-sonnet-4-6
 tool_count: 7
 system_message_chars: 5413
 last_synced: 2026-04-05
@@ -15,7 +15,7 @@ last_synced: 2026-04-05
 
 **Agent #5** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: [object Object] (Soshie Claude Model)
+**Model**: claude-sonnet-4-6 (Soshie Claude Model)
 **Node ID**: 8a58138e-20b0-4a64-81f5-d8289ebcdeae
 
 ## Tool Description (what Vizzy sees)
