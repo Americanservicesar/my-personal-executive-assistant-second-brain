@@ -5,7 +5,7 @@ node_name: Seomi - SEO Agent
 node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: e997ed62-61d7-46de-994f-f0e7793e32dd
 workflow_id: JAYrzGWR8A0tCBzB
-model: [object Object]
+model: claude-sonnet-4-6
 tool_count: 14
 system_message_chars: 4903
 last_synced: 2026-04-05
@@ -15,7 +15,7 @@ last_synced: 2026-04-05
 
 **Agent #8** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: [object Object] (Seomi Claude Model)
+**Model**: claude-sonnet-4-6 (Seomi Claude Model)
 **Node ID**: e997ed62-61d7-46de-994f-f0e7793e32dd
 
 ## Tool Description (what Vizzy sees)
