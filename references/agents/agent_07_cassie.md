@@ -5,7 +5,7 @@ node_name: Cassie - Customer Service Agent
 node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: 652b5168-e2e4-4ed3-8a2e-7be3c99b630d
 workflow_id: JAYrzGWR8A0tCBzB
-model: [object Object]
+model: claude-sonnet-4-6
 tool_count: 8
 system_message_chars: 5791
 last_synced: 2026-04-05
@@ -15,7 +15,7 @@ last_synced: 2026-04-05
 
 **Agent #7** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: [object Object] (Cassie Claude Model)
+**Model**: claude-sonnet-4-6 (Cassie Claude Model)
 **Node ID**: 652b5168-e2e4-4ed3-8a2e-7be3c99b630d
 
 ## Tool Description (what Vizzy sees)
