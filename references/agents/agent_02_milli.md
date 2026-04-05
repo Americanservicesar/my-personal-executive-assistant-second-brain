@@ -5,7 +5,7 @@ node_name: Milli - Marketing Agent
 node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: a3b19969-cc5f-43d1-a7a7-a9b3ebc1c6b1
 workflow_id: JAYrzGWR8A0tCBzB
-model: [object Object]
+model: claude-sonnet-4-6
 tool_count: 12
 system_message_chars: 5169
 last_synced: 2026-04-05
@@ -15,7 +15,7 @@ last_synced: 2026-04-05
 
 **Agent #2** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: [object Object] (Milli Claude Model)
+**Model**: claude-sonnet-4-6 (Milli Claude Model)
 **Node ID**: a3b19969-cc5f-43d1-a7a7-a9b3ebc1c6b1
 
 ## Tool Description (what Vizzy sees)
