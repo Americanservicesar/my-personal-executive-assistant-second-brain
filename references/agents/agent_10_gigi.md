@@ -5,7 +5,7 @@ node_name: Gigi - Google Workspace Agent
 node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: f622fe72-bb56-4643-b721-2bde67af3e63
 workflow_id: JAYrzGWR8A0tCBzB
-model: [object Object]
+model: claude-sonnet-4-6
 tool_count: 7
 system_message_chars: 5164
 last_synced: 2026-04-05
@@ -15,7 +15,7 @@ last_synced: 2026-04-05
 
 **Agent #10** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: [object Object] (Gigi Claude Model)
+**Model**: claude-sonnet-4-6 (Gigi Claude Model)
 **Node ID**: f622fe72-bb56-4643-b721-2bde67af3e63
 
 ## Tool Description (what Vizzy sees)
