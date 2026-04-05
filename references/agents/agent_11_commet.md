@@ -5,7 +5,7 @@ node_name: Commet - Data Analysis Agent
 node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: cd8bfc45-25d8-4a64-9e45-dafa49b3a257
 workflow_id: JAYrzGWR8A0tCBzB
-model: [object Object]
+model: claude-sonnet-4-6
 tool_count: 9
 system_message_chars: 6108
 last_synced: 2026-04-05
@@ -15,7 +15,7 @@ last_synced: 2026-04-05
 
 **Agent #11** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: [object Object] (Commet Claude Model)
+**Model**: claude-sonnet-4-6 (Commet Claude Model)
 **Node ID**: cd8bfc45-25d8-4a64-9e45-dafa49b3a257
 
 ## Tool Description (what Vizzy sees)
