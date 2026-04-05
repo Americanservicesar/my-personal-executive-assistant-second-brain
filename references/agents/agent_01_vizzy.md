@@ -5,7 +5,7 @@ node_name: Vizzy - Supervisor Agent
 node_type: @n8n/n8n-nodes-langchain.agent
 node_id: d91623a2-dd4a-45d6-a6aa-bf34ee152a6f
 workflow_id: JAYrzGWR8A0tCBzB
-model: [object Object]
+model: claude-sonnet-4-6
 tool_count: 24
 system_message_chars: 5572
 last_synced: 2026-04-05
@@ -15,7 +15,7 @@ last_synced: 2026-04-05
 
 **Agent #1** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: [object Object] (Vizzy Claude Model)
+**Model**: claude-sonnet-4-6 (Vizzy Claude Model)
 **Node ID**: d91623a2-dd4a-45d6-a6aa-bf34ee152a6f
 
 ## Tool Description (what Vizzy sees)
