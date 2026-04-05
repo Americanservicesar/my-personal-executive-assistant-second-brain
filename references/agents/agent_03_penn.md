@@ -5,7 +5,7 @@ node_name: Penn - Writing Agent
 node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: 5495bf55-a86e-459c-88f7-67f50e8d39fc
 workflow_id: JAYrzGWR8A0tCBzB
-model: [object Object]
+model: claude-sonnet-4-6
 tool_count: 8
 system_message_chars: 4897
 last_synced: 2026-04-05
@@ -15,7 +15,7 @@ last_synced: 2026-04-05
 
 **Agent #3** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: [object Object] (Penn Claude Model)
+**Model**: claude-sonnet-4-6 (Penn Claude Model)
 **Node ID**: 5495bf55-a86e-459c-88f7-67f50e8d39fc
 
 ## Tool Description (what Vizzy sees)
