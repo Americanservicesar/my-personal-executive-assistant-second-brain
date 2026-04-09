@@ -1,9 +1,13 @@
 # Work & Business
 
-## Brands
-- **American Services AR** — Core multi-service brand
-- **Apex Shield Construction** — Roofing, gutters, exterior construction
-- **Legendary Home Services** — Handyman & environmental cleanup (developing)
+## Legal Entity
+- **American Services AR** — the ONLY legal entity / QuickBooks file / tax return / bank account
+
+## Concept Brands (Ideas, Not Legal Entities)
+- **Apex Shield Construction** — concept brand idea for roofing/gutters/exterior construction
+- **Legendary Home Services** — concept brand idea for handyman/environmental cleanup
+
+> These two are marketing/brand concepts Anthony likes — NOT separate LLCs, NOT separate QuickBooks files, NOT separate tax returns. All revenue flows through American Services AR. Any "split into separate entities" recommendation is a FUTURE IDEA saved in `references/finance-strategy-ideas.md`, not an active state.
 
 ## Services & Revenue Streams
 
