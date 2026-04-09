@@ -6,9 +6,9 @@ node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: 9302c6ee-6dbb-4c71-bb56-7937c61b6e7c
 workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-tool_count: 16
+tool_count: 17
 system_message_chars: 6215
-last_synced: 2026-04-05
+last_synced: 2026-04-09
 ---
 
 # Dexter — Technical Agent
@@ -124,6 +124,7 @@ Every report ends with:
 - SerpApi — competitor pricing, market research
 - Slack — deliver reports, anomaly alerts
 - GitHub Brain — historical KPIs, trend data, benchmarks
+- HTTP - HighLevel (Service Robot) — pipeline data, lead source tracking, GHL reporting, opportunity values for revenue forecasting
 
 ## COLLABORATION
 - **Commet** designs dashboard visuals (Looker Studio, GHL) — Dexter feeds the data
@@ -166,6 +167,7 @@ Every report ends with:
 | Slack - Dexter | slackTool | 9ad8daec-28a... | slackOAuth2Api: lopIua3GVl7ESuOs |
 | GitHub Brain - Dexter | httpRequestTool | 8720a812-023... | no credential (API key in params) |
 | Google Docs - Dexter | googleDocsTool | f0695ff0-0c3... | googleDocsOAuth2Api: dMFkHV4KEbioauC6 |
+| HTTP - HighLevel (Dexter) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
 
 ## Credentials Used
 
@@ -178,6 +180,11 @@ Every report ends with:
 | slackOAuth2Api | lopIua3GVl7ESuOs | Slack OAuth2 API |
 | googleDocsOAuth2Api | dMFkHV4KEbioauC6 | Google account |
 | anthropicApi | MGVdxOb43c7vfSd2 | Anthropic account |
+| highLevelApi | [pending-setup] | HighLevel Private Integration Token |
+
+## GHL Access (Dexter)
+- **Scope**: Read-only
+- **Uses**: Pull pipeline data (opportunity values, stages, lead sources) for revenue forecasting, lead source ROI, and pipeline leak detection dashboards
 
 ## Position in Canvas
 x: 3488, y: 224
