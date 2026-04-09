@@ -1,0 +1,30 @@
+- [Gmail MCP Account Registry](reference_gmail_accounts.md) — 4 Gmail accounts (sales, office, asons, sonsfamily) connected via google-workspace MCP
+- [Vizzy Agent - Remaining Items](project_vizzy_remaining.md) — HighLevel OAuth2 creds, Gmail separation, Agents 2-12 still pending
+- [n8n API Access](reference_n8n_api.md) — REST API key and workflow update pattern for americanservicesar.app.n8n.cloud
+- [Shared Drive File Organization](feedback_shared_drives.md) — Save files to MARKETING, OFFICE, OPERATIONS, SALES, or TECHS shared drives
+- [Agent Optimization Checklist](project_agent_issues_checklist.md) — Running checklist for 12-agent optimization (Vizzy done, Milli done, 10 pending)
+- [Master Credentials Sheet](reference_master_credentials.md) — Google Sheet with all API keys, tokens, and n8n credential IDs
+- [Google Shared Drive IDs](reference_shared_drives.md) — 5 Shared Drives: OFFICE, MARKETING, OPERATIONS, SALES, TECHS with folder IDs
+- [Job Photos & Videos Convention](feedback_job_photos.md) — Store in MARKETING > Job Photos & Videos, named YYYY-MM-DD_Service_City_Property_BeforeAfter
+- [Arkansas Bid Boards & Procurement Portals](reference_arkansas_bid_boards.md) — Comprehensive list of state, county, city, federal, school, university, and hospital procurement portals in AR for bid monitoring
+- [SEO Silo Structure Master Reference](reference_seo_silo_structure.md) — Complete silo architecture, URL map (193+ pages), internal linking rules, schema markup, nav structure, blog strategy, and WordPress migration plan for ASAR website
+- [Agent Reference Docs](agents/) — Full details for all 12 agents: system messages, tool connections, credentials, descriptions. Synced to GitHub Brain (references/agents/) and Google Drive (Agent Reference Docs folder).
+- [Agent Docs Sync Reference](reference_agent_docs.md) — Google Doc IDs, GitHub paths, desktop paths, sync protocol for all 12 agent reference docs
+- [n8n Workflow Patterns & Pitfalls](feedback_n8n_workflow_patterns.md) — Memory limits, credential handling, connection naming, error resilience, Telegram/Chat routing
+- [Seomi Google API Setup](feedback_seomi_setup.md) — OAuth2 config for Search Console, GA4, GBP — custom client, scopes, what works/doesn't
+- [Audit Cost & Token Optimization](feedback_audit_cost_optimization.md) — ~$0.02/audit, batch strategies, _fields trick, skip Vizzy for direct tasks
+- [HousecallPro Booking Integration](reference_housecallpro.md) — HCP token, API key, booking URL, UTM tracking pattern for conversion tracking
+- [HousecallPro Online Booking](reference_housecallpro_booking.md) — Booking widget code, booking URL, Reserve with Google phone mismatch
+- [ASAR Master TODO Doc](reference_master_todo.md) — Single running checklist for all projects — append with "save to TODO doc"
+- [Pricebook Unification Status](project_pricebook_status.md) — Services + materials pricebook progress, key files, next steps for HCP import
+- [Anthony Sons Financial Profile](user_financial_profile.md) — Household structure: wife at Acxiom, 1 home + 2 rentals, 401k + Edward Jones, $4K/mo owner draw, CC debt-free goal
+- [AI-First SEO Page Template](reference_ai_seo_template.md) — Optimal page layout for AI citation + traditional SEO: BLUF principle, block order, schema stack, Wise Guys gaps
+- [ASAR Service Definitions](reference_service_definitions.md) — Exact scope of all 13 services (parking lot = line striping/sealcoating/repair; fleet = mobile yard washing NOT fixed truck wash)
+- [SEO Page Launch Order](feedback_seo_page_launch_order.md) — Set RankMath meta BEFORE submitting to Google/Bing — never index pages with blank meta
+- [Audit After Generation (mandatory)](feedback_audit_after_generation.md) — Always run audit_phase3.py after any ASAR WXR/PHP batch generation — do NOT wait to be asked
+- [Next Session - Local SEO & GBP](project_next_session_local_seo.md) — Priority 4: GBP deep audit + rank #1 optimization + Bing Places, Apple Maps, Yelp, BBB, Angi, HCP reviews
+- [File Paths Must Be Clickable](feedback_file_paths_clickable.md) — Always format local paths as file:/// markdown links so user can click to open folder
+- [Always Check Credentials First](feedback_check_credentials_first.md) — Check memory + master credentials sheet before asking Anthony for any token/API key; save new info immediately
+- [GoHighLevel MCP (Service Robot)](reference_ghl_mcp.md) — GHL MCP in .mcp.json, PIT token, endpoint, 250+ tools; also in n8n for all 9 agents
+- [Finance Strategy Ideas](reference_finance_strategy_ideas.md) — S-Corp ($10-25K/yr), AR PTET, 100% bonus depreciation (permanent), kids on payroll, Augusta Rule, QBI, retirement — all ideas, not executed
+- [CPA Sales Tax Meeting Agenda](references/templates/cpa-sales-tax-meeting-agenda.md) — Skeleton agenda for ASAR sales tax delinquency + 2026 strategy CPA meeting
