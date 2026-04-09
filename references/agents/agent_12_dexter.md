@@ -167,7 +167,7 @@ Every report ends with:
 | Slack - Dexter | slackTool | 9ad8daec-28a... | slackOAuth2Api: lopIua3GVl7ESuOs |
 | GitHub Brain - Dexter | httpRequestTool | 8720a812-023... | no credential (API key in params) |
 | Google Docs - Dexter | googleDocsTool | f0695ff0-0c3... | googleDocsOAuth2Api: dMFkHV4KEbioauC6 |
-| HTTP - HighLevel (Dexter) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
+| HTTP - HighLevel (Dexter) | httpRequestTool | ghl-pit-node | highLevelApi: pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9 |
 
 ## Credentials Used
 
