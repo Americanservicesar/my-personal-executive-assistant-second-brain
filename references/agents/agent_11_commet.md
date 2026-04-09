@@ -164,7 +164,7 @@ Use for: embedding HCP booking widget, creating package pages, updating pricing 
 | Slack - Commet | slackTool | 3a3db6c7-771... | slackOAuth2Api: lopIua3GVl7ESuOs |
 | GitHub Brain - Commet | httpRequestTool | 03be3813-e5f... | no credential (API key in params) |
 | HTTP - WordPress (Commet) | httpRequestTool | 4bb28f91-adb... | no credential (API key in params) |
-| HTTP - HighLevel (Commet) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
+| HTTP - HighLevel (Commet) | httpRequestTool | ghl-pit-node | highLevelApi: pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9 |
 
 ## Credentials Used
 
