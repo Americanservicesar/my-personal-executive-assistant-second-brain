@@ -1,0 +1,1 @@
+{"message":"request.body.data does not match allOf schema [subschema 0] with 2 error[s]:,request.body.data does not match allOf schema [subschema 0] with 1 error[s]:,request.body.data requires property \"notice\""}
