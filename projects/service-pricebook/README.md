@@ -1,15 +1,16 @@
-# Service Pricebook Development
+# Service Pricebook Unification
 
-**Description:** Building detailed pricebooks and scopes of work for all major service lines.
+## Status: In Progress
 
-**Status:** Active
+## Goal
+Unify all services + materials into a single HousecallPro-ready pricebook
 
-## Service Lines to Cover
-- Pressure washing (residential + commercial)
-- Fleet & heavy equipment washing
-- Parking lot maintenance
-- Gutter installation (5", 6", commercial)
-- Commercial property maintenance
+## Services (13 total)
+Pressure washing, soft washing, roof cleaning, gutter cleaning, window cleaning,
+parking lot striping, sealcoating, parking lot repair, fleet washing (mobile yard),
+Christmas lights, pest control, interior cleaning, junk removal
 
-## Output
-Ready-to-use pricebook for Housecall Pro + proposal templates for bidding.
+## Key Files
+- claude-memory/project_pricebook_status.md — current progress and next steps
+- data/hcp/ — HousecallPro job exports for pricing reference
+
