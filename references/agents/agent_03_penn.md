@@ -130,7 +130,7 @@ Brand Header -> Prepared for/by/date -> Scope of Work -> Pricing Table -> What's
 | Slack - Penn | slackTool | ed76e7a1-4bc... | slackOAuth2Api: lopIua3GVl7ESuOs |
 | GitHub Brain - Penn | httpRequestTool | 097007a2-bab... | no credential (API key in params) |
 | Web Search - Penn | httpRequestTool | ws-penn-mnl8... | no credential (API key in params) |
-| HTTP - HighLevel (Penn) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
+| HTTP - HighLevel (Penn) | httpRequestTool | ghl-pit-node | highLevelApi: pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9 |
 
 ## Credentials Used
 
