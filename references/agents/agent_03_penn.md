@@ -6,9 +6,9 @@ node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: 5495bf55-a86e-459c-88f7-67f50e8d39fc
 workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-tool_count: 8
+tool_count: 9
 system_message_chars: 4897
-last_synced: 2026-04-05
+last_synced: 2026-04-09
 ---
 
 # Penn — Writing Agent
@@ -95,6 +95,7 @@ Brand Header -> Prepared for/by/date -> Scope of Work -> Pricing Table -> What's
 - SerpApi — keyword research, competitor copy research
 - Slack — report all actions, collaborate with team
 - Web Search — research topics, competitor analysis
+- HTTP - HighLevel (Service Robot) — read contact and opportunity details to personalize proposals and copy
 
 ## COLLABORATION
 - **Seomi** provides SEO keywords -> Penn integrates into website/blog copy
@@ -129,6 +130,7 @@ Brand Header -> Prepared for/by/date -> Scope of Work -> Pricing Table -> What's
 | Slack - Penn | slackTool | ed76e7a1-4bc... | slackOAuth2Api: lopIua3GVl7ESuOs |
 | GitHub Brain - Penn | httpRequestTool | 097007a2-bab... | no credential (API key in params) |
 | Web Search - Penn | httpRequestTool | ws-penn-mnl8... | no credential (API key in params) |
+| HTTP - HighLevel (Penn) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
 
 ## Credentials Used
 
@@ -141,6 +143,11 @@ Brand Header -> Prepared for/by/date -> Scope of Work -> Pricing Table -> What's
 | googleSheetsOAuth2Api | Tpo5kkkuG9qiBBvf | Google Sheets OAuth2 API |
 | slackOAuth2Api | lopIua3GVl7ESuOs | Slack OAuth2 API |
 | anthropicApi | MGVdxOb43c7vfSd2 | Anthropic account |
+| highLevelApi | [pending-setup] | HighLevel Private Integration Token |
+
+## GHL Access (Penn)
+- **Scope**: Read-only
+- **Uses**: Pull contact name, company, property details, and opportunity info to personalize proposals and copy — never creates or edits records
 
 ## Position in Canvas
 x: 912, y: 224
