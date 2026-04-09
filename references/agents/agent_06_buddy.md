@@ -6,9 +6,9 @@ node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: a9281635-c727-4b67-b4d1-793dd6e3cd67
 workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-tool_count: 9
+tool_count: 10
 system_message_chars: 6033
-last_synced: 2026-04-05
+last_synced: 2026-04-09
 ---
 
 # Buddy — Research Agent
@@ -100,6 +100,7 @@ Research competitors and feed intel to:
 - Airtable — partnership/bid tracking database
 - Slack — report ALL actions, lead handoffs to Milli
 - GitHub Brain — read/write memory (bid history, partnership intel, competitor data)
+- HTTP - HighLevel (Service Robot) — create/update contacts, log prospect notes, manage opportunities for biz dev leads and partnerships
 
 ## COLLABORATION
 - **Milli** receives qualified leads from Buddy for closing
@@ -152,6 +153,7 @@ Use Browser Agent or Web Search to find these contacts on LinkedIn. Log all pros
 | Slack - Buddy | slackTool | ca0226cb-a0b... | slackOAuth2Api: lopIua3GVl7ESuOs |
 | GitHub Brain - Buddy | httpRequestTool | aa8172eb-4c9... | no credential (API key in params) |
 | SerpApi - Buddy | toolSerpApi | 7f421557-cdb... | serpApi: W674ZSbrWCALEVEp |
+| HTTP - HighLevel (Buddy) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
 
 ## Credentials Used
 
@@ -165,6 +167,11 @@ Use Browser Agent or Web Search to find these contacts on LinkedIn. Log all pros
 | slackOAuth2Api | lopIua3GVl7ESuOs | Slack OAuth2 API |
 | serpApi | W674ZSbrWCALEVEp | SerpAPI account |
 | anthropicApi | MGVdxOb43c7vfSd2 | Anthropic account |
+| highLevelApi | [pending-setup] | HighLevel Private Integration Token |
+
+## GHL Access (Buddy)
+- **Scope**: Full read/write
+- **Uses**: Create and update contacts for prospects/partners, create opportunities, log call notes, tag contacts with role/vertical/tier tags, move leads into pipeline for Milli handoff
 
 ## Position in Canvas
 x: 1760, y: 224
