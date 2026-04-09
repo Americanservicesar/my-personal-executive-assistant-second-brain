@@ -136,7 +136,7 @@ Email 4 (Day 12): Final follow-up / breakup email
 | SerpApi - Emmie | toolSerpApi | cc6b535b-620... | serpApi: W674ZSbrWCALEVEp |
 | Airtable - Emmie | airtableTool | 4ac92b09-cc5... | airtableTokenApi: flYD85xUURg7jDi7 |
 | GitHub Brain - Emmie | httpRequestTool | 8b915a09-047... | no credential (API key in params) |
-| HTTP - HighLevel (Emmie) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
+| HTTP - HighLevel (Emmie) | httpRequestTool | ghl-pit-node | highLevelApi: pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9 |
 
 ## Credentials Used
 
