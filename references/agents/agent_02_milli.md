@@ -125,7 +125,7 @@ HomeAdvisor: <30 min | Thumbtack: <1 hr | Angi: <1 hr | Nextdoor: <2 hr (via Sos
 | HTTP - Housecall Pro (Milli) | httpRequestTool | 43a4aadf-347... | no credential (API key in params) |
 | HTTP - GutterGlove (Milli) | httpRequestTool | fbe35ef8-44d... | no credential (API key in params) |
 | GitHub Brain - Milli | httpRequestTool | c4e95cfb-681... | no credential (API key in params) |
-| HTTP - HighLevel (Milli) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
+| HTTP - HighLevel (Milli) | httpRequestTool | ghl-pit-node | highLevelApi: pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9 |
 
 ## Credentials Used
 
