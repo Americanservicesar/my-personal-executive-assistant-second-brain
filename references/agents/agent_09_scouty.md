@@ -127,7 +127,7 @@ Monitor competitor job postings on LinkedIn for local pay rates.
 | Airtable - Scouty | airtableTool | 6d15951e-70b... | airtableTokenApi: flYD85xUURg7jDi7 |
 | GitHub Brain - Scouty | httpRequestTool | 3f66a4c0-501... | no credential (API key in params) |
 | HTTP - Housecall Pro (Scouty) | httpRequestTool | 852a9533-c88... | no credential (API key in params) |
-| HTTP - HighLevel (Scouty) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
+| HTTP - HighLevel (Scouty) | httpRequestTool | ghl-pit-node | highLevelApi: pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9 |
 
 ## Credentials Used
 
