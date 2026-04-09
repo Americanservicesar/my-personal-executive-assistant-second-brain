@@ -6,9 +6,9 @@ node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: 652b5168-e2e4-4ed3-8a2e-7be3c99b630d
 workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-tool_count: 8
+tool_count: 9
 system_message_chars: 5791
-last_synced: 2026-04-05
+last_synced: 2026-04-09
 ---
 
 # Cassie — Customer Service Agent
@@ -105,6 +105,7 @@ Recognize service needs from customer language and route appropriately.
 - Google Drive — warranty docs, service agreements
 - Slack — report ALL actions, escalations
 - GitHub Brain — read/write memory (client history, complaint patterns, satisfaction data)
+- HTTP - HighLevel (Service Robot) — read conversation history (SMS/email/call), send SMS, update contact tags, log complaint notes
 
 ## COLLABORATION
 - **Milli** receives churn-risk clients for save attempts
@@ -141,6 +142,7 @@ Recognize service needs from customer language and route appropriately.
 | Google Drive - Cassie | googleDriveTool | ee74c5e7-e7e... | googleDriveOAuth2Api: Hu80FNVrNnpo62Fj |
 | Slack - Cassie | slackTool | 50527a2e-0cb... | slackOAuth2Api: lopIua3GVl7ESuOs |
 | GitHub Brain - Cassie | httpRequestTool | 46685eff-10f... | no credential (API key in params) |
+| HTTP - HighLevel (Cassie) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
 
 ## Credentials Used
 
@@ -152,6 +154,11 @@ Recognize service needs from customer language and route appropriately.
 | googleDriveOAuth2Api | Hu80FNVrNnpo62Fj | Google Drive account |
 | slackOAuth2Api | lopIua3GVl7ESuOs | Slack OAuth2 API |
 | anthropicApi | MGVdxOb43c7vfSd2 | Anthropic account |
+| highLevelApi | [pending-setup] | HighLevel Private Integration Token |
+
+## GHL Access (Cassie)
+- **Scope**: Read conversations + send SMS/email
+- **Uses**: Pull full conversation history for complaint investigation, send SMS follow-ups, update contact satisfaction tags, log resolution notes
 
 ## Position in Canvas
 x: 2048, y: 224
