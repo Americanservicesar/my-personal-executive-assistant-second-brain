@@ -142,7 +142,7 @@ Recognize service needs from customer language and route appropriately.
 | Google Drive - Cassie | googleDriveTool | ee74c5e7-e7e... | googleDriveOAuth2Api: Hu80FNVrNnpo62Fj |
 | Slack - Cassie | slackTool | 50527a2e-0cb... | slackOAuth2Api: lopIua3GVl7ESuOs |
 | GitHub Brain - Cassie | httpRequestTool | 46685eff-10f... | no credential (API key in params) |
-| HTTP - HighLevel (Cassie) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
+| HTTP - HighLevel (Cassie) | httpRequestTool | ghl-pit-node | highLevelApi: pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9 |
 
 ## Credentials Used
 
