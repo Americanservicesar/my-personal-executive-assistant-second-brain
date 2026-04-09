@@ -1,0 +1,1 @@
+{"message":"Cannot publish workflow: 1 node have configuration issues:\n\nNode \"Google Docs - Penn\":\n  - Missing required credential: googleApi\n  - Missing or invalid required parameters (2 issues)"}
