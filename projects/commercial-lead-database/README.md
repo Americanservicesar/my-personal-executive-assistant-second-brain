@@ -1,19 +1,19 @@
 # Commercial Lead Database
 
-**Description:** Building a structured, always-updating database of commercial prospects for American Services AR.
+## Status: In Progress (Buddy agent monitoring)
 
-**Status:** Active
+## Goal
+Build and maintain a database of commercial leads in Arkansas.
+Target services: pressure washing, parking lot, fleet washing.
 
-## Target Segments
-- Property management companies
-- Apartment complexes
-- Industrial facilities
-- Retail centers
-- Construction projects (new builds)
-- Government contracts
+## Sources Monitored
+- 86 procurement portals (state, county, city, federal, schools, hospitals)
+- See claude-memory/reference_arkansas_bid_boards.md for full list
 
-## Output
-Structured lead list with contact info, property type, estimated opportunity size, and follow-up status in CRM (GoHighLevel).
+## Buddy Agent
+Monitors bid boards, alerts via Slack, tracks pipeline.
 
-## Key Dates
-- Priority: Q1 2026 — initial database build
+## Key Files
+- claude-memory/reference_arkansas_bid_boards.md — all 86 portals
+- logs/api-calls/agents/buddy_*.json — build history
+
