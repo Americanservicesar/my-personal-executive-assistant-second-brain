@@ -153,7 +153,7 @@ Use Browser Agent or Web Search to find these contacts on LinkedIn. Log all pros
 | Slack - Buddy | slackTool | ca0226cb-a0b... | slackOAuth2Api: lopIua3GVl7ESuOs |
 | GitHub Brain - Buddy | httpRequestTool | aa8172eb-4c9... | no credential (API key in params) |
 | SerpApi - Buddy | toolSerpApi | 7f421557-cdb... | serpApi: W674ZSbrWCALEVEp |
-| HTTP - HighLevel (Buddy) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
+| HTTP - HighLevel (Buddy) | httpRequestTool | ghl-pit-node | highLevelApi: pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9 |
 
 ## Credentials Used
 
