@@ -148,7 +148,7 @@ Direct, strategic, efficient. Anthony's trusted operations partner. No fluff, no
 | Slack Tool - Vizzy | slackTool | d234f833-e7b... | slackApi: 6yUg4MuD1ruBxZQY |
 | SerpApi - Vizzy | toolSerpApi | 8fb9545f-900... | serpApi: W674ZSbrWCALEVEp |
 | Google Docs - Vizzy | googleDocsTool | 8668a6c9-de8... | googleDocsOAuth2Api: dMFkHV4KEbioauC6 |
-| HTTP - HighLevel (Vizzy) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
+| HTTP - HighLevel (Vizzy) | httpRequestTool | ghl-pit-node | highLevelApi: pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9 |
 
 ## Credentials Used
 
