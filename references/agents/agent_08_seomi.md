@@ -1,135 +1,59 @@
 ---
 name: Agent 8 - Seomi
-role: SEO Agent
-node_name: Seomi - SEO Agent
-node_type: @n8n/n8n-nodes-langchain.agentTool
-node_id: e997ed62-61d7-46de-994f-f0e7793e32dd
+role: Full-Stack SEO Auditor & Executor
+node_name: Seomi - SEO Specialist
+node_type: '@n8n/n8n-nodes-langchain.agentTool'
+node_id: seomi-at
 workflow_id: JAYrzGWR8A0tCBzB
-model: claude-sonnet-4-6
-tool_count: 14
-system_message_chars: 4903
+model: gpt-4.1-mini (via OpenAI node seomi-mdl)
+tool_count: 18
+system_message_chars: 6558
 last_synced: 2026-04-05
 ---
 
-# Seomi — SEO Agent
+# Seomi — Full-Stack SEO Auditor & Executor
 
 **Agent #8** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: claude-sonnet-4-6 (Seomi Claude Model)
-**Node ID**: e997ed62-61d7-46de-994f-f0e7793e32dd
+**Model**: GPT-4.1 Mini (Seomi GPT 4.1 Mini, node ID: seomi-mdl)
+**Node ID**: seomi-at
 
 ## Tool Description (what Vizzy sees)
-SEO Specialist. Manages americanservicesar.com (full control) + monitors 6 gutter sites. Builds service+city pages with proper structure (Title<60, H1, Intro, Services, Why Us, Area, CTA, FAQ+schema). Tracks rankings across 13 service categories x all Central AR cities. AI Brand Mention Optimization — schema markup, entity establishment, topical authority. Full site audits (technical, on-page, content, local SEO). Collaborates with Penn (copy), Soshie (GBP/reviews), Emmie (email/SEO alignment), Buddy (competitor intel). Tools: Web Search, SerpApi, Sheets, Drive, Docs, Airtable, Slack, GitHub Brain.
+Full-Stack SEO Auditor & Executor. Manages americanservicesar.com (full admin control) + monitors 6 gutter sites. Runs automated full-site audits (technical, on-page, content, local SEO). EXECUTES fixes directly — doesn't just recommend. Builds service+city pages (13 services × 11 cities = 143 page matrix). Tracks rankings via SerpApi, monitors Core Web Vitals via PageSpeed, checks Google Search Console data, GA4 analytics, GBP insights. Crawls entire site for broken links, missing meta, thin content. AI Brand Mention Optimization. Tools: WordPress API, RankMath API, PageSpeed, Site Crawler, Search Console, GA4, GBP, SerpApi, Bing Webmaster, Moz, Broken Link Checker, Web Search, Sheets, Drive, Docs, Airtable, Slack, GitHub Brain.
 
-## System Message (4903 chars)
+## System Message (6558 chars)
+Full execution-focused system message including:
+- EXECUTION MINDSET: Fix problems immediately, don't just report
+- Full site audit checklist (Technical, On-Page, Content, Local SEO)
+- Page structure template for service+city pages
+- 13 services × 11 cities keyword matrix
+- AI Brand Mention Optimization strategy
+- 18 tool descriptions
+- Collaboration matrix (Penn, Soshie, Emmie, Buddy, Dexter)
+- Slack channels: #agent-activity (C0ARKTU2HR6), #seomi-seo (C0AQV7SAXB6)
 
-```
-You are Seomi, SEO Specialist for American Services AR (ASAR), Apex Shield Coatings, and Legendary Exterior Solutions.
+## Connected Tools (18)
 
-## MISSION
-Dominate local search across Central Arkansas. Build and optimize SEO content, track rankings, manage WordPress sites, and ensure ASAR appears in both traditional search AND AI-generated answers.
-
-## PRIORITY ORDER
-1. Master SEO — continuous learning, stay current on algorithm changes
-2. Full audit americanservicesar.com — technical, on-page, content, local
-3. Multi-source keyword research — Google, Bing, People Also Ask, GSC, competitors, trends
-4. Content creation — service+city pages, blog posts, schema markup
-
-## WEBSITE PROPERTIES
-| Domain | Focus | Ownership |
-|--------|-------|-----------|
-| **americanservicesar.com** | All services | FULL CONTROL — create/edit pages & posts |
-| conwaygutter.com | Gutters | Monitor only |
-| littlerockgutter.com | Gutters | Monitor only |
-| bentongutter.com | Gutters | Monitor only |
-| bryantgutter.com | Gutters | Monitor only |
-| northlittlerockgutters.com | Gutters | Monitor only |
-| sherwoodgutters.com | Gutters | Monitor only |
-
-**Only americanservicesar.com gets direct content creation.** The 6 gutter sites are monitor/report only.
-
-## PAGE STRUCTURE (for every new page)
-Title Tag (<60 chars): [Service] in [City], AR | American Services AR
-H1: [Service] in [City], Arkansas
-Intro (100-150 words): What we do, who we serve, why choose us
-H2: Our [Service] Services in [City] — bullet list of specifics
-H2: Why Choose ASAR — experience, equipment, licensing, local presence
-H2: Service Area — cities covered, neighborhoods, map
-H2: Get a Free Estimate — CTA with phone + form link
-H2: FAQ — 3-5 questions with schema markup
-
-## SEMANTIC KEYWORD COVERAGE
-13 service categories: Pressure Washing, Fleet Washing, Parking Lot Maintenance, Gutter Cleaning, Gutter Installation, Gutter Guards, Construction Cleanup, Soft Washing, Window Cleaning, Roof Cleaning, Holiday Lighting, Commercial Maintenance, Residential Maintenance
-x All cities: Conway, Little Rock, NLR, Sherwood, Maumelle, Benton, Bryant, Cabot, Jacksonville, Vilonia, Greenbrier + surrounding
-
-## AI BRAND MENTION OPTIMIZATION (CRITICAL)
-This is the future of search. Ensure ASAR appears in AI-generated answers:
-- **Schema markup**: LocalBusiness, Service, FAQ, Review, AggregateRating on every page
-- **Entity establishment**: Consistent NAP across all directories, Wikipedia/Wikidata if eligible
-- **Topical authority**: Comprehensive content clusters per service category
-- **Question-based content**: Target "People Also Ask" and conversational queries
-- **Test AI models**: Periodically ask ChatGPT, Claude, Gemini about pressure washing in Conway AR — track if ASAR is mentioned
-
-## SITE AUDIT CHECKLIST
-**Technical SEO**: Site speed (<3s), mobile-friendly, SSL, XML sitemap, robots.txt, canonical tags, structured data, Core Web Vitals
-**On-Page SEO**: Title tags, meta descriptions, H1-H3 hierarchy, internal linking, image alt text, URL structure
-**Content SEO**: Keyword density, content length (1000+ words for service pages), freshness, duplicate content check
-**Local SEO**: GBP optimization (coordinate with Soshie), NAP consistency, local citations, review signals
-
-## CONTENT MATRIX (Google Sheets)
-Track every service x city combination with status:
-- Not Started | In Progress | Published | Needs Update | Ranking Top 10
-
-## TOOLS AVAILABLE
-- Web Search — rank checking, competitor analysis, SERP review
-- SerpApi — rank tracking, SERP analysis, People Also Ask data
-- Google Sheets — keyword tracking, content matrix, ranking reports
-- Google Drive — content templates, research docs
-- Google Docs — write long-form content before publishing
-- Airtable — content pipeline tracking
-- Slack — report all actions, coordinate with team
-- GitHub Brain — read/write memory (ranking data, content performance, audit findings)
-
-## COLLABORATION
-- **Penn** writes copy when Seomi needs polished content or ad copy alignment
-- **Soshie** manages GBP posts + reviews (Seomi provides keyword guidance)
-- **Emmie** coordinates email content that reinforces SEO topics
-- **Buddy** provides competitor intel for SEO positioning
-- **Dexter** provides analytics data and conversion tracking
-
-## SLACK CHANNELS
-- Post ALL actions to **#agent-activity** (ID: C0ARKTU2HR6) — this is the central feed
-- Post detailed updates to **#seomi-seo** (ID: C0AQV7SAXB6) — your dedicated channel
-- When handing off to another agent, post in BOTH #agent-activity AND the receiving agent's channel
-
-## RULES
-- Log EVERY action to Slack
-- Never publish content without proper schema markup
-- Always include FAQ section with FAQPage schema on service pages
-- Check for duplicate content before publishing
-- Update content matrix after every page publish
-- Test AI mentions quarterly — if ASAR not appearing, adjust content strategy
-- When in doubt, escalate to Vizzy
-```
-
-## Connected Tools (14)
-
-| Tool Name | Type | Node ID | Credentials |
-|-----------|------|---------|-------------|
-| Web Search - Seomi | httpRequestTool | 9ce17e77-42e... | no credential (API key in params) |
-| SerpApi - Seomi | toolSerpApi | d210600d-f47... | serpApi: W674ZSbrWCALEVEp |
-| Google Sheets - Seomi | googleSheetsTool | 775a51c8-888... | googleSheetsOAuth2Api: Tpo5kkkuG9qiBBvf |
-| Google Drive - Seomi | googleDriveTool | e2ef3c33-aaa... | googleDriveOAuth2Api: Hu80FNVrNnpo62Fj |
-| Google Docs - Seomi | googleDocsTool | b8cd634f-b9d... | googleDocsOAuth2Api: dMFkHV4KEbioauC6 |
-| Airtable - Seomi | airtableTool | a351703b-009... | airtableTokenApi: flYD85xUURg7jDi7 |
-| Slack - Seomi | slackTool | c762265b-9ed... | slackOAuth2Api: lopIua3GVl7ESuOs |
-| GitHub Brain - Seomi | httpRequestTool | 5e5b1f5f-b92... | no credential (API key in params) |
-| HTTP - Bing Webmaster (Seomi) | httpRequestTool | adea4f9b-1ad... | no credential (API key in params) |
-| HTTP - Moz API (Seomi) | httpRequestTool | 0b121eea-f49... | no credential (API key in params) |
-| HTTP - Broken Link Checker (Seomi) | httpRequestTool | 70813160-087... | no credential (API key in params) |
-| HTTP - WordPress (Seomi) | httpRequestTool | 57ed76ac-958... | no credential (API key in params) |
-| HTTP - PageSpeed Insights (Seomi) | httpRequestTool | 23811a44-824... | no credential (API key in params) |
-| HTTP - RankMath API (Seomi) | httpRequestTool | 4b2feade-e34... | no credential (API key in params) |
+| # | Tool Name | Type | Node ID | Credentials |
+|---|-----------|------|---------|-------------|
+| 1 | Web Search - Seomi | httpRequestTool | seomi-tl0 | Tavily API key in params |
+| 2 | SerpApi - Seomi | toolSerpApi | seomi-tl1 | serpApi: W674ZSbrWCALEVEp |
+| 3 | Google Sheets - Seomi | googleSheetsTool | seomi-tl2 | googleSheetsOAuth2Api: Tpo5kkkuG9qiBBvf |
+| 4 | Google Drive - Seomi | googleDriveTool | seomi-tl3 | googleDriveOAuth2Api: Hu80FNVrNnpo62Fj |
+| 5 | Google Docs - Seomi | googleDocsTool | seomi-tl4 | googleDocsOAuth2Api: dMFkHV4KEbioauC6 |
+| 6 | Airtable - Seomi | airtableTool | seomi-tl5 | airtableTokenApi: flYD85xUURg7jDi7 |
+| 7 | Slack - Seomi | slackTool | seomi-tl6 | slackOAuth2Api: lopIua3GVl7ESuOs |
+| 8 | HTTP - Bing Webmaster (Seomi) | httpRequestTool | seomi-tl8 | Bing API key in params |
+| 9 | HTTP - Moz API (Seomi) | httpRequestTool | seomi-tl9 | Moz Basic Auth in headers |
+| 10 | HTTP - Broken Link Checker (Seomi) | httpRequestTool | seomi-tl10 | no credential |
+| 11 | HTTP - WordPress (Seomi) | httpRequestTool | seomi-tl11 | WP Application Password in headers |
+| 12 | HTTP - PageSpeed Insights (Seomi) | httpRequestTool | seomi-tl12 | no credential (free API) |
+| 13 | HTTP - RankMath API (Seomi) | httpRequestTool | seomi-tl13 | WP Application Password in headers |
+| 14 | GitHub Brain - Seomi | httpRequestTool | seomi-github-brain | GitHub API token in params |
+| 15 | HTTP - Google Search Console (Seomi) | httpRequestTool | (uuid) | Requires OAuth2 Bearer token |
+| 16 | HTTP - Google Analytics 4 (Seomi) | httpRequestTool | (uuid) | Requires OAuth2 Bearer token |
+| 17 | HTTP - Google Business Profile (Seomi) | httpRequestTool | (uuid) | Requires OAuth2 Bearer token |
+| 18 | HTTP - Site Crawler (Seomi) | httpRequestTool | (uuid) | no credential |
 
 ## Credentials Used
 
@@ -141,7 +65,45 @@ Track every service x city combination with status:
 | googleDocsOAuth2Api | dMFkHV4KEbioauC6 | Google account |
 | airtableTokenApi | flYD85xUURg7jDi7 | Airtable Personal Access Token account |
 | slackOAuth2Api | lopIua3GVl7ESuOs | Slack OAuth2 API |
-| anthropicApi | MGVdxOb43c7vfSd2 | Anthropic account |
+
+## OAuth2 Setup Required
+
+The Google Search Console, GA4, and GBP tools require OAuth2 Bearer tokens. Options:
+1. **Add scopes to existing Google OAuth2 credential** in n8n — add `https://www.googleapis.com/auth/webmasters.readonly`, `https://www.googleapis.com/auth/analytics.readonly`, `https://www.googleapis.com/auth/business.manage`
+2. **Create dedicated OAuth2 credential** in n8n for Google Search APIs
+3. **Use service account** with JSON key for server-to-server access
+
+APIs must be enabled in Google Cloud Console:
+- Search Console API (searchconsole.googleapis.com)
+- Google Analytics Data API (analyticsdata.googleapis.com)
+- My Business Business Information API (mybusinessbusinessinformation.googleapis.com)
+- Business Profile Performance API (businessprofileperformance.googleapis.com)
+
+## Capabilities Summary
+
+### Executes Directly
+- Create/edit WordPress pages and posts
+- Update SEO meta (title, description, focus keyword) via RankMath
+- Add/update schema markup (LocalBusiness, Service, FAQ, BreadcrumbList)
+- Fix broken internal links
+- Expand thin content
+- Publish new service+city pages
+- Set categories, tags, slugs
+
+### Audits Automatically
+- Full technical SEO (PageSpeed, Core Web Vitals, crawl errors)
+- On-page SEO (meta tags, headings, images, internal links)
+- Content quality (word count, freshness, duplication)
+- Local SEO (NAP, schema, GBP)
+- Content gap analysis (143-page matrix)
+- Rank tracking (SerpApi + Bing)
+- Backlink/DA analysis (Moz + Bing Webmaster)
+
+### Reports To
+- #seomi-seo Slack channel — detailed SEO updates
+- #agent-activity — all actions logged
+- Google Sheets — content matrix tracking
+- GitHub Brain — persistent audit findings
 
 ## Position in Canvas
 x: 2336, y: 224
