@@ -6,9 +6,9 @@ node_type: @n8n/n8n-nodes-langchain.agent
 node_id: d91623a2-dd4a-45d6-a6aa-bf34ee152a6f
 workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-tool_count: 24
+tool_count: 25
 system_message_chars: 5572
-last_synced: 2026-04-05
+last_synced: 2026-04-09
 ---
 
 # Vizzy — Supervisor Agent & AI Operations Orchestrator
@@ -148,6 +148,7 @@ Direct, strategic, efficient. Anthony's trusted operations partner. No fluff, no
 | Slack Tool - Vizzy | slackTool | d234f833-e7b... | slackApi: 6yUg4MuD1ruBxZQY |
 | SerpApi - Vizzy | toolSerpApi | 8fb9545f-900... | serpApi: W674ZSbrWCALEVEp |
 | Google Docs - Vizzy | googleDocsTool | 8668a6c9-de8... | googleDocsOAuth2Api: dMFkHV4KEbioauC6 |
+| HTTP - HighLevel (Vizzy) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
 
 ## Credentials Used
 
@@ -162,6 +163,12 @@ Direct, strategic, efficient. Anthony's trusted operations partner. No fluff, no
 | serpApi | W674ZSbrWCALEVEp | SerpAPI account |
 | googleDocsOAuth2Api | dMFkHV4KEbioauC6 | Google account |
 | anthropicApi | MGVdxOb43c7vfSd2 | Anthropic account |
+| highLevelApi | [pending-setup] | HighLevel Private Integration Token |
+
+## GHL Access (Vizzy)
+- **Scope**: Read-only
+- **Uses**: Look up contacts, opportunities, tasks, calendar/pipeline status
+- **Restriction**: Do NOT make direct edits — route edit requests to the appropriate agent
 
 ## Position in Canvas
 x: 2064, y: 0
