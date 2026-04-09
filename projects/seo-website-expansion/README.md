@@ -1,23 +1,27 @@
 # SEO Website Expansion
 
-**Description:** Creating and optimizing service + city pages across all 7 websites to dominate local Arkansas search markets.
+## Status: In Progress
 
-**Status:** Active
+## Completed
+- 193-page silo structure mapped (reference_seo_silo_structure.md)
+- 740+ keyword rows researched and mapped
+- Full website audit with critical findings
+- SEO knowledge base (2026 best practices)
+- Seomi agent connected to WordPress, Bing, Moz, PageSpeed, RankMath
 
-## Websites
-- americanservicesar.com
-- conwaygutter.com
-- littlerockgutter.com
-- bentongutter.com
-- bryantgutter.com
-- northlittlerockgutters.com
-- sherwoodgutters.com
+## WordPress Site
+- URL: americanservicesar.com
+- Platform: WordPress with RankMath Pro
+- Migration plan: current site -> new silo structure
 
-## Focus Areas
-- Silo structures for each service
-- Service pages for every target city
-- Automated SEO tracking & reporting
-- Map pack ranking improvements
+## Next Session Priority
+- GBP deep audit + rank #1 optimization
+- Bing Places, Apple Maps, Yelp, BBB, Angi profiles
+- HCP reviews integration
 
-## Key Dates
-- Priority: Q1 2026 — launch/update pages on all 7 sites
+## Key Files
+- claude-memory/reference_seo_silo_structure.md — 193-page URL map
+- data/seo/keyword_master.tsv — 740+ keywords
+- data/seo/content_matrix.json — content planning
+- claude-memory/reference_seo_knowledge_base.md — 2026 best practices
+
