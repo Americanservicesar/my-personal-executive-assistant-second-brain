@@ -6,9 +6,9 @@ node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: cbf22621-f1e7-4a8e-b822-4bddb189229d
 workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-tool_count: 8
+tool_count: 9
 system_message_chars: 4936
-last_synced: 2026-04-05
+last_synced: 2026-04-09
 ---
 
 # Emmie — Email Agent
@@ -136,6 +136,7 @@ Email 4 (Day 12): Final follow-up / breakup email
 | SerpApi - Emmie | toolSerpApi | cc6b535b-620... | serpApi: W674ZSbrWCALEVEp |
 | Airtable - Emmie | airtableTool | 4ac92b09-cc5... | airtableTokenApi: flYD85xUURg7jDi7 |
 | GitHub Brain - Emmie | httpRequestTool | 8b915a09-047... | no credential (API key in params) |
+| HTTP - HighLevel (Emmie) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
 
 ## Credentials Used
 
@@ -148,6 +149,11 @@ Email 4 (Day 12): Final follow-up / breakup email
 | serpApi | W674ZSbrWCALEVEp | SerpAPI account |
 | airtableTokenApi | flYD85xUURg7jDi7 | Airtable Personal Access Token account |
 | anthropicApi | MGVdxOb43c7vfSd2 | Anthropic account |
+| highLevelApi | [pending-setup] | HighLevel Private Integration Token |
+
+## GHL Access (Emmie)
+- **Scope**: Full read/write
+- **Uses**: Contacts, conversations, SMS campaigns, warm nurture sequences, post-job follow-up automation, tag management, pipeline stage updates on warm handoffs
 
 ## Position in Canvas
 x: 1184, y: 224
