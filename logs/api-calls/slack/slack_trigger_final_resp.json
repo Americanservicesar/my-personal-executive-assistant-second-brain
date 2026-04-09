@@ -1,0 +1,1 @@
+{"message":"Cannot publish workflow: 1 node have configuration issues:\n\nNode \"Slack Trigger - Vizzy\":\n  - Missing or invalid required parameters (1 issue)"}
