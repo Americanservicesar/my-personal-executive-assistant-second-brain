@@ -6,9 +6,9 @@ node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: cd8bfc45-25d8-4a64-9e45-dafa49b3a257
 workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-tool_count: 9
+tool_count: 10
 system_message_chars: 6108
-last_synced: 2026-04-05
+last_synced: 2026-04-09
 ---
 
 # Commet — Data Analysis Agent
@@ -97,6 +97,7 @@ Every service gets 3 tiers:
 - Airtable — product catalog, campaign tracking
 - Slack — launch coordination, pricing updates
 - GitHub Brain — memory (pricing history, campaign results, CLV data)
+- HTTP - HighLevel (Service Robot) — manage GHL products/funnels, payment links, booking pages, keep GHL pricing in sync with HCP pricebook
 
 ## COLLABORATION
 - **Penn** writes package copy and promotional messaging
@@ -163,6 +164,7 @@ Use for: embedding HCP booking widget, creating package pages, updating pricing 
 | Slack - Commet | slackTool | 3a3db6c7-771... | slackOAuth2Api: lopIua3GVl7ESuOs |
 | GitHub Brain - Commet | httpRequestTool | 03be3813-e5f... | no credential (API key in params) |
 | HTTP - WordPress (Commet) | httpRequestTool | 4bb28f91-adb... | no credential (API key in params) |
+| HTTP - HighLevel (Commet) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
 
 ## Credentials Used
 
@@ -174,6 +176,11 @@ Use for: embedding HCP booking widget, creating package pages, updating pricing 
 | airtableTokenApi | flYD85xUURg7jDi7 | Airtable Personal Access Token account |
 | slackOAuth2Api | lopIua3GVl7ESuOs | Slack OAuth2 API |
 | anthropicApi | MGVdxOb43c7vfSd2 | Anthropic account |
+| highLevelApi | [pending-setup] | HighLevel Private Integration Token |
+
+## GHL Access (Commet)
+- **Scope**: Full read/write on products and funnels
+- **Uses**: Create/update GHL products and payment links, manage funnel pages, keep GHL pricing in sync with HCP pricebook as one of the 4 pricing platforms
 
 ## Position in Canvas
 x: 3200, y: 224
