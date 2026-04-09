@@ -181,3 +181,32 @@ Every report ends with:
 
 ## Position in Canvas
 x: 3488, y: 224
+
+---
+
+## Dexter's Skill Library (Finance Brain)
+
+Dexter is the Finance Brain for ASAR. He wears multiple specialist hats through
+skills — each skill is a specialized capability loaded when the relevant task arrives.
+
+| Skill | Role | Status |
+|-------|------|--------|
+| `kpi-reporter` | Data Analyst | ✅ Built |
+| `vendor-pricing-tracker` | Purchasing Analyst — receipts → Master Material List → price alerts | ✅ Built |
+| `ai-bookkeeper` | CPA / Bookkeeper — QBO automation, categorization, reconciliation, monthly close | 🔨 Planned |
+| `ai-cfo` | CFO — cash flow forecasting, profitability by service line, owner pay strategy | 🔨 Planned |
+| `tax-strategist` | Tax Advisor — personal + business income tax + Arkansas sales tax, quarterly + year-end planning | 🔨 Planned |
+
+### Why One Agent Instead of Four
+- Single routing decision ("Dexter handles finance")
+- All skills share the same data layer (QBO, Housecall Pro, Sheets, GitHub Brain)
+- Memory file `financials.md` is the shared brain across all finance skills
+- Each skill is a specialist persona — loaded when needed, doesn't bloat the core
+  agent system message
+- Adding more agents would dilute routing clarity and exceed the 12-agent network target
+
+### Build Order (Approved 2026-04-09)
+1. ✅ `vendor-pricing-tracker` — receipts → pricing intelligence
+2. ⏳ `ai-bookkeeper` — replaces Robbie's bookkeeping tasks
+3. ⏳ `ai-cfo` — forecasting + owner pay structure
+4. ⏳ `tax-strategist` — personal, business, and sales tax
