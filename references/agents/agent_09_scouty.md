@@ -6,9 +6,9 @@ node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: 2de5b503-41d2-4866-b9aa-243c1ca12082
 workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-tool_count: 10
+tool_count: 11
 system_message_chars: 4009
-last_synced: 2026-04-05
+last_synced: 2026-04-09
 ---
 
 # Scouty — Competitive Analysis Agent
@@ -91,6 +91,7 @@ Monitor competitor job postings on LinkedIn for local pay rates.
 - Slack — hiring updates, capacity alerts
 - GitHub Brain — hiring history, retention data
 - HTTP - Housecall Pro — set up new tech accounts
+- HTTP - HighLevel (Service Robot) — manage Indeed→GHL hiring pipeline, update applicant contacts, move candidates through hiring pipeline stages
 
 ## COLLABORATION
 - **Cassie** flags crew performance issues
@@ -126,6 +127,7 @@ Monitor competitor job postings on LinkedIn for local pay rates.
 | Airtable - Scouty | airtableTool | 6d15951e-70b... | airtableTokenApi: flYD85xUURg7jDi7 |
 | GitHub Brain - Scouty | httpRequestTool | 3f66a4c0-501... | no credential (API key in params) |
 | HTTP - Housecall Pro (Scouty) | httpRequestTool | 852a9533-c88... | no credential (API key in params) |
+| HTTP - HighLevel (Scouty) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
 
 ## Credentials Used
 
@@ -139,6 +141,11 @@ Monitor competitor job postings on LinkedIn for local pay rates.
 | serpApi | W674ZSbrWCALEVEp | SerpAPI account |
 | airtableTokenApi | flYD85xUURg7jDi7 | Airtable Personal Access Token account |
 | anthropicApi | MGVdxOb43c7vfSd2 | Anthropic account |
+| highLevelApi | [pending-setup] | HighLevel Private Integration Token |
+
+## GHL Access (Scouty)
+- **Scope**: Full read/write on contacts and pipeline
+- **Uses**: Manage Indeed→GHL applicant pipeline, create/update candidate contacts, move through hiring stages (Applied→Screened→Interviewed→Offered→Hired), log interview notes
 
 ## Position in Canvas
 x: 2624, y: 224
