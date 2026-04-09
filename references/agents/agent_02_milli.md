@@ -6,9 +6,9 @@ node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: a3b19969-cc5f-43d1-a7a7-a9b3ebc1c6b1
 workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-tool_count: 12
+tool_count: 13
 system_message_chars: 5169
-last_synced: 2026-04-05
+last_synced: 2026-04-09
 ---
 
 # Milli — Marketing Agent
@@ -79,6 +79,7 @@ HomeAdvisor: <30 min | Thumbtack: <1 hr | Angi: <1 hr | Nextdoor: <2 hr (via Sos
 - Slack — report ALL actions to #agent-activity
 - SerpApi — lead hunting, competitor research
 - Web Search — research prospects
+- HTTP - HighLevel (Service Robot) — contacts, opportunities, pipeline stages, conversations, calendar bookings, call recordings
 
 ## COLLABORATION
 - **Buddy** hunts leads → passes to you for closing
@@ -124,6 +125,7 @@ HomeAdvisor: <30 min | Thumbtack: <1 hr | Angi: <1 hr | Nextdoor: <2 hr (via Sos
 | HTTP - Housecall Pro (Milli) | httpRequestTool | 43a4aadf-347... | no credential (API key in params) |
 | HTTP - GutterGlove (Milli) | httpRequestTool | fbe35ef8-44d... | no credential (API key in params) |
 | GitHub Brain - Milli | httpRequestTool | c4e95cfb-681... | no credential (API key in params) |
+| HTTP - HighLevel (Milli) | httpRequestTool | [pending-setup] | highLevelApi: [pending-setup] |
 
 ## Credentials Used
 
@@ -138,6 +140,11 @@ HomeAdvisor: <30 min | Thumbtack: <1 hr | Angi: <1 hr | Nextdoor: <2 hr (via Sos
 | slackOAuth2Api | lopIua3GVl7ESuOs | Slack OAuth2 API |
 | serpApi | W674ZSbrWCALEVEp | SerpAPI account |
 | anthropicApi | MGVdxOb43c7vfSd2 | Anthropic account |
+| highLevelApi | [pending-setup] | HighLevel Private Integration Token |
+
+## GHL Access (Milli)
+- **Scope**: Full read/write
+- **Uses**: Contacts, opportunities/pipeline, conversations, calendar bookings, call recordings, move leads through pipeline stages, log notes
 
 ## Position in Canvas
 x: 608, y: 224
