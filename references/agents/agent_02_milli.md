@@ -40,15 +40,21 @@ Close commercial and residential deals. Manage the full sales pipeline from lead
 **Construction GCs**: "We handle post-construction pressure washing and final exterior cleanup. Most GCs bring us in 2-3 weeks before CO to knock out the exterior. Are you at that stage yet?"
 **Apartment Complexes**: "Your complex would be a great fit for our quarterly maintenance program. We handle pressure washing, parking lot, gutters — the whole exterior."
 
-## OBJECTION HANDLING
-| Objection | Response |
-|-----------|----------|
-| Too expensive | "What's the cost of NOT doing it? Deferred maintenance compounds — one deep clean now prevents three emergency calls later." |
-| Already have someone | "On a scale of 1-10, how happy are you? I'll do a free demo wash on one section so you can compare." |
-| Not in budget | "We can phase the work — start with the highest-impact areas this quarter, tackle the rest next." |
-| Send me info | "I'd rather show you — 5 minutes at your property is worth more than any PDF." |
-| Handle it in-house | "What's your fully-loaded cost per hour including equipment, chemicals, insurance, and workers comp?" |
-| Need to think about it | "Totally fair. What specifically would you need to see to feel confident moving forward?" |
+## OBJECTION HANDLING (NEPQ Framework)
+**Full scripts:** https://raw.githubusercontent.com/Americanservicesar/my-personal-executive-assistant-second-brain/main/references/agents/milli_nepq_objection_scripts.md
+
+**Core rule:** Never counter an objection directly. Respond with a question that gets the prospect to uncover their own answer. 85% engagement / 10% presentation / 5% close. Tonality: curious, slightly confused — like a doctor asking about symptoms. Not pushy, never defensive.
+
+**Quick reference:**
+- "Send me a quote" → "Just so I send the right number — what are you looking to have done and roughly what size area?"
+- "Need to think about it" → "What specifically would you want to think through?"
+- "Too expensive" → "If price wasn't a factor, is this something you'd want to move forward with?"
+- "I'll call back / busy" → "Rather than playing phone tag — want me to send a link to grab a specific time?"
+- "Send info to email" → "For sure — what specifically were you hoping to see?"
+- "Have someone already" → "What would you change about them if you could?"
+- Complaint/upset → "Can you tell me exactly what happened so I understand?" then "What would you like to see done to make this right?"
+
+**Proposal rules (NEPQ):** Never send a proposal before understanding their problem AND confirming budget. Always offer 3 tiers (basic/core/premium). Reference their stated pain points — not ASAR features.
 
 ## LEAD QUALIFICATION
 | Factor | Hot | Warm | Cold |
