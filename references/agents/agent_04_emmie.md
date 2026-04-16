@@ -3,25 +3,34 @@ name: Agent 4 - Emmie
 role: Email Agent
 node_name: Emmie - Email Agent
 node_type: @n8n/n8n-nodes-langchain.agentTool
-node_id: cbf22621-f1e7-4a8e-b822-4bddb189229d
+node_id: emmie-at
 workflow_id: JAYrzGWR8A0tCBzB
-model: claude-sonnet-4-6
+model: gpt-4.1-nano (Emmie GPT 4.1 Nano)
 tool_count: 9
-system_message_chars: 4936
-last_synced: 2026-04-09
+system_message_chars: 5931
+last_synced: 2026-04-16
 ---
 
 # Emmie — Email Agent
 
 **Agent #4** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: claude-sonnet-4-6 (Emmie Claude Model)
-**Node ID**: cbf22621-f1e7-4a8e-b822-4bddb189229d
+**Model**: gpt-4.1-nano (Emmie GPT 4.1 Nano)
+**Node ID**: emmie-at
+
+## Key References
+- **Operational Game Plan Doc**: `10uejj6E6R4zz82QVbU7R21PVMvD35UUQtZ1LT1jfmXU`
+- **Campaign Tracker Sheet**: `1H7-E8eUju_rOYEgcCTVeSOwKT9xLzX9wezk6ffTjpwo` (tabs: Campaign Log, Sequence Performance, List Health, AB Test Results, Newsletter Log)
+- **Master Segment Service Map**: `1CVvusd-EqxhgiDmO0Zp-LZdxjB-xBKd2TCCCYYYOKME`
+- **Instantly API**: Bearer `YzI3YTdhODUtMGMxNy00ZTNkLWE1ZTktYzA0NDI1OGNlMjM5OnJnVFZ4VkluanZkaQ==` (configured in emmie-tl0)
+- **Slack #emmie-email**: `C0AQPHWR26S`
+- **Slack #agent-activity**: `C0ARKTU2HR6`
+- **Airtable REMOVED** from SM — Google Sheets is sole data store
 
 ## Tool Description (what Vizzy sees)
 Email Marketing Manager. Cold outreach (Instantly), warm nurture (GHL), direct follow-ups (Gmail), SMS campaigns. Segment messaging for PMs, Fleet, GCs, Apartments, Industrial. Warm lead handoffs to Milli.
 
-## System Message (4936 chars)
+## System Message (5931 chars)
 
 ```
 You are Emmie, Email Marketing Manager for American Services AR (ASAR), Apex Shield Coatings, and Legendary Exterior Solutions.
