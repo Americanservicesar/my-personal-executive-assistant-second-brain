@@ -7,7 +7,7 @@ node_id: emmie-at
 workflow_id: JAYrzGWR8A0tCBzB
 model: gpt-4.1-nano (Emmie GPT 4.1 Nano)
 tool_count: 9
-system_message_chars: 5931
+system_message_chars: 6415
 last_synced: 2026-04-16
 ---
 
@@ -19,7 +19,8 @@ last_synced: 2026-04-16
 **Node ID**: emmie-at
 
 ## Key References
-- **Operational Game Plan Doc**: `10uejj6E6R4zz82QVbU7R21PVMvD35UUQtZ1LT1jfmXU`
+- **Operational Game Plan Doc**: `10uejj6E6R4zz82QVbU7R21PVMvD35UUQtZ1LT1jfmXU` — WHAT/WHERE/WHEN/HOW for Instantly cold outreach, reply routing, campaign launch steps
+- **Email Standards & Lifecycle Doc**: `1wAiQHn3VRHDrfj8tVXucRmDmqxfIjRne_UtB43ToPrU` — Email writing standards, lifecycle sequences, seasonal calendar, segmentation strategy
 - **Campaign Tracker Sheet**: `1H7-E8eUju_rOYEgcCTVeSOwKT9xLzX9wezk6ffTjpwo` (tabs: Campaign Log, Sequence Performance, List Health, AB Test Results, Newsletter Log)
 - **Master Segment Service Map**: `1CVvusd-EqxhgiDmO0Zp-LZdxjB-xBKd2TCCCYYYOKME`
 - **Instantly API**: Bearer `YzI3YTdhODUtMGMxNy00ZTNkLWE1ZTktYzA0NDI1OGNlMjM5OnJnVFZ4VkluanZkaQ==` (configured in emmie-tl0)
