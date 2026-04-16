@@ -7,8 +7,8 @@ node_id: 5495bf55-a86e-459c-88f7-67f50e8d39fc
 workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
 tool_count: 9
-system_message_chars: 4897
-last_synced: 2026-04-09
+system_message_chars: 6277
+last_synced: 2026-04-16
 ---
 
 # Penn — Writing Agent
@@ -17,6 +17,12 @@ last_synced: 2026-04-09
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
 **Model**: claude-sonnet-4-6 (Penn Claude Model)
 **Node ID**: 5495bf55-a86e-459c-88f7-67f50e8d39fc
+
+## Key References
+- **Operational Game Plan Doc**: `1CnajAoSMTJwtPNHou1iYucsJrQNyyOXqBo6Lv3bbNFI` — WHAT/WHERE/WHEN/HOW for all copy types, brand voice, pricing, segment guidelines, delivery protocol
+- **Master Segment Service Map**: `1CVvusd-EqxhgiDmO0Zp-LZdxjB-xBKd2TCCCYYYOKME`
+- **Slack #penn-copy**: `C0AQPHX6FGW`
+- **Slack #agent-activity**: `C0ARKTU2HR6`
 
 ## Tool Description (what Vizzy sees)
 Copywriter. Writes all external-facing copy — Google Ads (30+90 char limits), website pages (SEO structure), email subject lines and body, social posts, proposal cover letters, and marketing messaging for ASAR/Apex Shield/Legendary. Always delivers primary + A/B variant. Builds complete proposals with baseline pricing tables. Collaborates with Seomi (SEO keywords), Emmie (email copy), Soshie (social copy), Milli (proposal handoff to HCP), Buddy (RFP/bid copy). Tools: Gmail, Drive, Docs, Sheets, SerpApi, Slack, Web Search.
