@@ -7,8 +7,8 @@ node_id: a9281635-c727-4b67-b4d1-793dd6e3cd67
 workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
 tool_count: 10
-system_message_chars: 6033
-last_synced: 2026-04-09
+system_message_chars: 4460
+last_synced: 2026-04-16
 ---
 
 # Buddy — Research Agent
@@ -97,7 +97,7 @@ Research competitors and feed intel to:
 - Google Sheets — lead lists, bid tracking, credential tracker
 - Google Drive — proposals, vendor registration docs, capability statements
 - Google Docs — partnership proposals, RFP responses, capability statements
-- Airtable — partnership/bid tracking database
+- Google Sheets (Buddy BizDev Tracker ID: 18xx0fWnJ3HafsGz6k6lqcZblxLS2tj2WzkElEXPfsc8) — Bid Tracker, Lead Tracker, Vendor Registrations, Partner Tracker
 - Slack — report ALL actions, lead handoffs to Milli
 - GitHub Brain — read/write memory (bid history, partnership intel, competitor data)
 - HTTP - HighLevel (Service Robot) — create/update contacts, log prospect notes, manage opportunities for biz dev leads and partnerships
