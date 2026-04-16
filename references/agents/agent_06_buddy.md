@@ -15,8 +15,16 @@ last_synced: 2026-04-16
 
 **Agent #6** in the ASAR Autonomous Agent Team
 **Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: claude-sonnet-4-6 (Buddy Claude Model)
-**Node ID**: a9281635-c727-4b67-b4d1-793dd6e3cd67
+**Model**: gpt-4.1-mini (Buddy GPT 4.1 Mini node)
+**Node ID**: buddy-at
+
+## Key References
+- **Operational Game Plan Doc**: `1h70FPIJkQN84rbVzHx1cFWMo033TlkBbEG2N8_bYnho`
+- **BizDev Tracker Sheet**: `18xx0fWnJ3HafsGz6k6lqcZblxLS2tj2WzkElEXPfsc8` (tabs: Bid Tracker, Lead Tracker, Vendor Registrations, Partner Tracker)
+- **GHL Commercial Pipeline ID**: `OyuNwhoc79Lb8YS7h3kg` (12 stages)
+- **Slack #buddy-bizdev**: `C0AR4GT2WRX`
+- **Slack #agent-activity**: `C0ARKTU2HR6`
+- **NEVER use Airtable** — Google Sheets is the sole data store for Buddy tasks
 
 ## Tool Description (what Vizzy sees)
 Business Development Manager. Monitors bid boards (AR Bid Online, SAM.gov, BuildZoom, iSqFt, Dodge), hunts commercial leads across 3 geographic tiers (Central AR daily, 6 border states weekly, nationwide big game), builds partnerships with PMs/GCs/Government/Fleet/Real Estate, manages vendor registrations, tracks bid calendar, and scores opportunities for ASAR/Apex Shield/Legendary. Feeds qualified leads to Milli. Collaborates with Penn (proposals), Emmie (lead lists), Dexter (financials). Tools: Gmail (asons@), Web Search, Calendar, Sheets, Drive, Docs, Airtable, Slack, GitHub Brain.
