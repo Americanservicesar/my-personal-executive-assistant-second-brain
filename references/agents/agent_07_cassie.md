@@ -5,12 +5,13 @@ node_name: Cassie - Customer Service Agent
 node_type: @n8n/n8n-nodes-langchain.agentTool
 node_id: 652b5168-e2e4-4ed3-8a2e-7be3c99b630d
 workflow_id: JAYrzGWR8A0tCBzB
-model: claude-sonnet-4-6
+model: gpt-4.1-nano (actual — doc was outdated)
 tool_count: 9
-system_message_chars: 5791
-last_synced: 2026-04-09
+system_message_chars: 13014
+game_plan_doc: 156btjIM4GUkP5tvmrgVhXlPLQfDhHD-l40YfKAWk6Xw
+last_synced: 2026-04-17
+originSessionId: 13d927e6-95de-48c6-b0ae-964c5fc876bd
 ---
-
 # Cassie — Customer Service Agent
 
 **Agent #7** in the ASAR Autonomous Agent Team
@@ -130,6 +131,27 @@ Recognize service needs from customer language and route appropriately.
 - When in doubt, escalate to Vizzy
 ```
 
+## Bug Fixes Applied (2026-04-17)
+
+| Fix | Details |
+|-----|---------|
+| Gmail internal email bug | Cassie was sending Gmail to cassie@americanservicesar.com (invalid). Fixed with CRITICAL COMMUNICATION RULES block: Gmail = external customers only, all internal → Slack |
+| Vizzy routing | Vizzy was narrating "Cassie has done X" without invoking her tool. Fixed with MANDATORY DELEGATION RULES in Vizzy system message |
+| Sheets node operation | Node was set to "read" — writes returned empty silently. Changed to appendOrUpdate with 7-column defineBelow schema |
+| Sheet headers | All 3 tracking sheets were empty (no headers). Added: Date, Customer Name, Contact, Service, Details, Level, Notes |
+| $fromAI apostrophe | "Today's date" in description string caused "Unbalanced parentheses" parse error. Removed all apostrophes from $fromAI descriptions |
+
+## Google Sheets — Tracking Sheets
+
+| Sheet | Spreadsheet ID | Tab Name |
+|-------|---------------|----------|
+| Complaint Log | 1qvX6L36Un7YaAxxSBhHFLTPR5XWykyHSM5TOAGbfIms | Complaints |
+| Satisfaction Tracker | 1n8gpaJ6J628uMckmRPL0EJcRa_KYXJf31GLOevwYCgw | Satisfaction |
+| Churn Risk Log | 1nhu7RI7EOktl1Byd2_re7ncgM7WDc1w8D-kx-UxM7E8 | Churn Risk |
+
+**Columns (all 3 sheets):** Date | Customer Name | Contact | Service | Details | Level | Notes
+**Note:** Sheets are in OFFICE Shared Drive. n8n credential: googleSheetsOAuth2Api Tpo5kkkuG9qiBBvf (sales@ OAuth2).
+
 ## Connected Tools (8)
 
 | Tool Name | Type | Node ID | Credentials |
@@ -138,7 +160,7 @@ Recognize service needs from customer language and route appropriately.
 | Web Search - Cassie | httpRequestTool | 824acd19-f79... | no credential (API key in params) |
 | Airtable - Cassie | airtableTool | ee6aeb1e-cce... | airtableTokenApi: flYD85xUURg7jDi7 |
 | HTTP - Housecall Pro (Cassie) | httpRequestTool | 5f9db1b4-6c9... | no credential (API key in params) |
-| Google Sheets - Cassie | googleSheetsTool | 47b3975e-8bc... | googleSheetsOAuth2Api: Tpo5kkkuG9qiBBvf |
+| Google Sheets - Cassie | googleSheetsTool | 47b3975e-8bc... | googleSheetsOAuth2Api: Tpo5kkkuG9qiBBvf — **appendOrUpdate**, 7 cols |
 | Google Drive - Cassie | googleDriveTool | ee74c5e7-e7e... | googleDriveOAuth2Api: Hu80FNVrNnpo62Fj |
 | Slack - Cassie | slackTool | 50527a2e-0cb... | slackOAuth2Api: lopIua3GVl7ESuOs |
 | GitHub Brain - Cassie | httpRequestTool | 46685eff-10f... | no credential (API key in params) |
