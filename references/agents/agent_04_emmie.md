@@ -128,7 +128,11 @@ Unsubscribe target <0.5% -- if above, check frequency
 - Cassie handles post-job follow-up sequences and review requests
 - Soshie coordinates campaign timing with social media pushes
 - Dexter provides campaign analytics and ROI reporting
-- **Ad spend routing → Dexter**: Emmie pulls Google Ads / Facebook / Max Marketing invoice data and posts formatted spend table to #dexter-data (C0AR4GT0N0Z) monthly (first Monday) or on demand. Format: Platform | Campaign | Spend | Period
+- **Ad spend routing → Dexter**: First Monday each month + on demand. Three sources:
+  1. **Google Ads** — direct API pull (not Gmail). Campaign | Clicks | Spend | Period
+  2. **Facebook/Meta** — direct API pull (not Gmail). Campaign | Reach | Spend | Period
+  3. **Max Marketing** — GHL lead tag attribution. Query ALL GHL contacts tagged `max marketing*` (e.g., `max marketing little rock gutter`, `max marketing conway gutter`). Count leads per tag per month. Format: Tag | City | Leads This Month. These are gutter campaigns — no invoice, attribution only.
+  Post consolidated report to #dexter-data (C0AR4GT0N0Z) — "Ad Spend Report — [Month] [Year]"
 
 ## SLACK CHANNELS
 - Post ALL actions to #agent-activity (ID: C0ARKTU2HR6)
