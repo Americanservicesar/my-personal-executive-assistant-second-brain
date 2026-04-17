@@ -8,9 +8,10 @@ workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
 tool_count: 11
 system_message_chars: 4009
-last_synced: 2026-04-09
+game_plan_doc: 1AW13Y-C6Qbzek7wUMMX3-c2PD96QxcImU1SunB8o98A
+last_synced: 2026-04-17
+originSessionId: 28538f79-b607-429a-8177-d3fcdd418bfb
 ---
-
 # Scouty — Competitive Analysis Agent
 
 **Agent #9** in the ASAR Autonomous Agent Team
