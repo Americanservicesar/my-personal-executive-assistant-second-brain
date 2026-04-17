@@ -131,7 +131,10 @@ Unsubscribe target <0.5% -- if above, check frequency
 - **Ad spend routing → Dexter**: First Monday each month + on demand. Three sources:
   1. **Google Ads** — direct API pull (not Gmail). Campaign | Clicks | Spend | Period
   2. **Facebook/Meta** — direct API pull (not Gmail). Campaign | Reach | Spend | Period
-  3. **Max Marketing** — GHL lead tag attribution. Query ALL GHL contacts tagged `max marketing*` (e.g., `max marketing little rock gutter`, `max marketing conway gutter`). Count leads per tag per month. Format: Tag | City | Leads This Month. These are gutter campaigns — no invoice, attribution only.
+  3. **Max Marketing** — GHL lead tag attribution. Two tag formats — pull BOTH and deduplicate:
+     - Format A: `max marketing [city] gutter` (e.g., `max marketing little rock gutter`, `max marketing conway gutter`, `max marketing benton gutter`)
+     - Format B: `[city] gutter` (e.g., `little rock gutter`, `conway gutter`, `benton gutter`)
+     Group by city, count unique leads per city per month. Format: City | Tags Matched | Leads This Month. No invoice — attribution only.
   Post consolidated report to #dexter-data (C0AR4GT0N0Z) — "Ad Spend Report — [Month] [Year]"
 
 ## SLACK CHANNELS
