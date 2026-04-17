@@ -8,9 +8,10 @@ workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
 tool_count: 17
 system_message_chars: 6215
-last_synced: 2026-04-09
+game_plan_doc: 1rfvDSxUgisDWKIslBacVMbsx0UV4rK4zEsR36JWdlUs
+last_synced: 2026-04-17
+originSessionId: 28538f79-b607-429a-8177-d3fcdd418bfb
 ---
-
 # Dexter — Technical Agent
 
 **Agent #12** in the ASAR Autonomous Agent Team
