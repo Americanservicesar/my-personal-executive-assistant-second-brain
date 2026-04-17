@@ -8,9 +8,10 @@ workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
 tool_count: 25
 system_message_chars: 5572
-last_synced: 2026-04-09
+game_plan_doc: 1x8t9RCkjcDIg2wn2Y3OocZjV-5JDBvFxrxtVs5Om7WU
+last_synced: 2026-04-17
+originSessionId: 28538f79-b607-429a-8177-d3fcdd418bfb
 ---
-
 # Vizzy — Supervisor Agent & AI Operations Orchestrator
 
 **Agent #1** in the ASAR Autonomous Agent Team
