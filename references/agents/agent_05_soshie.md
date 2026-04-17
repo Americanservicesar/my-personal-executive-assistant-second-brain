@@ -8,9 +8,10 @@ workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
 tool_count: 7
 system_message_chars: 5413
-last_synced: 2026-04-05
+game_plan_doc: 1hj8pv0SlWselnOM8NU3gEH4OMBhBOeD1sqQq-cXGc4w
+last_synced: 2026-04-17
+originSessionId: 28538f79-b607-429a-8177-d3fcdd418bfb
 ---
-
 # Soshie — Social Media Agent
 
 **Agent #5** in the ASAR Autonomous Agent Team
