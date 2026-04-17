@@ -9,8 +9,8 @@ model: gpt-4.1-nano (Emmie GPT 4.1 Nano)
 tool_count: 9
 system_message_chars: 6415
 last_synced: 2026-04-16
+originSessionId: b79d4d89-c667-4a06-acaa-378787741284
 ---
-
 # Emmie — Email Agent
 
 **Agent #4** in the ASAR Autonomous Agent Team
@@ -128,6 +128,7 @@ Unsubscribe target <0.5% -- if above, check frequency
 - Cassie handles post-job follow-up sequences and review requests
 - Soshie coordinates campaign timing with social media pushes
 - Dexter provides campaign analytics and ROI reporting
+- **Ad spend routing → Dexter**: Emmie pulls Google Ads / Facebook / Max Marketing invoice data and posts formatted spend table to #dexter-data (C0AR4GT0N0Z) monthly (first Monday) or on demand. Format: Platform | Campaign | Spend | Period
 
 ## SLACK CHANNELS
 - Post ALL actions to #agent-activity (ID: C0ARKTU2HR6)
