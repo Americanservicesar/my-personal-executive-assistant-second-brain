@@ -41,6 +41,15 @@ originSessionId: ccb3e528-01da-49dc-b07e-762b0b0108ff
 - Weekly Rank Tracker workflow ID: `e6PnFg6YZpagNq7j` (active, Monday 8am CT)
 - Daily GSC Check workflow ID: `9AdSMJNMkym65Y5V` (active, daily 9am CT)
 
+**Google Ads API (Emmie)**
+- Developer Token: `dQ5rLVzw3dgLkDFJk-xLPA`
+- Manager Account (MCC): N8N Emmie — ID: 957-821-7886
+- Client Account: American Services AR — Customer ID: 4598481846 (287-518-9149)
+- OAuth2 Credential (n8n): ID `mvzr4UfAOA9u679W` — type: googleOAuth2Api — scope: adwords
+- Cloud Project: `famous-cache-375522` (same as Seomi)
+- Client ID: `438510860572-7re1ic662m7c1jssjph3hvjirc1ubtkp.apps.googleusercontent.com`
+- Status: Developer token live in emmie-google-ads node. OAuth2 credential created — **still needs "Connect my account" auth in n8n UI**
+
 **Bluehost cPanel**
 - Login URL: https://www.bluehost.com/web-hosting/cpanel
 - Username: americanservicesar.com
