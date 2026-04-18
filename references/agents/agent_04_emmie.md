@@ -165,7 +165,7 @@ Doc ID: 1wAiQHn3VRHDrfj8tVXucRmDmqxfIjRne_UtB43ToPrU
 Read this document for: Email writing standards (subject line rules, body format, CTA rules), full lifecycle sequence templates (new lead, estimate follow-up 3-touch, win-back 6/12/18mo, post-job thank you + review + upsell, abandoned booking recovery), seasonal campaign calendar, list segmentation and GHL tagging strategy, campaign performance report format, and email capture systems.
 ```
 
-## Connected Tools (9)
+## Connected Tools (12)
 
 | Tool Name | Type | Node ID | Credentials |
 |-----------|------|---------|-------------|
@@ -177,7 +177,10 @@ Read this document for: Email writing standards (subject line rules, body format
 | SerpApi - Emmie | toolSerpApi | cc6b535b-620... | serpApi: W674ZSbrWCALEVEp |
 | Airtable - Emmie | airtableTool | 4ac92b09-cc5... | airtableTokenApi: flYD85xUURg7jDi7 (still wired, not used) |
 | GitHub Brain - Emmie | httpRequestTool | 8b915a09-047... | no credential (API key in params) |
-| HTTP - HighLevel (Emmie) | httpRequestTool | ghl-pit-node | highLevelApi: pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9 |
+| HTTP - HighLevel (Emmie) | httpRequestTool | 9a86e3bb-... | no credential — Bearer PIT in header params |
+| HTTP - GHL Max Marketing Tags (Emmie) | httpRequestTool | emmie-ghl-maxmktg | no credential — Bearer PIT in header params |
+| HTTP - Google Ads (Emmie) | httpRequestTool | emmie-google-ads | PENDING SETUP — needs developer-token + OAuth2 |
+| HTTP - Facebook Ads (Emmie) | httpRequestTool | emmie-facebook-ads | PENDING SETUP — needs Meta access_token + ad_account_id |
 
 ## Credentials Used
 
@@ -197,11 +200,34 @@ Read this document for: Email writing standards (subject line rules, body format
 - **Auth format**: `Authorization: Bearer YzI3YTdhODUtMGMxNy00ZTNkLWE1ZTktYzA0NDI1OGNlMjM5OkZSVEV2Y3JCd0daWQ==`
 - **CRITICAL**: Send the raw base64 string as Bearer token — do NOT decode it to UUID:secret format
 - **Verified**: 2026-04-16 — 200 response confirmed from browser test
-- **n8n versionId at last push**: 25b919c6-e0b2-4843-9133-c4c0761355f4
+- **n8n versionId at last push**: 5bff0930-a387-4265-9a40-0a74f996a946 (2026-04-17 — added 3 ad spend nodes)
 
 ## GHL Access (Emmie)
 - **Scope**: Full read/write
 - **Uses**: Contacts, conversations, SMS campaigns, warm nurture sequences, post-job follow-up automation, tag management, pipeline stage updates on warm handoffs
+
+## Ad Spend Node Config (2026-04-17)
+
+### HTTP - GHL Max Marketing Tags (emmie-ghl-maxmktg)
+- **URL**: `https://services.leadconnectorhq.com/contacts/`
+- **Method**: GET
+- **Auth**: Bearer `pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9`
+- **locationId**: `PQp7xlYjxZKsi0CWsSA7`
+- **Query tags**: AI passes tag to search — call TWICE per city (Format A + Format B), deduplicate
+- **Cities**: little rock, conway, benton
+
+### HTTP - Google Ads (emmie-google-ads) — PENDING AUTH
+- **URL**: `POST https://googleads.googleapis.com/v18/customers/4598481846/googleAds:search`
+- **Customer ID**: `4598481846` (American Services AR)
+- **Auth needed**: `Authorization: Bearer {OAuth2 token}` + `developer-token: {dev_token}`
+- **Setup**: Requires Google Ads Manager (MCC) account to get developer token from API Center
+- **GAQL**: `SELECT campaign.name, metrics.cost_micros, metrics.clicks FROM campaign WHERE segments.date DURING THIS_MONTH`
+
+### HTTP - Facebook Ads (emmie-facebook-ads) — PENDING AUTH
+- **URL**: `GET https://graph.facebook.com/v18.0/act_{AD_ACCOUNT_ID}/insights`
+- **Auth needed**: `access_token={long_lived_token}` (from Meta Business Manager → System Users)
+- **Fields**: `campaign_name,spend,impressions,reach,clicks`
+- **Date presets**: `maximum`, `last_month`, `this_month`
 
 ## Position in Canvas
 x: 1184, y: 224
