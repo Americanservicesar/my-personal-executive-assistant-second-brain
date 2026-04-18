@@ -180,7 +180,7 @@ Read this document for: Email writing standards (subject line rules, body format
 | HTTP - HighLevel (Emmie) | httpRequestTool | 9a86e3bb-... | no credential — Bearer PIT in header params |
 | HTTP - GHL Max Marketing Tags (Emmie) | httpRequestTool | emmie-ghl-maxmktg | no credential — Bearer PIT in header params |
 | HTTP - Google Ads (Emmie) | httpRequestTool | emmie-google-ads | PENDING SETUP — needs developer-token + OAuth2 |
-| HTTP - Facebook Ads (Emmie) | httpRequestTool | emmie-facebook-ads | PENDING SETUP — needs Meta access_token + ad_account_id |
+| HTTP - Facebook Ads (Emmie) | httpRequestTool | emmie-facebook-ads | no credential — token hardcoded in query params |
 
 ## Credentials Used
 
@@ -223,11 +223,15 @@ Read this document for: Email writing standards (subject line rules, body format
 - **Setup**: Requires Google Ads Manager (MCC) account to get developer token from API Center
 - **GAQL**: `SELECT campaign.name, metrics.cost_micros, metrics.clicks FROM campaign WHERE segments.date DURING THIS_MONTH`
 
-### HTTP - Facebook Ads (emmie-facebook-ads) — PENDING AUTH
-- **URL**: `GET https://graph.facebook.com/v18.0/act_{AD_ACCOUNT_ID}/insights`
-- **Auth needed**: `access_token={long_lived_token}` (from Meta Business Manager → System Users)
+### HTTP - Facebook Ads (emmie-facebook-ads) — LIVE
+- **URL**: `GET https://graph.facebook.com/v18.0/act_756247089484122/insights`
+- **Ad Account**: `act_756247089484122` (American Services AR, USD, status: active)
+- **System User**: ASAR Emmie (ID: 122114988782736885) — never-expiring token
+- **Token**: `EAAbwr76nwXUBROKrrPoW6eZBo55zfZAienikhn7iRpr86YqzAXRh2MfPyUw0u62MCpLeJVCDrIaDlTyvXJp5woPmblZCpfpmuUnBiEEySkcXtEHf035W9ZBtZB9UIhAHmWZCQB5ukxfdoCxNPFMsbmgNeTpU03yZC0R8NQzw6fIbQctwMdcwSCosd8hX9j28gsnAAZDZD`
+- **Scopes**: ads_read, ads_management (+ full social suite)
 - **Fields**: `campaign_name,spend,impressions,reach,clicks`
-- **Date presets**: `maximum`, `last_month`, `this_month`
+- **Date presets**: `maximum`, `last_month`, `this_month`, `last_year`
+- **Verified**: 2026-04-18 — 1 campaign returned, $24.92 all-time spend confirmed
 
 ## Position in Canvas
 x: 1184, y: 224
