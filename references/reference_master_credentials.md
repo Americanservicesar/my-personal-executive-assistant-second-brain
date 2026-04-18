@@ -48,7 +48,7 @@ originSessionId: ccb3e528-01da-49dc-b07e-762b0b0108ff
 - OAuth2 Credential (n8n): ID `mvzr4UfAOA9u679W` — type: googleOAuth2Api — scope: adwords
 - Cloud Project: `famous-cache-375522` (same as Seomi)
 - Client ID: `438510860572-7re1ic662m7c1jssjph3hvjirc1ubtkp.apps.googleusercontent.com`
-- Status: Developer token live in emmie-google-ads node. OAuth2 credential created — **still needs "Connect my account" auth in n8n UI**
+- Status: **FULLY LIVE 2026-04-18** — dev token in node, OAuth2 authorized. Redirect URI fix: `/oauth/callback` → `/oauth2/callback`
 
 **Bluehost cPanel**
 - Login URL: https://www.bluehost.com/web-hosting/cpanel
