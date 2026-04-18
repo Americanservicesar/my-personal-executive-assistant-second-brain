@@ -49,7 +49,7 @@ originSessionId: 28538f79-b607-429a-8177-d3fcdd418bfb
   - [x] HTTP - GHL Max Marketing Tags (emmie-ghl-maxmktg) — LIVE, uses PIT token
   - [x] HTTP - Google Ads (emmie-google-ads) — node live, AUTH PENDING
   - [x] HTTP - Facebook Ads (emmie-facebook-ads) — LIVE 2026-04-18, system user ASAR Emmie, never-expiring token, act_756247089484122
-- [ ] **Google Ads auth**: Developer token `dQ5rLVzw3dgLkDFJk-xLPA` live in node. MCC = N8N Emmie (957-821-7886). **Still need**: user clicks "Connect my account" at americanservicesar.app.n8n.cloud/home/credentials/mvzr4UfAOA9u679W to authorize OAuth2 adwords scope
+- [x] **Google Ads auth**: LIVE 2026-04-18 — dev token `dQ5rLVzw3dgLkDFJk-xLPA`, OAuth2 cred `mvzr4UfAOA9u679W` authorized, MCC = N8N Emmie (957-821-7886). Fix: redirect URI had typo `/oauth/callback` → `/oauth2/callback`
 
 ### SOSHIE (Agent 5) — DONE
 - [x] System message updated (5,118 chars)
