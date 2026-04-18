@@ -216,11 +216,12 @@ Read this document for: Email writing standards (subject line rules, body format
 - **Query tags**: AI passes tag to search — call TWICE per city (Format A + Format B), deduplicate
 - **Cities**: little rock, conway, benton
 
-### HTTP - Google Ads (emmie-google-ads) — PENDING AUTH
+### HTTP - Google Ads (emmie-google-ads) — DEV TOKEN LIVE, OAUTH2 PENDING
 - **URL**: `POST https://googleads.googleapis.com/v18/customers/4598481846/googleAds:search`
 - **Customer ID**: `4598481846` (American Services AR)
-- **Auth needed**: `Authorization: Bearer {OAuth2 token}` + `developer-token: {dev_token}`
-- **Setup**: Requires Google Ads Manager (MCC) account to get developer token from API Center
+- **Auth**: googleOAuth2Api credential ID `mvzr4UfAOA9u679W` (wired) + `developer-token: dQ5rLVzw3dgLkDFJk-xLPA` (live)
+- **Manager (MCC)**: N8N Emmie — 957-821-7886
+- **Remaining**: User must click "Connect my account" at n8n.cloud/home/credentials/mvzr4UfAOA9u679W to authorize OAuth2
 - **GAQL**: `SELECT campaign.name, metrics.cost_micros, metrics.clicks FROM campaign WHERE segments.date DURING THIS_MONTH`
 
 ### HTTP - Facebook Ads (emmie-facebook-ads) — LIVE
