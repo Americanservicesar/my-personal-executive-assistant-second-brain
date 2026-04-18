@@ -48,9 +48,8 @@ originSessionId: 28538f79-b607-429a-8177-d3fcdd418bfb
 - [x] Ad spend nodes added 2026-04-17 (12 tools now live, versionId: 5bff0930):
   - [x] HTTP - GHL Max Marketing Tags (emmie-ghl-maxmktg) — LIVE, uses PIT token
   - [x] HTTP - Google Ads (emmie-google-ads) — node live, AUTH PENDING
-  - [x] HTTP - Facebook Ads (emmie-facebook-ads) — node live, AUTH PENDING
+  - [x] HTTP - Facebook Ads (emmie-facebook-ads) — LIVE 2026-04-18, system user ASAR Emmie, never-expiring token, act_756247089484122
 - [ ] **Google Ads auth**: Need Manager (MCC) account → apply for developer token at ads.google.com/aw/apicenter → add to emmie-google-ads node header
-- [ ] **Facebook Ads auth**: Need Meta Business Manager → System Users → generate access_token + find ad_account_id (format: act_XXXXXXXXXX) → add to emmie-facebook-ads node
 
 ### SOSHIE (Agent 5) — DONE
 - [x] System message updated (5,118 chars)
