@@ -216,12 +216,14 @@ Read this document for: Email writing standards (subject line rules, body format
 - **Query tags**: AI passes tag to search — call TWICE per city (Format A + Format B), deduplicate
 - **Cities**: little rock, conway, benton
 
-### HTTP - Google Ads (emmie-google-ads) — DEV TOKEN LIVE, OAUTH2 PENDING
+### HTTP - Google Ads (emmie-google-ads) — LIVE 2026-04-18
 - **URL**: `POST https://googleads.googleapis.com/v18/customers/4598481846/googleAds:search`
 - **Customer ID**: `4598481846` (American Services AR)
-- **Auth**: googleOAuth2Api credential ID `mvzr4UfAOA9u679W` (wired) + `developer-token: dQ5rLVzw3dgLkDFJk-xLPA` (live)
+- **Auth**: googleOAuth2Api credential ID `mvzr4UfAOA9u679W` — **authorized & connected**
+- **Developer token**: `dQ5rLVzw3dgLkDFJk-xLPA` — live in node header
 - **Manager (MCC)**: N8N Emmie — 957-821-7886
-- **Remaining**: User must click "Connect my account" at n8n.cloud/home/credentials/mvzr4UfAOA9u679W to authorize OAuth2
+- **Cloud Project**: `famous-cache-375522` | Client ID: `438510860572-7re1ic662m7c1jssjph3hvjirc1ubtkp`
+- **Redirect URI fix**: was `/oauth/callback` (typo) → corrected to `/oauth2/callback` 2026-04-18
 - **GAQL**: `SELECT campaign.name, metrics.cost_micros, metrics.clicks FROM campaign WHERE segments.date DURING THIS_MONTH`
 
 ### HTTP - Facebook Ads (emmie-facebook-ads) — LIVE
