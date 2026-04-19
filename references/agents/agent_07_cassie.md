@@ -8,6 +8,7 @@ system_message_chars: 14468
 standalone_tool_count: 16
 handoff_targets: Milli, Dexter
 last_synced: 2026-04-19
+originSessionId: 13d927e6-95de-48c6-b0ae-964c5fc876bd
 ---
 # Cassie — Customer Support
 
@@ -22,6 +23,27 @@ Can invoke: Milli, Dexter
 ## Call Agent Tools (Standalone Path)
 - Call Dexter - Financial Analyst
 - Call Milli - Sales Manager
+
+## Google Drive File Locations
+
+| File | Drive | Folder | ID |
+|------|-------|--------|-----|
+| Cassie - Complaint Log | OFFICE | Cassie Customer Support | 1qvX6L36Un7YaAxxSBhHFLTPR5XWykyHSM5TOAGbfIms |
+| Cassie - Satisfaction Tracker | OFFICE | Cassie Customer Support | 1n8gpaJ6J628uMckmRPL0EJcRa_KYXJf31GLOevwYCgw |
+| Cassie - Churn Risk Log | OFFICE | Cassie Customer Support | 1nhu7RI7EOktl1Byd2_re7ncgM7WDc1w8D-kx-UxM7E8 |
+| ASAR Agent 7 - Cassie (reference) | OFFICE | Cassie Customer Support | 1_eECzh4Ok7Eni-maCzLXKQI5EKpqxfcom6pE-DAJSZM |
+| Game Plan Doc | OPERATIONS | Agent Game Plans | 156btjIM4GUkP5tvmrgVhXlPLQfDhHD-l40YfKAWk6Xw |
+| Cassie Customer Support folder | OFFICE | Drive root | 1ezQigrIx3dJbQqN_LT_6atEzi-K39hnd |
+
+**Tracking Sheet Columns:** Date \| Customer Name \| Contact \| Service \| Details \| Level \| Notes
+**Sheets node:** appendOrUpdate, defineBelow, 7-col schema (fixed 2026-04-17)
+
+## Bug Fixes Applied (2026-04-17)
+- Gmail internal email bug: added CRITICAL COMMUNICATION RULES block (Gmail = external only, all internal → Slack)
+- Vizzy routing: added MANDATORY DELEGATION RULES to Vizzy SM
+- Sheets node: changed read → appendOrUpdate with 7-col defineBelow schema
+- Sheet headers: added to all 3 Shared Drive sheets
+- $fromAI apostrophe: removed apostrophes from all $fromAI descriptions
 
 ## System Message (14468 chars)
 
