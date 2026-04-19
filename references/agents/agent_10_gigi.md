@@ -7,21 +7,26 @@ model: claude-sonnet-4-6
 system_message_chars: 6807
 standalone_tool_count: 15
 handoff_targets: Dexter, Milli
+game_plan_doc_id: 14yJ6T9ZDZzLY9OUyvIyVpC-bj-Dt3JYilI75O-ibiHQ
 last_synced: 2026-04-19
 ---
 # Gigi — Personal Growth
 
 **Agent #10** in the ASAR Autonomous Agent Team
 **Standalone Workflow**: TKCDLwYceeA0tCix
-**Orchestrator**: JAYrzGWR8A0tCBzB (node: Gigi - Personal Growth Coach)
+**Orchestrator**: JAYrzGWR8A0tCBzB
 **Model**: claude-sonnet-4-6
+**Game Plan (WHO/WHAT/WHERE/WHEN/HOW)**: https://docs.google.com/document/d/14yJ6T9ZDZzLY9OUyvIyVpC-bj-Dt3JYilI75O-ibiHQ/edit
 
 ## Handoff Graph
 Can invoke: Dexter, Milli
 
-## Call Agent Tools (Standalone Path)
-- Call Dexter - Financial Analyst
-- Call Milli - Sales Manager
+**Handoff triggers**: Financial snapshot -> Dexter | Sales motivation -> Milli
+
+## Autonomous Operation
+- **Standalone/MCP path**: Uses `Call [Agent]` toolWorkflow nodes — direct invocation
+- **Orchestrator/Telegram path**: Appends `HANDOFF REQUEST -> [Agent]` block, Vizzy routes
+- **Slack visibility**: Posts to #agent-activity after every task
 
 ## System Message (6807 chars)
 
