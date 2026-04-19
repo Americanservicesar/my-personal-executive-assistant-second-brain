@@ -3,20 +3,25 @@ name: Agent 04 - Emmie
 role: Email Marketing
 standalone_workflow_id: Cxb4JDBsMF8fvRqP
 orchestrator_workflow_id: JAYrzGWR8A0tCBzB
-model: claude-sonnet-4-6
+model: gpt-4.1
 system_message_chars: 6994
 standalone_tool_count: 17
+orchestrator_tool_count: 17
 handoff_targets: Milli, Cassie
+game_plan_doc: EMMIE — Email Marketing Manager | Who What Where When How
 game_plan_doc_id: 1wAiQHn3VRHDrfj8tVXucRmDmqxfIjRne_UtB43ToPrU
+email_standards_doc_id: REMOVED — merged into single game plan doc
 last_synced: 2026-04-19
+originSessionId: b79d4d89-c667-4a06-acaa-378787741284
 ---
 # Emmie — Email Marketing
 
 **Agent #04** in the ASAR Autonomous Agent Team
 **Standalone Workflow**: Cxb4JDBsMF8fvRqP
 **Orchestrator**: JAYrzGWR8A0tCBzB
-**Model**: claude-sonnet-4-6
-**Game Plan (WHO/WHAT/WHERE/WHEN/HOW)**: https://docs.google.com/document/d/1wAiQHn3VRHDrfj8tVXucRmDmqxfIjRne_UtB43ToPrU/edit
+**Model**: gpt-4.1 (both standalone + orchestrator)
+**Game Plan (single doc — Who What Where When How)**: https://docs.google.com/document/d/1wAiQHn3VRHDrfj8tVXucRmDmqxfIjRne_UtB43ToPrU/edit
+**Note**: Doc ID `10uejj6E6R4zz82QVbU7R21PVMvD35UUQtZ1LT1jfmXU` was inaccessible/incorrect — game plan is at `1wAiQHn3VRHDrfj8tVXucRmDmqxfIjRne_UtB43ToPrU`. Email Standards doc eliminated — all content in game plan.
 
 ## Handoff Graph
 Can invoke: Milli, Cassie
@@ -157,3 +162,44 @@ After completing ANY task:
 2. Post to #agent-activity (C0ARKTU2HR6) — "*EMMIE COMPLETE* | [1-line summary] | [key result]"
 Non-negotiable. Every task in both channels.
 ```
+
+## Live Tool Inventory (2026-04-19 — 17 tools)
+
+### Standalone (Cxb4JDBsMF8fvRqP) — versionId: 4f59cedb
+| Tool | Node Name | Credential |
+|---|---|---|
+| Google Docs | Google Docs - Emmie | googleDocsOAuth2Api: Wr90fsShYFRj1K5Q ✅ NEW |
+| GHL API (full CRUD+SMS+enroll) | GHL API - Emmie | hardcoded PIT token ✅ NEW |
+| Instantly API | HTTP - Instantly API (Emmie) | hardcoded bearer |
+| Google Sheets | Google Sheets - Emmie | Tpo5kkkuG9qiBBvf |
+| Google Drive | Google Drive - Emmie | Hu80FNVrNnpo62Fj |
+| SerpApi | SerpApi - Emmie | W674ZSbrWCALEVEp |
+| Slack | Slack - Emmie | lopIua3GVl7ESuOs |
+| GitHub Brain | GitHub Brain - Emmie | hardcoded PAT |
+| Gmail Send | Send Email - Emmie | BzBgoySpZrWPcE09 |
+| Gmail Get | Get Emails - Emmie | BzBgoySpZrWPcE09 |
+| Gmail Draft | Create Draft - Emmie | BzBgoySpZrWPcE09 |
+| Gmail Reply | Email Reply - Emmie | BzBgoySpZrWPcE09 |
+| Gmail Labels Get | Get Labels - Emmie | BzBgoySpZrWPcE09 |
+| Gmail Labels Set | Label Emails - Emmie | BzBgoySpZrWPcE09 |
+| Gmail Mark Unread | Mark Unread - Emmie | BzBgoySpZrWPcE09 |
+| Call Milli | Call Milli - Sales Manager | toolWorkflow |
+| Call Cassie | Call Cassie - Customer Support | toolWorkflow |
+| ~~Airtable~~ | ~~REMOVED~~ | ~~REMOVED~~ |
+
+### Orchestrator (JAYrzGWR8A0tCBzB) — versionId: 26d1c627
+Same tools as standalone + HTTP - HighLevel (Emmie) (pre-existing GHL node with updated description).
+
+## Key Doc IDs
+- **Game Plan (single source)**: `1wAiQHn3VRHDrfj8tVXucRmDmqxfIjRne_UtB43ToPrU` — "EMMIE — Email Marketing Manager | Who What Where When How"
+- **Campaign Tracker Sheet**: `1H7-E8eUju_rOYEgcCTVeSOwKT9xLzX9wezk6ffTjpwo` (6 tabs)
+- **Segment Map**: `1CVvusd-EqxhgiDmO0Zp-LZdxjB-xBKd2TCCCYYYOKME`
+- **Autonomous Ad Spend WF**: `t2Lne2UMjeJ2cB46` (active, cron 0 13 1-7 * 1)
+
+## Verified Gaps — Closed 2026-04-19
+- ✅ Google Docs tool added — Emmie can now READ her own game plan doc on every task
+- ✅ GHL API tool added — contact tagging, sequence enrollment, SMS all now executable
+- ✅ Airtable removed from both workflows
+- ✅ LLM upgraded to GPT-4.1 on both standalone + orchestrator
+- ✅ SM updated: 9 campaign types, 8 routing rows, full GHL tag table, Commet handoff, schedule, single-doc reference
+- ✅ Single game plan doc established (WHO/WHAT/WHERE/WHEN/HOW) — Email Standards doc eliminated
