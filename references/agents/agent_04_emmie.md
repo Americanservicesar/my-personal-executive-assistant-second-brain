@@ -1,37 +1,29 @@
 ---
-name: Agent 4 - Emmie
-role: Email Agent
-node_name: Emmie - Email Marketing
-node_type: @n8n/n8n-nodes-langchain.agentTool
-node_id: emmie-at
-workflow_id: JAYrzGWR8A0tCBzB
-model: gpt-4.1-nano (Emmie GPT 4.1 Nano)
-tool_count: 9
-system_message_chars: 6415
-last_synced: 2026-04-16
-originSessionId: b79d4d89-c667-4a06-acaa-378787741284
+name: Agent 04 - Emmie
+role: Email Marketing
+standalone_workflow_id: Cxb4JDBsMF8fvRqP
+orchestrator_workflow_id: JAYrzGWR8A0tCBzB
+model: claude-sonnet-4-6
+system_message_chars: 7029
+standalone_tool_count: 16
+handoff_targets: Milli, Cassie
+last_synced: 2026-04-19
 ---
-# Emmie — Email Agent
+# Emmie — Email Marketing
 
-**Agent #4** in the ASAR Autonomous Agent Team
-**Workflow**: ASAR - Autonomous Agent Team Task Handler (JAYrzGWR8A0tCBzB)
-**Model**: gpt-4.1-nano (Emmie GPT 4.1 Nano)
-**Node ID**: emmie-at
+**Agent #04** in the ASAR Autonomous Agent Team
+**Standalone Workflow**: Cxb4JDBsMF8fvRqP
+**Orchestrator**: JAYrzGWR8A0tCBzB (node: Emmie - Email Marketing)
+**Model**: claude-sonnet-4-6
 
-## Key References
-- **Operational Game Plan Doc**: `10uejj6E6R4zz82QVbU7R21PVMvD35UUQtZ1LT1jfmXU` — WHAT/WHERE/WHEN/HOW for Instantly cold outreach, reply routing, campaign launch steps
-- **Email Standards & Lifecycle Doc**: `1wAiQHn3VRHDrfj8tVXucRmDmqxfIjRne_UtB43ToPrU` — Email writing standards, lifecycle sequences, seasonal calendar, segmentation strategy
-- **Campaign Tracker Sheet**: `1H7-E8eUju_rOYEgcCTVeSOwKT9xLzX9wezk6ffTjpwo` (tabs: Campaign Log, Sequence Performance, List Health, AB Test Results, Newsletter Log)
-- **Master Segment Service Map**: `1CVvusd-EqxhgiDmO0Zp-LZdxjB-xBKd2TCCCYYYOKME`
-- **Instantly API**: Bearer `YzI3YTdhODUtMGMxNy00ZTNkLWE1ZTktYzA0NDI1OGNlMjM5OkZSVEV2Y3JCd0daWQ==` — send raw base64 string, NOT the decoded UUID. Configured in emmie-tl0 node.
-- **Slack #emmie-email**: `C0AQPHWR26S`
-- **Slack #agent-activity**: `C0ARKTU2HR6`
-- **Airtable REMOVED** from SM — Google Sheets is sole data store
+## Handoff Graph
+Can invoke: Milli, Cassie
 
-## Tool Description (what Vizzy sees)
-Email Marketing Manager. Cold outreach (Instantly), warm nurture (GHL), direct follow-ups (Gmail), SMS campaigns. Segment messaging for PMs, Fleet, GCs, Apartments, Industrial. Warm lead handoffs to Buddy → Milli pipeline.
+## Call Agent Tools (Standalone Path)
+- Call Cassie - Customer Support
+- Call Milli - Sales Manager
 
-## System Message (6415 chars — live as of 2026-04-16)
+## System Message (7029 chars)
 
 ```
 You are Emmie, Email Marketing Manager for American Services AR (ASAR), Apex Shield Coatings, and Legendary Exterior Solutions.
@@ -128,20 +120,13 @@ Unsubscribe target <0.5% -- if above, check frequency
 - Cassie handles post-job follow-up sequences and review requests
 - Soshie coordinates campaign timing with social media pushes
 - Dexter provides campaign analytics and ROI reporting
-- **Ad spend routing → Dexter**: First Monday each month + on demand. Three sources:
-  1. **Google Ads** — direct API pull (not Gmail). Campaign | Clicks | Spend | Period
-  2. **Facebook/Meta** — direct API pull (not Gmail). Campaign | Reach | Spend | Period
-  3. **Max Marketing** — GHL lead tag attribution. Two tag formats — pull BOTH and deduplicate:
-     - Format A: `max marketing [city] gutter` (e.g., `max marketing little rock gutter`, `max marketing conway gutter`, `max marketing benton gutter`)
-     - Format B: `[city] gutter` (e.g., `little rock gutter`, `conway gutter`, `benton gutter`)
-     Group by city, count unique leads per city per month. Format: City | Tags Matched | Leads This Month. No invoice — attribution only.
-  Post consolidated report to #dexter-data (C0AR4GT0N0Z) — "Ad Spend Report — [Month] [Year]"
 
 ## SLACK CHANNELS
 - Post ALL actions to #agent-activity (ID: C0ARKTU2HR6)
 - Post detailed updates to #emmie-email (ID: C0AQPHWR26S)
 
 ## RULES
+- NEVER use "ASAR" in any outbound communication — emails, SMS, calls, proposals, social posts. Always say "American Services AR" in full. ASAR is internal shorthand only.
 - Log EVERY action to Slack
 - Check if contact is existing client before cold emailing
 - Warm replies go to Buddy immediately -- do not continue sequence
@@ -163,87 +148,10 @@ Log ALL campaign actions to this sheet.
 ## EMAIL STANDARDS & LIFECYCLE REFERENCE
 Doc ID: 1wAiQHn3VRHDrfj8tVXucRmDmqxfIjRne_UtB43ToPrU
 Read this document for: Email writing standards (subject line rules, body format, CTA rules), full lifecycle sequence templates (new lead, estimate follow-up 3-touch, win-back 6/12/18mo, post-job thank you + review + upsell, abandoned booking recovery), seasonal campaign calendar, list segmentation and GHL tagging strategy, campaign performance report format, and email capture systems.
+
+## MANDATORY SLACK OUTPUT PROTOCOL
+After completing ANY task -- without exception -- use your Slack tool to post to TWO channels:
+1. Post to #emmie-email (channel ID: C0AQPHWR26S) -- post your complete response
+2. Post to #agent-activity (channel ID: C0ARKTU2HR6) -- brief summary format: "*EMMIE COMPLETE* | [1-line task summary] | [key result]"
+This is non-negotiable. Do NOT skip. Every completed task must appear in both Slack channels.
 ```
-
-## Connected Tools (12)
-
-| Tool Name | Type | Node ID | Credentials |
-|-----------|------|---------|-------------|
-| Gmail Tool - Emmie | gmailTool | b2e024d1-ab5... | gmailOAuth2: BzBgoySpZrWPcE09 |
-| Slack - Emmie | slackTool | 969b3b13-245... | slackOAuth2Api: lopIua3GVl7ESuOs |
-| HTTP - Instantly API (Emmie) | httpRequestTool | emmie-tl0 | no credential — Bearer in header params |
-| Google Sheets - Emmie | googleSheetsTool | 372cec8c-36c... | googleSheetsOAuth2Api: Tpo5kkkuG9qiBBvf |
-| Google Drive - Emmie | googleDriveTool | 8f80297a-1ea... | googleDriveOAuth2Api: Hu80FNVrNnpo62Fj |
-| SerpApi - Emmie | toolSerpApi | cc6b535b-620... | serpApi: W674ZSbrWCALEVEp |
-| Airtable - Emmie | airtableTool | 4ac92b09-cc5... | airtableTokenApi: flYD85xUURg7jDi7 (still wired, not used) |
-| GitHub Brain - Emmie | httpRequestTool | 8b915a09-047... | no credential (API key in params) |
-| HTTP - HighLevel (Emmie) | httpRequestTool | 9a86e3bb-... | no credential — Bearer PIT in header params |
-| HTTP - GHL Max Marketing Tags (Emmie) | httpRequestTool | emmie-ghl-maxmktg | no credential — Bearer PIT in header params |
-| HTTP - Google Ads (Emmie) | httpRequestTool | emmie-google-ads | PENDING SETUP — needs developer-token + OAuth2 |
-| HTTP - Facebook Ads (Emmie) | httpRequestTool | emmie-facebook-ads | no credential — token hardcoded in query params |
-
-## Credentials Used
-
-| Credential Type | ID | Name |
-|----------------|-----|------|
-| gmailOAuth2 | BzBgoySpZrWPcE09 | Gmail account |
-| slackOAuth2Api | lopIua3GVl7ESuOs | Slack OAuth2 API |
-| googleSheetsOAuth2Api | Tpo5kkkuG9qiBBvf | Google Sheets OAuth2 API |
-| googleDriveOAuth2Api | Hu80FNVrNnpo62Fj | Google Drive account |
-| serpApi | W674ZSbrWCALEVEp | SerpAPI account |
-| airtableTokenApi | flYD85xUURg7jDi7 | Airtable Personal Access Token account |
-| highLevelApi | pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9 | HighLevel Private Integration Token |
-
-## Instantly API Config (emmie-tl0 node)
-- **URL**: `https://api.instantly.ai/api/v2/campaigns`
-- **Method**: GET / POST depending on action
-- **Auth format**: `Authorization: Bearer YzI3YTdhODUtMGMxNy00ZTNkLWE1ZTktYzA0NDI1OGNlMjM5OkZSVEV2Y3JCd0daWQ==`
-- **CRITICAL**: Send the raw base64 string as Bearer token — do NOT decode it to UUID:secret format
-- **Verified**: 2026-04-16 — 200 response confirmed from browser test
-- **n8n versionId at last push**: d664b113 (2026-04-19 — autonomous ad spend workflow built)
-
-## Autonomous Ad Spend Workflow (2026-04-19)
-- **Workflow ID**: `t2Lne2UMjeJ2cB46` — "Emmie - Monthly Ad Spend Report (Auto)"
-- **Schedule**: First Monday of month, 8am CT (cron: `0 13 1-7 * 1`)
-- **Structure**: 7 nodes — Schedule → Code (FB+GHL) → Google Ads HTTP → Merge → Code (format) → Sheets → Slack
-- **Output**: Ad Spend Log tab in Campaign Tracker sheet `1H7-E8eUju_rOYEgcCTVeSOwKT9xLzX9wezk6ffTjpwo`
-- **Notifies**: #dexter-data (C0AR4GT0N0Z) with formatted report
-- **Optimization**: All FB + GHL calls in single Code node via `$helpers.httpRequest` — no duplicates, one clean write per run
-- **n8n note**: `fetch` not available in v2.13.3 — use `this.helpers.httpRequest()` in Code nodes
-
-## GHL Access (Emmie)
-- **Scope**: Full read/write
-- **Uses**: Contacts, conversations, SMS campaigns, warm nurture sequences, post-job follow-up automation, tag management, pipeline stage updates on warm handoffs
-
-## Ad Spend Node Config (2026-04-17)
-
-### HTTP - GHL Max Marketing Tags (emmie-ghl-maxmktg)
-- **URL**: `https://services.leadconnectorhq.com/contacts/`
-- **Method**: GET
-- **Auth**: Bearer `pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9`
-- **locationId**: `PQp7xlYjxZKsi0CWsSA7`
-- **Query tags**: AI passes tag to search — call TWICE per city (Format A + Format B), deduplicate
-- **Cities**: little rock, conway, benton
-
-### HTTP - Google Ads (emmie-google-ads) — LIVE 2026-04-18
-- **URL**: `POST https://googleads.googleapis.com/v18/customers/4598481846/googleAds:search`
-- **Customer ID**: `4598481846` (American Services AR)
-- **Auth**: googleOAuth2Api credential ID `mvzr4UfAOA9u679W` — **authorized & connected**
-- **Developer token**: `dQ5rLVzw3dgLkDFJk-xLPA` — live in node header
-- **Manager (MCC)**: N8N Emmie — 957-821-7886
-- **Cloud Project**: `famous-cache-375522` | Client ID: `438510860572-7re1ic662m7c1jssjph3hvjirc1ubtkp`
-- **Redirect URI fix**: was `/oauth/callback` (typo) → corrected to `/oauth2/callback` 2026-04-18
-- **GAQL**: `SELECT campaign.name, metrics.cost_micros, metrics.clicks FROM campaign WHERE segments.date DURING THIS_MONTH`
-
-### HTTP - Facebook Ads (emmie-facebook-ads) — LIVE
-- **URL**: `GET https://graph.facebook.com/v18.0/act_756247089484122/insights`
-- **Ad Account**: `act_756247089484122` (American Services AR, USD, status: active)
-- **System User**: ASAR Emmie (ID: 122114988782736885) — never-expiring token
-- **Token**: `EAAbwr76nwXUBROKrrPoW6eZBo55zfZAienikhn7iRpr86YqzAXRh2MfPyUw0u62MCpLeJVCDrIaDlTyvXJp5woPmblZCpfpmuUnBiEEySkcXtEHf035W9ZBtZB9UIhAHmWZCQB5ukxfdoCxNPFMsbmgNeTpU03yZC0R8NQzw6fIbQctwMdcwSCosd8hX9j28gsnAAZDZD`
-- **Scopes**: ads_read, ads_management (+ full social suite)
-- **Fields**: `campaign_name,spend,impressions,reach,clicks`
-- **Date presets**: `maximum`, `last_month`, `this_month`, `last_year`
-- **Verified**: 2026-04-18 — 1 campaign returned, $24.92 all-time spend confirmed
-
-## Position in Canvas
-x: 1184, y: 224
