@@ -7,22 +7,26 @@ model: claude-sonnet-4-6
 system_message_chars: 7947
 standalone_tool_count: 12
 handoff_targets: Emmie, Soshie, Penn
+game_plan_doc_id: 1tKG29CZ7vCjsf4DVTX5nsoamTLqY-q7tXU-Ib1wy3DQ
 last_synced: 2026-04-19
 ---
 # Commet — eCommerce Manager
 
 **Agent #11** in the ASAR Autonomous Agent Team
 **Standalone Workflow**: 8v3B7RqpkH9ltMvm
-**Orchestrator**: JAYrzGWR8A0tCBzB (node: Commet - eCommerce Manager)
+**Orchestrator**: JAYrzGWR8A0tCBzB
 **Model**: claude-sonnet-4-6
+**Game Plan (WHO/WHAT/WHERE/WHEN/HOW)**: https://docs.google.com/document/d/1tKG29CZ7vCjsf4DVTX5nsoamTLqY-q7tXU-Ib1wy3DQ/edit
 
 ## Handoff Graph
 Can invoke: Emmie, Soshie, Penn
 
-## Call Agent Tools (Standalone Path)
-- Call Emmie - Email Marketing
-- Call Penn - Copywriter
-- Call Soshie - Social Media
+**Handoff triggers**: Email deploy -> Emmie | Social posts -> Soshie | Copy needed -> Penn
+
+## Autonomous Operation
+- **Standalone/MCP path**: Uses `Call [Agent]` toolWorkflow nodes — direct invocation
+- **Orchestrator/Telegram path**: Appends `HANDOFF REQUEST -> [Agent]` block, Vizzy routes
+- **Slack visibility**: Posts to #agent-activity after every task
 
 ## System Message (7947 chars)
 
