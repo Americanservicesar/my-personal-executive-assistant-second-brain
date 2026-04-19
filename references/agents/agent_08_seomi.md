@@ -4,29 +4,29 @@ role: SEO Specialist
 standalone_workflow_id: nygXpDVV5Lmn77hX
 orchestrator_workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-system_message_chars: 6933
+system_message_chars: 7722
 standalone_tool_count: 16
 handoff_targets: Penn, Soshie
-last_synced: 2026-04-19
 game_plan_doc_id: 1ISFb5BQtaKvymizuFGom6DP-bUMnsPLvr2Jm43O16fk
-game_plan_name: Seomi_SEOSpecialist_GamePlan_WHO-WHAT-WHERE-WHEN-HOW
-game_plan_location: OPERATIONS Drive > Agent Game Plans
 last_synced: 2026-04-19
-originSessionId: 3a35798e-ae9f-458e-b25d-bfb6e27f5a38
 ---
 # Seomi — SEO Specialist
 
 **Agent #08** in the ASAR Autonomous Agent Team
 **Standalone Workflow**: nygXpDVV5Lmn77hX
-**Orchestrator**: JAYrzGWR8A0tCBzB (node: Seomi - SEO Specialist)
+**Orchestrator**: JAYrzGWR8A0tCBzB
 **Model**: claude-sonnet-4-6
+**Game Plan (WHO/WHAT/WHERE/WHEN/HOW)**: https://docs.google.com/document/d/1ISFb5BQtaKvymizuFGom6DP-bUMnsPLvr2Jm43O16fk/edit
 
 ## Handoff Graph
 Can invoke: Penn, Soshie
 
-## Call Agent Tools (Standalone Path)
-- Call Penn - Copywriter
-- Call Soshie - Social Media
+**Handoff triggers**: Content to write -> Penn | Repurpose for social -> Soshie
+
+## Autonomous Operation
+- **Standalone/MCP path**: Uses `Call [Agent]` toolWorkflow nodes — direct invocation
+- **Orchestrator/Telegram path**: Appends `HANDOFF REQUEST -> [Agent]` block, Vizzy routes
+- **Slack visibility**: Posts to #agent-activity after every task
 
 ## System Message (7722 chars)
 
