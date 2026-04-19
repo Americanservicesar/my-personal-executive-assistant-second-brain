@@ -181,3 +181,39 @@ Telegram "Super Group" forums allow organizing messages into topics. When a user
 ## GHL Chrome Extension Tab Can Get Stuck
 
 The Claude-in-Chrome extension can get stuck on a blank page with an orange "Cancel" banner — this is a GHL AI session overlay blocking the page. Fix: use `javascript_tool` to click the × button (`document.querySelectorAll('button')[0].click()`), or create a new tab via `tabs_create_mcp`. The extension tab may be in a different Chrome window than the user's main GHL session.
+
+## `fetch` Not Available in n8n Code Nodes (v2.13.3 Cloud)
+
+`fetch()` is NOT available in n8n Cloud Code nodes as of v2.13.3. Using it throws `ReferenceError: fetch is not defined` at runtime.
+
+**Fix:** Replace all `fetch()` calls with `this.helpers.httpRequest()`:
+```javascript
+// WRONG — throws ReferenceError
+const resp = await fetch('https://api.example.com/data', {headers: {...}}).then(r => r.json());
+
+// CORRECT
+const resp = await this.helpers.httpRequest({
+  method: 'GET',
+  url: 'https://api.example.com/data',
+  headers: {'Authorization': 'Bearer ' + TOKEN},
+  qs: {param: 'value'}   // query string params
+});
+// Returns parsed JSON directly (no .json() call needed)
+```
+
+**Also:** `Promise.all()` with `fetch` fails for the same reason. Use sequential `await` calls in a loop, or restructure into parallel branches feeding a Merge node.
+
+## Fan-In Duplicate Execution — Code Nodes Run N Times
+
+When N HTTP nodes all connect to a single downstream Code node (`runOnceForAllItems`), the Code node executes **once per upstream branch** = N times, producing N identical output sets. This causes duplicate rows in Sheets, duplicate Slack messages, etc.
+
+**Root cause:** n8n's fan-in model triggers the Code node once for each input batch it receives, not once for all combined inputs.
+
+**Fix option 1 — Consolidate (preferred):** Move all HTTP calls inside a single Code node using `this.helpers.httpRequest()`. Only one upstream branch → Code node runs exactly once.
+
+**Fix option 2 — Merge node:** Insert a `n8n-nodes-base.merge` node (mode: `append`) before the Code node. All N branches feed into the Merge node's inputs (input 0, input 1, ... input N-1). Merge fires once with all items combined. Code node downstream runs exactly once.
+
+**Pattern used in Emmie Ad Spend workflow (t2Lne2UMjeJ2cB46):**
+- 7 HTTP calls (FB + 6 GHL tags) → consolidated into 1 Code node
+- 1 Google Ads HTTP node (needs OAuth2 cred, can't be inside Code node) → Merge node input 1
+- Code node output → Merge node → Format Code node (runs exactly once, no duplicates)
