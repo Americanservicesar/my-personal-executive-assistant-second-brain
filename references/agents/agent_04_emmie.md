@@ -200,7 +200,16 @@ Read this document for: Email writing standards (subject line rules, body format
 - **Auth format**: `Authorization: Bearer YzI3YTdhODUtMGMxNy00ZTNkLWE1ZTktYzA0NDI1OGNlMjM5OkZSVEV2Y3JCd0daWQ==`
 - **CRITICAL**: Send the raw base64 string as Bearer token — do NOT decode it to UUID:secret format
 - **Verified**: 2026-04-16 — 200 response confirmed from browser test
-- **n8n versionId at last push**: 5bff0930-a387-4265-9a40-0a74f996a946 (2026-04-17 — added 3 ad spend nodes)
+- **n8n versionId at last push**: d664b113 (2026-04-19 — autonomous ad spend workflow built)
+
+## Autonomous Ad Spend Workflow (2026-04-19)
+- **Workflow ID**: `t2Lne2UMjeJ2cB46` — "Emmie - Monthly Ad Spend Report (Auto)"
+- **Schedule**: First Monday of month, 8am CT (cron: `0 13 1-7 * 1`)
+- **Structure**: 7 nodes — Schedule → Code (FB+GHL) → Google Ads HTTP → Merge → Code (format) → Sheets → Slack
+- **Output**: Ad Spend Log tab in Campaign Tracker sheet `1H7-E8eUju_rOYEgcCTVeSOwKT9xLzX9wezk6ffTjpwo`
+- **Notifies**: #dexter-data (C0AR4GT0N0Z) with formatted report
+- **Optimization**: All FB + GHL calls in single Code node via `$helpers.httpRequest` — no duplicates, one clean write per run
+- **n8n note**: `fetch` not available in v2.13.3 — use `this.helpers.httpRequest()` in Code nodes
 
 ## GHL Access (Emmie)
 - **Scope**: Full read/write
