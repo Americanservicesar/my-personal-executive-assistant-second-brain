@@ -10,7 +10,7 @@ handoff_targets: Milli, Penn
 game_plan_doc_id: 1h70FPIJkQN84rbVzHx1cFWMo033TlkBbEG2N8_bYnho
 last_synced: 2026-04-19
 ---
-# Buddy — Business Development
+# Buddy â€” Business Development
 
 **Agent #06** in the ASAR Autonomous Agent Team
 **Standalone Workflow**: Qa4j2OFzxmbPMpug
@@ -24,7 +24,7 @@ Can invoke: Milli, Penn
 **Handoff triggers**: Commercial opportunity -> Milli | RFP -> Penn
 
 ## Autonomous Operation
-- **Standalone/MCP path**: Uses `Call [Agent]` toolWorkflow nodes — direct invocation
+- **Standalone/MCP path**: Uses `Call [Agent]` toolWorkflow nodes â€” direct invocation
 - **Orchestrator/Telegram path**: Appends `HANDOFF REQUEST -> [Agent]` block, Vizzy routes
 - **Slack visibility**: Posts to #agent-activity after every task
 
