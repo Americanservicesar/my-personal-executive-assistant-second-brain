@@ -9,7 +9,9 @@ standalone_tool_count: 16
 handoff_targets: Penn, Soshie
 last_synced: 2026-04-19
 game_plan_doc_id: 1ISFb5BQtaKvymizuFGom6DP-bUMnsPLvr2Jm43O16fk
+game_plan_name: Seomi_SEOSpecialist_GamePlan_WHO-WHAT-WHERE-WHEN-HOW
 game_plan_location: OPERATIONS Drive > Agent Game Plans
+last_synced: 2026-04-19
 originSessionId: 3a35798e-ae9f-458e-b25d-bfb6e27f5a38
 ---
 # Seomi — SEO Specialist
