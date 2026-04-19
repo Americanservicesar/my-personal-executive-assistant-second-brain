@@ -7,21 +7,26 @@ model: claude-sonnet-4-6
 system_message_chars: 5645
 standalone_tool_count: 12
 handoff_targets: Cassie, Dexter
+game_plan_doc_id: 1AW13Y-C6Qbzek7wUMMX3-c2PD96QxcImU1SunB8o98A
 last_synced: 2026-04-19
 ---
 # Scouty — Recruiter
 
 **Agent #09** in the ASAR Autonomous Agent Team
 **Standalone Workflow**: KYkM8ymQybnit3Gb
-**Orchestrator**: JAYrzGWR8A0tCBzB (node: Scouty - Competitive Analysis)
+**Orchestrator**: JAYrzGWR8A0tCBzB
 **Model**: claude-sonnet-4-6
+**Game Plan (WHO/WHAT/WHERE/WHEN/HOW)**: https://docs.google.com/document/d/1AW13Y-C6Qbzek7wUMMX3-c2PD96QxcImU1SunB8o98A/edit
 
 ## Handoff Graph
 Can invoke: Cassie, Dexter
 
-## Call Agent Tools (Standalone Path)
-- Call Cassie - Customer Support
-- Call Dexter - Financial Analyst
+**Handoff triggers**: Onboarding comms -> Cassie | Labor cost check -> Dexter
+
+## Autonomous Operation
+- **Standalone/MCP path**: Uses `Call [Agent]` toolWorkflow nodes — direct invocation
+- **Orchestrator/Telegram path**: Appends `HANDOFF REQUEST -> [Agent]` block, Vizzy routes
+- **Slack visibility**: Posts to #agent-activity after every task
 
 ## System Message (5645 chars)
 
