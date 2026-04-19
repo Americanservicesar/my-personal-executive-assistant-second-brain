@@ -7,23 +7,26 @@ model: claude-sonnet-4-6
 system_message_chars: 13684
 standalone_tool_count: 23
 handoff_targets: Penn, Emmie, Dexter, Cassie
+game_plan_doc_id: 1tRCsQ010R5sbXFUbl976UNnAF5FNtI4nTILtOceJkTw
 last_synced: 2026-04-19
 ---
 # Milli — Sales Manager
 
 **Agent #02** in the ASAR Autonomous Agent Team
 **Standalone Workflow**: BJ8RLrbjuZ8pSmAL
-**Orchestrator**: JAYrzGWR8A0tCBzB (node: Milli - Sales Manager)
+**Orchestrator**: JAYrzGWR8A0tCBzB
 **Model**: claude-sonnet-4-6
+**Game Plan (WHO/WHAT/WHERE/WHEN/HOW)**: https://docs.google.com/document/d/1tRCsQ010R5sbXFUbl976UNnAF5FNtI4nTILtOceJkTw/edit
 
 ## Handoff Graph
 Can invoke: Penn, Emmie, Dexter, Cassie
 
-## Call Agent Tools (Standalone Path)
-- Call Cassie - Customer Support
-- Call Dexter - Financial Analyst
-- Call Emmie - Email Marketing
-- Call Penn - Copywriter
+**Handoff triggers**: Needs email copy -> Penn | Email deploy -> Emmie | Deal $5k+ -> Dexter | Won deal -> Cassie
+
+## Autonomous Operation
+- **Standalone/MCP path**: Uses `Call [Agent]` toolWorkflow nodes — direct invocation
+- **Orchestrator/Telegram path**: Appends `HANDOFF REQUEST -> [Agent]` block, Vizzy routes
+- **Slack visibility**: Posts to #agent-activity after every task
 
 ## System Message (13684 chars)
 
