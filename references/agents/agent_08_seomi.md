@@ -4,10 +4,13 @@ role: SEO Specialist
 standalone_workflow_id: nygXpDVV5Lmn77hX
 orchestrator_workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-system_message_chars: 7722
+system_message_chars: 6933
 standalone_tool_count: 16
 handoff_targets: Penn, Soshie
 last_synced: 2026-04-19
+game_plan_doc_id: 1ISFb5BQtaKvymizuFGom6DP-bUMnsPLvr2Jm43O16fk
+game_plan_location: OPERATIONS Drive > Agent Game Plans
+originSessionId: 3a35798e-ae9f-458e-b25d-bfb6e27f5a38
 ---
 # Seomi — SEO Specialist
 
