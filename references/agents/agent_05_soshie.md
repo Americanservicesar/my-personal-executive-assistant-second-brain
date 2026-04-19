@@ -3,49 +3,30 @@ name: Agent 05 - Soshie
 role: Social Media
 standalone_workflow_id: W3aE7gdjj2CTapyG
 orchestrator_workflow_id: JAYrzGWR8A0tCBzB
-monday_batch_caller_id: ibcZUQdHjcT81HTV
 model: claude-sonnet-4-6
 system_message_chars: 7023
 standalone_tool_count: 15
 handoff_targets: Penn, Emmie
+game_plan_doc_id: 1hj8pv0SlWselnOM8NU3gEH4OMBhBOeD1sqQq-cXGc4w
 last_synced: 2026-04-19
-originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 ---
 # Soshie — Social Media
 
 **Agent #05** in the ASAR Autonomous Agent Team
 **Standalone Workflow**: W3aE7gdjj2CTapyG
-**Orchestrator**: JAYrzGWR8A0tCBzB (node: Soshie - Social Media)
-**Monday Batch Caller**: ibcZUQdHjcT81HTV (fires Mon 7AM CDT — calls Soshie async, then triggers UMA)
+**Orchestrator**: JAYrzGWR8A0tCBzB
 **Model**: claude-sonnet-4-6
-
-## Autonomous Schedule
-- **Monday 7AM CDT**: Triggered by workflow `ibcZUQdHjcT81HTV` (fire-and-forget)
-  - Researches weekly trends via SerpApi + web search
-  - Generates 7-day content calendar
-  - Posts full calendar to **#soshie-social** Slack channel (C0AQPHWS094)
-  - Posts summary to **#agent-activity** Slack channel (C0ARKTU2HR6)
-  - After Soshie fires, the Monday batch also triggers UMA async
-
-## UMA Integration (2026-04-19)
-- Soshie's Monday batch (ibcZUQdHjcT81HTV) fires UMA (`Jy6BKTAMXyTyRokO`) after itself
-- UMA node in Monday batch: `Build UMA Task` → `Call UMA` (both async/fire-and-forget)
-- UMA receives: `{"query": "Run your weekly media research..."}` via `Called by Soshie` trigger node
-- Both agents run fully independently — neither waits for the other
-
-## Google Drive (MARKETING)
-- Folder: **Soshie Social Media** (`1mNLAT7guMLtufamb7Q0XAyj5hvpClt0C`)
-  - Agent Reference & Game Plan (`1aDDs073JdqXJFxmEeum09BrvjLupsMCi`) — skill doc + agent reference
-  - Content Calendar (`1BKL3BYxkuXKPdZCVkQgRuWZhf2BGz7Vu`)
-  - Weekly Batches (`1ah7I6QBEoBm_Gb3wSbBG3Dl6gsJRpsq5`)
-  - Social Assets (`16J_IBmoldZZUXqcPeoC53uKsSjc9UBP8`)
+**Game Plan (WHO/WHAT/WHERE/WHEN/HOW)**: https://docs.google.com/document/d/1hj8pv0SlWselnOM8NU3gEH4OMBhBOeD1sqQq-cXGc4w/edit
 
 ## Handoff Graph
 Can invoke: Penn, Emmie
 
-## Call Agent Tools (Standalone Path)
-- Call Emmie - Email Marketing
-- Call Penn - Copywriter
+**Handoff triggers**: Need copy -> Penn | Email blast -> Emmie
+
+## Autonomous Operation
+- **Standalone/MCP path**: Uses `Call [Agent]` toolWorkflow nodes — direct invocation
+- **Orchestrator/Telegram path**: Appends `HANDOFF REQUEST -> [Agent]` block, Vizzy routes
+- **Slack visibility**: Posts to #agent-activity after every task
 
 ## System Message (7023 chars)
 
