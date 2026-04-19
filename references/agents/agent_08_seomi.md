@@ -18,16 +18,21 @@ originSessionId: ccb3e528-01da-49dc-b07e-762b0b0108ff
 **Node ID**: e997ed62-61d7-46de-994f-f0e7793e32dd
 
 ## Operational Game Plan (Living Instructions)
-- **Google Doc**: https://docs.google.com/document/d/19uEvSscbFCW29v0daOQ-Ugj5SS_A933hWdVy4i-BQas/edit
-- **Doc ID**: `19uEvSscbFCW29v0daOQ-Ugj5SS_A933hWdVy4i-BQas`
+- **Google Doc**: https://docs.google.com/document/d/1ISFb5BQtaKvymizuFGom6DP-bUMnsPLvr2Jm43O16fk/edit
+- **Doc ID**: `1ISFb5BQtaKvymizuFGom6DP-bUMnsPLvr2Jm43O16fk`
+- **Location**: Agent Reference Docs > Seomi — SEO Specialist (folder: `1G_7_qqKaiO-j6Ip_vPcQuISc4mopmoel`)
 - Seomi reads this doc at the start of each task run
 - Edit the Google Doc to change Seomi's behavior — do NOT rely only on the n8n system message
 
+## Drive Folders
+- **Agent Reference Docs/Seomi — SEO Specialist**: `1G_7_qqKaiO-j6Ip_vPcQuISc4mopmoel` — game plan doc, agent reference
+- **MARKETING/SEO — Seomi**: `188PlmDSNX89nNH4w-HUB8zpwzYOzBz0E` — SEO content, audits, drafts, GBP docs
+
 ## n8n System Message Status
-- **Current**: 4903 chars — OLD version (missing daily/weekly/monthly tasks, 12-H2 page structure, ranking report format, Penn request protocol, tier-based priority order)
-- **Required update**: Add "read game plan doc at start of task" instruction + updated content
-- **Update script**: `C:\Users\sales\AppData\Local\Temp\update_seomi_n8n_system_msg.py`
-- **Status**: PENDING (DNS issue during 2026-04-17 session — run script when network available)
+- **Current**: 4751 chars — UPDATED 2026-04-17
+- **Key change**: Leads with "read game plan Google Doc before ANY task" instruction
+- **Doc ID referenced**: `1ISFb5BQtaKvymizuFGom6DP-bUMnsPLvr2Jm43O16fk`
+- **Status**: COMPLETE ✅
 
 ## Tool Description (what Vizzy sees)
 Full-Stack SEO Auditor & Executor. Manages americanservicesar.com (full admin control) + monitors 6 gutter sites. Runs automated full-site audits (technical, on-page, content, local SEO). EXECUTES fixes directly — doesn't just recommend. Builds service+city pages (13 services x 11 cities = 143 page matrix). Tracks rankings via SerpApi, monitors Core Web Vitals via PageSpeed, checks Google Search Console data, GA4 analytics, GBP insights. Crawls entire site for broken links, missing meta, thin content. AI Brand Mention Optimization. Tools: WordPress API, RankMath API, PageSpeed, Site Crawler, Search Console, GA4, GBP, SerpApi, Bing Webmaster, Moz, Broken Link Checker, Web Search, Sheets, Drive, Docs, Airtable, Slack, GitHub Brain.
