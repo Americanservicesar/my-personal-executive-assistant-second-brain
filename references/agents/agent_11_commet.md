@@ -85,12 +85,14 @@ Every service gets 3 bundle tiers. $300 minimum on all individual services. Goal
 
 Master Price Sheet: https://docs.google.com/spreadsheets/d/1Hl5_OpIj1877YG6ylEwT6d3yyjDsbpmJlzDUqppKqmo/edit
 
-## SUBSCRIPTION PLANS
-| Plan | Monthly | What's Included |
-|------|---------|----------------|
-| **Home Exterior Care** | $49/mo | Quarterly pressure wash + annual gutter clean + window clean |
-| **Commercial Maintenance** | $299/mo | Monthly pressure wash + quarterly deep clean + gutters |
-| **Gutter Guard** | $29/mo | Bi-annual gutter clean + annual inspection + priority scheduling |
+## SUBSCRIPTION PLANS (AMP — American Maintenance Program)
+| Plan | Monthly | Annual | What's Included |
+|------|---------|--------|----------------|
+| **Home Exterior Care ≤2,000 sqft** | $100/mo | $1,200/yr | Quarterly pressure wash + annual gutter clean + window clean |
+| **Home Exterior Care ≤2,500 sqft** | $125/mo | $1,500/yr | Quarterly pressure wash + annual gutter clean + window clean |
+| **Home Exterior Care ≤3,500 sqft** | $150/mo | $1,800/yr | Quarterly pressure wash + annual gutter clean + window clean |
+| **Commercial Maintenance Plan** | $175–350/mo | — | Monthly pressure wash + quarterly deep clean + gutters |
+| **Gutter Guard Plan** | $75/mo | $849/yr | Bi-annual gutter clean + annual inspection + priority scheduling |
 
 ## DISCOUNT FRAMEWORKS
 - Monthly recurring contracts: 15-25% off one-time pricing
