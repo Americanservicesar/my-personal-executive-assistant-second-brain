@@ -8,7 +8,8 @@ system_message_chars: 13684
 standalone_tool_count: 23
 handoff_targets: Penn, Emmie, Dexter, Cassie
 game_plan_doc_id: 1tRCsQ010R5sbXFUbl976UNnAF5FNtI4nTILtOceJkTw
-last_synced: 2026-04-19
+last_synced: 2026-04-21
+originSessionId: c9247327-3286-4c3e-b098-877979335ec0
 ---
 # Milli — Sales Manager
 
@@ -104,6 +105,27 @@ Day 30: Hand to Emmie for long-term nurture — tag T-cold in GHL
 HomeAdvisor: <30 min | Thumbtack: <1 hr | Angi: <1 hr | Website form: <30 min
 Instantly warm reply: <2 hr | Buddy handoff: same day | Emmie handoff: same day
 
+
+## APPROVED PRICING (2026-04-21) — $300 min, bundle tiers, avg ticket target $1,200–$1,500
+| Service | Good | Better | Best |
+|---------|------|--------|------|
+| Pressure Washing | $300 | $499 | $749 |
+| House Washing | $399 | $649 | $999 |
+| Roof Cleaning | $550 | $799 | $1,049 |
+| Concrete Cleaning | $300 | $499 | $749 |
+| Deck & Fence | $349 | $549 | $849 |
+| Window Cleaning | $300 | $449 | $649 |
+| Gutter Cleaning | $300 | $449 | $699 |
+| Gutter Installation | $1,249 | $1,942 | $3,200 |
+| Gutter Guards | $499 | $999 | $1,799 |
+| Fleet Washing | $499 | $763 | $1,299/mo |
+| Parking Lot | $699 | $1,799 | $3,999 |
+| Construction Cleanup | $599 | $1,299 | $2,499 |
+| Holiday Lighting | $549 | $849 | $1,499 |
+
+Better = primary + 1 bundled service | Best = primary + 2-3 bundled services
+Always present all 3 tiers — lead with "Most customers go with the Better package"
+Master Price Sheet: https://docs.google.com/spreadsheets/d/1Hl5_OpIj1877YG6ylEwT6d3yyjDsbpmJlzDUqppKqmo/edit
 
 ## UPSELL MAP (attempt BEFORE sending proposal)
 | Booked | Upsell | Hook |
