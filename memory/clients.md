@@ -1,68 +1,65 @@
 # Clients & Accounts
 
-> Claude updates this file as client relationships are established or evolve.
-> Vizzy and Milli reference this before any outreach or follow-up.
+> Last updated: 2026-04-22
+> Milli (sales), Cassie (support), Commet (packages) maintain this.
+> Source: HCP actuals (798 jobs all-time)
 
----
+## Account Segments by Volume
 
-## Active Clients
+| Segment | Jobs | Avg/Job | Margin | Priority |
+|---------|------|---------|--------|---------|
+| Fleet Washing | 127 | $763 | 78% | Core -- highest volume |
+| AMP / Programs | 89 | $512/mo | 75% | Scale -- recurring |
+| Gutter Repair | 47 | $579 | 70% | Core |
+| Ext Cleaning -- Softwash | 37 | $641 | 68% | Core |
+| Gutter Installation | 50 | $1,942 | 58% | Materials heavy |
+| Windows | 20 | $1,205 | 75% | Core |
+| Ext Cleaning -- PW | 20 | $1,999 | 75% | Core |
+| Dryer Vent | 17 | $1,140 | 82% | High margin |
+| Gutter Cleaning | 16 | $612 | 78% | Core |
+| Ext Cleaning -- Roof Wash | 15 | $721 | 68% | Grow |
+| Parking Lot Striping | 2 | $4,338 | 82% | High margin |
+| Commercial Ext Cleaning | 10 | $6,053 | 72% | TOP TIER |
 
-| Client | Brand | Services | Contract Type | Est. Annual Value | Notes |
-|--------|-------|----------|--------------|-------------------|-------|
-| | | | | | |
+## Win Rate
+- **92%** estimate-to-job (798 won / 870 estimates -- all time)
+- We do NOT lose on price -- quote Better/Best always
 
-## Past Clients
+## Active Commercial Accounts
 
-| Client | Services | Last Job Date | Reason Lost | Win-Back Potential |
-|--------|----------|---------------|-------------|-------------------|
-| | | | | |
+> Milli populates on every commercial close
 
-## Hot Prospects
+| Client | Brand | Services | Contract | Est. Annual Value | GHL ID | Notes |
+|--------|-------|----------|----------|-----------------|--------|-------|
+| (Milli populates) | | | | | | |
 
-| Prospect | Source | Service Interest | Stage | Next Action | Owner (Agent) |
-|----------|--------|-----------------|-------|-------------|--------------|
-| | | | | | Milli |
+## AMP Subscribers (Recurring Revenue)
 
-## Key Accounts (Recurring Revenue)
+> Commet populates -- 89 programs active
 
-| Account | Services | Frequency | Monthly Value | Contract Renewal |
-|---------|----------|-----------|---------------|-----------------|
-| | | | | |
+| Client | Plan | $/Month | Start | GHL ID | Notes |
+|--------|------|---------|-------|--------|-------|
+| (Commet populates) | | | | | |
 
-## Client Insights
+## Hot Prospects (Commercial Pipeline)
 
-<!-- Patterns, preferences, pain points learned from real interactions -->
+> Buddy + Milli from GHL pipeline OyuNwhoc79Lb8YS7h3kg
 
----
-
-## Lead Conversion Funnel
-
-> Track leads from generation through close. Updated by Milli and Emmie.
-
-| Date | Lead Source | Segment | Leads Generated | Contacted | Quoted | Closed | Revenue | Conversion Rate | Notes |
-|------|-----------|---------|----------------|-----------|--------|--------|---------|----------------|-------|
-| | | | | | | | | | |
-
-### Best Converting Segments
-<!-- Auto-updated as patterns emerge. Example:
-- "Apartment complexes convert at 25% (highest)"
-- "Fleet companies convert at 15% but avg deal size 3x higher"
--->
-
-### Best Converting Sources
-<!-- Ranked by conversion rate, not volume. Example:
-- "Referrals: 40% close rate"
-- "Lead-hunter cold list: 12% close rate"
-- "HomeAdvisor: 8% close rate but high volume"
--->
+| Prospect | Segment | Services | Est. Value | GHL Opp ID | Stage | Next Action |
+|----------|---------|----------|-----------|-----------|-------|-------------|
+| (Buddy/Milli populate) | | | | | | |
 
 ## Client Satisfaction Log
 
-> Cassie updates this after every follow-up, complaint, or review request.
+> Cassie populates after every interaction
 
-| Date | Client | Interaction Type | Satisfaction (1-5) | Review Left? | Platform | Notes |
-|------|--------|-----------------|-------------------|-------------|----------|-------|
-| | | | | | | |
+| Date | Client | Service | Score | Issue | Resolution | Notes |
+|------|--------|---------|-------|-------|-----------|-------|
+| (Cassie populates) | | | | | | |
 
-### Satisfaction Patterns
-<!-- Example: "Clients who get a follow-up call within 24hr of job completion leave reviews 3x more often" -->
+## Key Insights
+
+1. Fleet washing (127 jobs) = core volume, 78% margin
+2. Commercial ext cleaning (10 jobs at $6,053 avg) = top priority to grow
+3. AMP programs (89 active = ~$45,568/mo potential) = highest recurring revenue priority
+4. 92% win rate = price is NOT the objection -- always quote Better/Best
