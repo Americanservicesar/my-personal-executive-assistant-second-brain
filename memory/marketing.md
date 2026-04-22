@@ -1,111 +1,104 @@
-# Marketing & Brand
+# Marketing Intelligence
 
-> What works for ASAR marketing. Penn, Soshie, Seomi, and Emmie all reference this.
-> Dexter updates the data sections.
-
----
+> Last updated: 2026-04-22
+> Penn (copy), Emmie (email), Soshie (social), Seomi (SEO) -- all update this file.
 
 ## Brand Voice
 
-- **Tone:** Professional but approachable. Blue-collar confidence — we know our craft.
-- **Target Audience:** Property managers, general contractors, facility directors, commercial building owners
-- **Differentiator:** AI-powered operations + multi-service capability = one call handles everything
-- **Brands:**
-  - American Services AR — the flagship, multi-service commercial brand
-  - Apex Shield Construction — premium construction/roofing brand
-  - Legendary Home Services — residential/handyman brand
+| Brand | Tone | Key Phrases | Avoid |
+|-------|------|-------------|-------|
+| American Services AR | Professional, confident, commercial-grade | "One call handles everything" | Salesy |
+| Apex Shield Coatings | Premium, authoritative | "Built to protect" | Cheap-sounding |
+| Legendary Exterior Solutions | Friendly, reliable | "Your home, our priority" | Corporate |
 
-## Website Properties & SEO Status
+**RULE**: Never use "ASAR" outbound. Always "American Services AR" in full.
+**NOTE**: All routes through American Services AR for now.
 
-| Domain | Focus | Status | Notes |
-|--------|-------|--------|-------|
-| americanservicesar.com | Main brand, all services | Active | |
-| conwaygutter.com | Gutter services - Conway | Active | |
-| littlerockgutter.com | Gutter services - Little Rock | Active | |
-| bentongutter.com | Gutter services - Benton | Active | |
-| bryantgutter.com | Gutter services - Bryant | Active | |
-| northlittlerockgutters.com | Gutter services - NLR | Active | |
-| sherwoodgutters.com | Gutter services - Sherwood | Active | |
+## Target Audience
+- Primary: Property managers, GCs, facility directors, commercial building owners
+- Secondary: HOA managers, fleet coordinators, school/university facilities
+- Residential: Upsell-focused only
 
-## SEO Keywords Tracking
+## Websites & SEO
 
-| Keyword | Target Domain | Current Rank | Target Rank | Notes |
-|---------|--------------|-------------|-------------|-------|
-| | | | | |
+| Domain | Focus | Pages Live | Status |
+|--------|-------|-----------|--------|
+| americanservicesar.com | Core brand | 143 | Active |
+| conwaygutter.com | Conway gutter | TBD | Active |
+| littlerockgutter.com | LR gutter | TBD | Active |
+| bentongutter.com | Benton | TBD | Active |
+| bryantgutter.com | Bryant | TBD | Active |
+| northlittlerockgutters.com | NLR | TBD | Active |
+| sherwoodgutters.com | Sherwood | TBD | Active |
 
-## Campaign Performance Log
+## SEO Status (Phase 3 Active -- 2026-04-19)
 
-<!-- What's been tried, what worked, what didn't -->
-| Date | Campaign | Channel | Result | ROI | Lesson |
-|------|----------|---------|--------|-----|--------|
-| | | | | | |
+| Metric | Value |
+|--------|-------|
+| Pages live | 143 (1,200+ words, RankMath meta set) |
+| Sitemap confirmed | 143/143 |
+| Domain Authority | 9 -- backlinks are the blocker |
+| Focus | Conway #1 ranking |
+| Phase 3 actions | GBP opt, reviews, citations, backlinks |
+
+## Social Media (GHL Social Planner)
+
+| Platform | Account | Status | Notes |
+|----------|---------|--------|-------|
+| Facebook | American Services AR | Active | Mon/Wed/Fri via n8n |
+| Instagram | American Services AR | Active | GHL planner |
+| LinkedIn | American Services AR | Active -- expires May 12 | Reconnect ~May 5 |
+| GMB | American Services AR | Active | HCP booking live |
+| Facebook | Apex Shield | Connected | GHL |
+| Facebook | Legendary | Connected | GHL |
+
+## Email Campaigns (Emmie)
+
+| Campaign | Status | Daily Limit | Notes |
+|----------|--------|------------|-------|
+| ASAR-01-Apartments | Draft | 40/day | Leads export needed first |
+| ASAR-02 thru ASAR-12 | Not started | -- | 1 vertical per day |
+| Instantly->GHL webhook | ACTIVE | -- | OhcsTjpdQ83Zwv9R |
+
+## Review Engine
+
+| Item | Detail |
+|------|--------|
+| n8n workflow | ciBlDuYcknxv9dES |
+| Trigger | HCP job completion webhook |
+| Cadence | 24h + 72h SMS |
+| Status | LIVE |
+| Goal | 50+ Google reviews |
+
+## Lead Platforms
+
+| Platform | Best For | Status |
+|----------|----------|--------|
+| Google SEO | Organic inbound | Phase 3 active |
+| GBP | Local intent | HCP booking live |
+| HomeAdvisor/Angi | Residential | Active |
+| Thumbtack | Residential | Active |
+| Nextdoor | Neighborhood | Active |
+| Instantly | Cold B2B outreach | ASAR-01 pending |
 
 ## Content That Works
 
-<!-- High-performing posts, emails, ads — save the winners -->
+> Penn/Emmie/Soshie populate after campaigns run -- append only
+
+| Date | Content Type | Channel | Result | Key Insight |
+|------|-------------|---------|--------|-------------|
+| (populate after campaigns run) | | | | |
 
 ## Content That Flopped
 
-<!-- What didn't work and why — so we don't repeat it -->
+| Date | Content Type | Channel | Result | Why |
+|------|-------------|---------|--------|-----|
+| (populate after campaigns run) | | | | |
 
-## Social Media Insights
+## SEO Rankings
 
-| Platform | Best Post Types | Best Times | Audience Notes |
-|----------|----------------|-----------|----------------|
-| Facebook | | | |
-| Instagram | | | |
-| Google Business | | | |
-| LinkedIn | | | |
-| Nextdoor | | | |
+> Seomi populates monthly
 
----
-
-## Email Campaign Results
-
-> Emmie updates after every campaign. Tracks Instantly cold outreach + GHL nurture sequences.
-
-### Instantly Campaigns
-
-| Date | Campaign Name | Segment | Emails Sent | Open Rate | Click Rate | Reply Rate | Warm Leads | Sending Account | Notes |
-|------|-------------|---------|------------|-----------|-----------|-----------|-----------|----------------|-------|
-| | | | | | | | | | |
-
-### GHL/Service Robot Nurture Sequences
-
-| Date | Sequence Name | Segment | Contacts | Open Rate | Click Rate | Conversions | Notes |
-|------|-------------|---------|----------|-----------|-----------|------------|-------|
-| | | | | | | | |
-
-### Email Learnings
-<!-- Example: "Subject lines with specific dollar amounts outperform generic ones by 2x" -->
-
-## Content Performance Scores
-
-> Penn and Soshie update after content goes live. Track what converts, not just what gets likes.
-
-| Date | Content Piece | Channel | Type | Impressions | Clicks | Leads | Conversions | Notes |
-|------|-------------|---------|------|------------|--------|-------|------------|-------|
-| | | | | | | | | |
-
-## SEO Ranking Changes
-
-> Seomi updates weekly/monthly. Track across all 7 domains.
-
-| Date | Domain | Keyword | Previous Rank | Current Rank | Change | Page URL | Notes |
-|------|--------|---------|-------------|-------------|--------|---------|-------|
-| | | | | | | | |
-
-## Lead Platform Performance
-
-> Track leads and engagement from HomeAdvisor, Nextdoor, Thumbtack, Angi, Yelp.
-
-| Month | Platform | Leads Received | Leads Converted | Revenue | Cost | ROI | Notes |
-|-------|----------|---------------|----------------|---------|------|-----|-------|
-| | HomeAdvisor | | | | | | |
-| | Nextdoor | | | | | | |
-| | Thumbtack | | | | | | |
-| | Angi | | | | | | |
-| | Yelp | | | | | | |
-
-### Platform Learnings
-<!-- Example: "Thumbtack leads close 2x faster than HomeAdvisor but cost 50% more per lead" -->
+| Date | Page | Keyword | Before | After | Notes |
+|------|------|---------|--------|-------|-------|
+| (Seomi populates monthly) | | | | | |
