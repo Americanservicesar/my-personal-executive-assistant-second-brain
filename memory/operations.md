@@ -1,80 +1,78 @@
 # Operations & Crew
 
-> How ASAR runs day-to-day. Claude updates this as it learns about processes, crew, equipment, and logistics.
-> Vizzy references this for scheduling. Scouty references this for hiring.
+> Last updated: 2026-04-22
+> Scouty (hiring) and Commet (packages) maintain this.
 
----
+## Service Brands
 
-## Crew
+| Brand | Services | Market |
+|-------|----------|--------|
+| American Services AR | PW, soft wash, gutter clean/install/guards, window clean, roof clean, parking lot, fleet wash, construction cleanup, holiday lighting | Conway, Central AR |
+| Apex Shield Coatings | Roofing, gutters, construction | Central AR commercial |
+| Legendary Exterior Solutions | Handyman, maintenance, cleanup | Central AR residential |
 
-| Name | Role | Skills | Availability | Notes |
-|------|------|--------|-------------|-------|
-| | | | | |
+## Service Area
 
-## Equipment Inventory
+| Zone | Coverage | Modifier |
+|------|----------|----------|
+| Primary | Conway, AR | Base rate |
+| Secondary | LR, NLR, Benton, Bryant, Sherwood | Base rate |
+| Extended | >45 min from Conway | +$100-150 travel |
+| After-hours/weekend | Any | +25-30% |
 
-| Item | Brand/Model | Status | Notes |
-|------|------------|--------|-------|
-| | | | |
+## Crew Structure
 
-## Service Areas
+| Role | Person | Status |
+|------|--------|--------|
+| Owner / CEO | Anthony Sons | Transitioning to CEO-only |
+| Finance & Admin | Robbie Sons | Household finances, Acxiom paycheck |
+| Lead Tech / Field Supervisor | Seasonal | Varies by crew |
+| Subcontractors | 51 companies | Sheet 1pB7-csrUFU_58HM56Usv3yhWhgoiFCYZ62Es098NZgI |
 
-<!-- Geographic coverage by brand -->
-| Brand | Primary Markets | Radius | Notes |
-|-------|----------------|--------|-------|
-| American Services AR | Conway, Little Rock metro, Central AR | | Core market |
-| Apex Shield Construction | | | Roofing, gutters, exterior construction |
-| Legendary Home Services | | | Handyman & environmental (developing) |
+## Job Workflow
 
-## Scheduling Patterns
+1. Lead in (GBP / Angi / referral / Instantly reply)
+2. Milli qualifies + schedules estimate in HCP
+3. RoofSnap / GutterGlove measurement (required before gutter/roof quotes)
+4. Penn writes proposal -> Milli sends via HCP (50% deposit to confirm)
+5. Job dispatched in HCP
+6. Job complete -> closed in HCP
+7. Review Engine triggers: 24h + 72h SMS (ciBlDuYcknxv9dES)
+8. Cassie monitors satisfaction
+9. Commet upsell automation triggers
 
-<!-- Best days for certain services, crew routing, seasonal capacity -->
+## Seasonal Capacity Plan
 
-## Vendor & Supplier Contacts
+| Season | Demand | Focus |
+|--------|--------|-------|
+| Jan-Feb | Low | Commercial contract selling |
+| Mar-Apr | Ramp | Spring PW, gutter season |
+| May-Jun | Peak | Fleet + commercial maintenance |
+| Jul-Aug | Steady | Roof wash + commercial |
+| Sep-Oct | Gutter rush | Schedule fast -- high demand |
+| Nov-Dec | Holiday lights | Pre-sell October |
 
-| Vendor | What They Supply | Contact | Account # | Notes |
-|--------|-----------------|---------|-----------|-------|
-| | | | | |
+## Materials & Tax
 
-## Job Costing Benchmarks
-
-<!-- Track actual vs. estimated for each service type -->
-| Service | Avg Labor Hours | Materials Cost | Overhead | Target Margin |
-|---------|----------------|---------------|----------|---------------|
-| | | | | |
-
-## Operational Lessons
-
-<!-- Things that went wrong, process improvements, efficiency gains -->
-
----
-
-## Crew Skills Matrix
-
-> Scouty and Vizzy reference this for dispatch and hiring. Updated when crew changes.
-
-| Name | Pressure Wash | Gutter Install | Gutter Clean | Fleet Wash | Construction Clean | Heavy Equipment | Driver | Lead Capable | Notes |
-|------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|-------|
-| | | | | | | | | | |
+| Rule | Detail |
+|------|--------|
+| Materials | Home Depot/Lowe's retail -- ASAR pays tax at purchase |
+| Customer billing | Repair/labor -- no sales tax charged (AR GR-18 ruling) |
+| Services taxable | Cleaning/washing services ARE taxable in AR |
 
 ## Hiring Log
 
-> Scouty updates after every hire and departure.
+> Scouty populates
 
-| Date | Name | Role | Source | Days to Fill | Pay Rate | Still Employed? | Departure Date | Departure Reason | Notes |
-|------|------|------|--------|-------------|---------|----------------|---------------|-----------------|-------|
-| | | | | | | | | | |
+| Date | Role | Source | Outcome | Notes |
+|------|------|--------|---------|-------|
+| (Scouty populates) | | | | |
 
-### Best Hire Sources
-<!-- Ranked by retention, not just speed. Example:
-- "Referrals: 80% still employed after 90 days"
-- "Indeed: fast to fill but 50% quit within 30 days"
--->
+## Equipment
 
-## Subcontractor Database
-
-> Reliable subs for overflow work. Scouty and Vizzy reference this.
-
-| Name/Company | Services | Rate | Reliability (1-5) | Last Used | Insurance? | Notes |
-|-------------|----------|------|-------------------|----------|-----------|-------|
-| | | | | | | |
+| Equipment | Status |
+|-----------|--------|
+| Hot water pressure washer | Active |
+| Soft wash system | Active |
+| Gutter cleaning tools | Active |
+| Mobile fleet washing setup | Active |
