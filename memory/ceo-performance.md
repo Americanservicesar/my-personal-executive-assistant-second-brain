@@ -1,76 +1,63 @@
-# CEO Performance & Health
+# CEO Performance Tracking
 
-> Gigi maintains this file. Tracks Anthony's energy, health (Hume Band), time allocation,
-> delegation progress, and family balance. The goal: move Anthony from operator to CEO.
-> Updated weekly at minimum.
-
----
-
-## Weekly Check-ins
-
-| Week | Energy (1-5) | Hume Sleep Avg | Recovery Score | Field Hours | Strategy Hours | Admin Hours | Delegation % | Top Win | Biggest Drain |
-|------|-------------|---------------|----------------|-------------|---------------|-------------|-------------|---------|---------------|
-| | | | | | | | | | |
-
-## Hume Health Band Trends
-
-| Month | Avg Sleep Score | Avg Recovery | Avg Activity | Best Sleep Night | Worst Sleep Night | Notes |
-|-------|---------------|-------------|-------------|-----------------|------------------|-------|
-| | | | | | | |
-
-### Health-to-Performance Correlations
-<!-- Auto-updated as patterns emerge. Examples:
-- "Weeks with avg sleep score > 75 = 40% more revenue"
-- "Days after < 6hr sleep = 50% fewer outbound calls"
-- "Recovery score < 50 correlates with missed priorities"
--->
+> Gigi maintains this. Sources: self-reported + Hume Health Band + Google Calendar.
+> Goal: Anthony transitions from daily operator to CEO/visionary.
+> Last updated: 2026-04-22
 
 ## Delegation Progress
 
-> Target: Anthony at 20% or less in each function by end of Q2 2026.
+| Function | Q1 2026 Baseline | Q2 2026 Target | Apr 2026 Status |
+|----------|-----------------|----------------|-----------------|
+| Sales calls / follow-up | Anthony 100% | Milli 80% | Agent live |
+| Lead generation | Anthony 80% | Emmie/Buddy 90% | In transition |
+| Marketing / copy | Anthony 70% | Penn/Soshie 90% | Agents live |
+| Email outreach | Anthony 80% | Emmie 95% | Agents live |
+| Customer follow-up | Anthony 90% | Cassie 90% | Agents live |
+| SEO / website | Anthony 100% | Seomi 100% | Agents live |
+| Financial reporting | Anthony 100% | Dexter 100% | Partial -- QB reconnect needed |
+| Hiring | Anthony 100% | Scouty 80% | Agents live |
+| Field work | Anthony 40% | Crew 100% | In progress |
 
-| Function | Q1 2026 | Current | Target | Who/What Handles It |
-|----------|---------|---------|--------|-------------------|
-| Sales calls | Anthony 100% | | Anthony 20% / Milli 80% | Milli + GHL pipeline |
-| Lead generation | Anthony 80% | | Anthony 0% / Automated 100% | Lead-hunter + Emmie + Instantly |
-| Estimating/proposals | Anthony 100% | | Anthony 20% / Proposal-builder 80% | Proposal-builder + RoofSnap |
-| Scheduling/dispatch | Anthony 60% | | Anthony 0% / HCP 100% | Housecall Pro automation |
-| Marketing | Anthony 70% | | Anthony 10% / Agents 90% | Penn + Soshie + Emmie + Seomi |
-| Customer follow-up | Anthony 50% | | Anthony 0% / Cassie 100% | Cassie + Service Robot |
-| Bookkeeping | Robbie 80% | | Robbie 100% / Dexter assists | QB + Dexter reports |
-| Hiring | Anthony 100% | | Anthony 20% / Scouty 80% | Scouty + Indeed/FB |
-| Field work | Anthony 40% | | Anthony 0% / Crew 100% | Lead tech + crew |
+## CEO Time Split Target
 
-## Time Split Tracking
+| Category | Current (Apr 2026) | Q3 2026 Target |
+|----------|------------------|----------------|
+| Vision / strategy | 10% | 40% |
+| Sales (closes only) | 30% | 10% |
+| Operations / field | 40% | 5% |
+| Admin / marketing | 20% | 5% |
+| Agent oversight | 0% | 40% |
 
-| Week | CEO Activities (%) | Operator Activities (%) | Notes |
-|------|-------------------|------------------------|-------|
-| | | | |
+## Q2 2026 CEO Goals
 
-### CEO Activities = strategy, system building, big deals, vision, automation
-### Operator Activities = field work, dispatching, small quotes, manual admin, putting out fires
+- [ ] All 12 agents running autonomously -- no daily input from Anthony
+- [ ] 3+ new commercial maintenance contracts closed
+- [ ] First $50K+ revenue month
+- [ ] Weekly agent review (not daily)
+- [ ] Owner draw increased to $6,000/month
+- [ ] Chase 2048 CC payoff plan started
 
-## Family Balance
+## Weekly Check-In Log
 
-| Week | Family Events Planned | Family Events Attended | Work/Family Conflicts | Notes |
-|------|----------------------|----------------------|----------------------|-------|
-| | | | | |
+> Gigi logs every Monday
 
-## Burnout Indicators
-<!-- Flag when any of these trigger:
-- Hume sleep score < 60 for 3+ consecutive nights
-- Field hours > 25 in a week
-- Strategy hours = 0 for 2+ consecutive weeks
-- Energy rating 1-2 for 3+ consecutive days
-- Missed 2+ family events in a month
--->
+| Week | Revenue | Deals Closed | Field Hrs | CEO Hrs | Sleep | Energy | Family | Notes |
+|------|---------|-------------|----------|---------|-------|--------|--------|-------|
+| 2026-04-21 | $68,142 YTD | PRESS START | TBD | TBD | TBD | TBD | TBD | All 12 agents deployed |
 
-## Quarterly Reflections
+## Health Tracking
 
-### Q1 2026
-- Skills built:
-- Systems automated:
-- Functions delegated:
-- Revenue trend:
-- Health trend:
-- Biggest lesson:
+> Hume Health Band -- Gigi pulls weekly
+
+| Week | Sleep Score | Activity | Recovery | Notes |
+|------|-------------|----------|---------|-------|
+| (Gigi populates weekly) | | | | |
+
+## Burnout Watch Flags
+
+Alert when 3+ trigger in same week:
+- Sleep < 60 for 3+ consecutive nights
+- Field work > 25 hrs/week
+- No family calendar events in 7 days
+- Net revenue < $8,000/week
+- No day off in 10+ days
