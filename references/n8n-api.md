@@ -22,14 +22,14 @@ originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 | `OhcsTjpdQ83Zwv9R` | Instantly Reply → GHL Contact Update | Webhook `/webhook/instantly-replies` | ACTIVE |
 | `kAyZtGcsJ9biWh6I` | Commet <-> Dexter: Agent Request Router | Webhook `/webhook/commet-dexter-request` | ACTIVE (webhook needs UI toggle to register) |
 | `3a8Wv9UQjSWgZ8Pn` | Vizzy 6AM Daily Briefing | Daily 6AM CDT (`0 11 * * *`) → Dexter | ACTIVE — built 2026-04-22 |
-| `JjZNWiBLGWkNVwUn` | Buddy — Weekly Bid Check | Mon+Thu 8AM CDT (`0 13 * * 1,4`) → Buddy | ACTIVE — built 2026-04-22 |
+| `mF1Amt2LXGMWkfwt` | Buddy — Weekly Bid Check | Mon+Thu 8AM CDT (`0 13 * * 1,4`) → Buddy | ACTIVE — built 2026-04-22 |
 
 ## Gmail Monitor Workflows (Autonomous Email Processing)
 | Workflow ID | Name | Trigger | Routes To | Status |
 |-------------|------|---------|-----------|--------|
-| `n4BTLoY1O23Z5pfR` | Gmail Monitor — sales@ -> Milli | Gmail sales@ (everyMinute) | Milli standalone `BJ8RLrbjuZ8pSmAL` | ACTIVE — built 2026-04-22 |
-| `c4nyYUqWEJPBfwMS` | Gmail Monitor — office@ -> Cassie | Gmail office@ (everyMinute) | Cassie standalone `X9OndKjPk1rspj5l` | ACTIVE — built 2026-04-22 |
-| `WSNA0uSazWbvIEDt` | Gmail Monitor — asons@ -> Buddy | Gmail asons@ (everyMinute) | Buddy standalone `Qa4j2OFzxmbPMpug` | ACTIVE — built 2026-04-22 |
+| `mqSWSLhNl3Qy0Nyy` | Gmail Monitor — sales@ → Milli | Gmail sales@ (everyMinute) | Milli standalone `BJ8RLrbjuZ8pSmAL` | ACTIVE — built 2026-04-22 |
+| `L4xHG4YQcEeTHwei` | Gmail Monitor — office@ → Cassie | Gmail office@ (everyMinute) | Cassie standalone `X9OndKjPk1rspj5l` | ACTIVE — built 2026-04-22 |
+| `kO8GSRkAnYKVOp0X` | Gmail Monitor — asons@ → Buddy | Gmail asons@ (everyMinute) | Buddy standalone `Qa4j2OFzxmbPMpug` | ACTIVE — built 2026-04-22 |
 
 ## Soshie Standalone Workflow
 - ID: `W3aE7gdjj2CTapyG`
