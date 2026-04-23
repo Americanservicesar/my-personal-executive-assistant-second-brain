@@ -1,49 +1,78 @@
-# Agent Performance Scorecards
+---
+name: Agent Performance
+description: All 12 agents — current workflow IDs, SM sizes, tools, trigger types, status as of 2026-04-22
+last_updated: 2026-04-22
+type: memory
+---
+# Agent Performance — Current State
 
-> Dexter and Vizzy maintain this. Updated weekly from n8n logs + Slack activity.
-> Last updated: 2026-04-22 | All 12 agents live as of 2026-04-21 (PRESS START)
+## All 12 Agents — Status
 
-## System Health
+| # | Agent | Role | Standalone ID | Orchestrator | SM Chars | Tools | Status |
+|---|-------|------|--------------|-------------|---------|-------|--------|
+| 01 | Vizzy | CEO EA / Orchestrator | N/A (IS the orchestrator) | JAYrzGWR8A0tCBzB | 8,672 | 24 | LIVE |
+| 02 | Milli | Sales Manager | BJ8RLrbjuZ8pSmAL | JAYrzGWR8A0tCBzB | 12,243 | 16 | LIVE |
+| 03 | Penn | Copywriter | cwyGNdgiCABHwVa3 | JAYrzGWR8A0tCBzB | 8,322 | 16 | LIVE |
+| 04 | Emmie | Email Marketing | Cxb4JDBsMF8fvRqP | JAYrzGWR8A0tCBzB | 7,200 | 14 | LIVE |
+| 05 | Soshie | Social Media | W3aE7gdjj2CTapyG | JAYrzGWR8A0tCBzB | 6,900 | 12 | LIVE |
+| 06 | Buddy | Business Dev | Qa4j2OFzxmbPMpug | JAYrzGWR8A0tCBzB | 7,100 | 16 | LIVE |
+| 07 | Cassie | Customer Support | X9OndKjPk1rspj5l | JAYrzGWR8A0tCBzB | 7,424 | 16 | LIVE |
+| 08 | Seomi | SEO Specialist | nygXpDVV5Lmn77hX | JAYrzGWR8A0tCBzB | 6,509 | 16 | LIVE |
+| 09 | Scouty | Recruiter | KYkM8ymQybnit3Gb | JAYrzGWR8A0tCBzB | 5,645 | 12 | LIVE |
+| 10 | Gigi | Personal Growth | TKCDLwYceeA0tCix | JAYrzGWR8A0tCBzB | 6,807 | 15 | LIVE |
+| 11 | Commet | eCommerce Manager | 8v3B7RqpkH9ltMvm | JAYrzGWR8A0tCBzB | 7,947 | 12 | LIVE |
+| 12 | Dexter | Financial Analyst | bT5En2FMmvXhIiDl | JAYrzGWR8A0tCBzB | 7,674 | 17 | LIVE |
 
-| Metric | Value |
-|--------|-------|
-| Agents live | 12 / 12 |
-| n8n orchestrator | JAYrzGWR8A0tCBzB (ACTIVE) |
-| Slack-to-Vizzy trigger | LOt2w8e9eXvHMi5T (ACTIVE) |
-| Weekly monitoring cron | X9CJeuwPHXFTF2ta (Mon 9AM CDT) |
+## Autonomous Triggers Per Agent
 
-## Agent Scorecards
+| Agent | Trigger | Workflow ID | Schedule |
+|-------|---------|------------|---------|
+| Dexter | Daily 6AM Briefing | 3a8Wv9UQjSWgZ8Pn | 6AM CDT daily |
+| Buddy | Weekly Bid Check | mF1Amt2LXGMWkfwt | Mon+Thu 8AM CDT |
+| Milli | Gmail Monitor sales@ | mqSWSLhNl3Qy0Nyy | Every new email |
+| Cassie | Gmail Monitor office@ | L4xHG4YQcEeTHwei | Every new email |
+| Buddy | Gmail Monitor asons@ | kO8GSRkAnYKVOp0X | Every new email |
+| Soshie | Monday Batch | ibcZUQdHjcT81HTV | Mon 7AM CDT |
+| Commet | Weekly + Monthly | X9CJeuwPHXFTF2ta | Mon 9AM CDT |
+| Seomi | Daily GSC Check | 9AdSMJNMkym65Y5V | Daily 9AM CDT |
+| Seomi | Weekly Rank Tracker | e6PnFg6YZpagNq7j | Mon 8AM CDT |
+| Gigi | Daily Health Pull | (see n8n) | Daily |
+| Emmie | Monthly Ad Report | (see n8n) | Monthly |
 
-| # | Agent | Role | Standalone ID | SM Chars | Tools | Status | Primary KPI |
-|---|-------|------|--------------|---------|-------|--------|-------------|
-| 01 | Vizzy | CEO Orchestrator | JAYrzGWR8A0tCBzB | 8,672 | 24 | ACTIVE | Routing accuracy |
-| 02 | Milli | Sales Manager | TL5bO1l7QCI3XIAm | 13,188 | 12 | ACTIVE | Proposals/week, close rate |
-| 03 | Penn | Copywriter | cwyGNdgiCABHwVa3 | 8,322 | 8 | ACTIVE | Copy pieces/week |
-| 04 | Emmie | Email Marketing | (see agent_04) | 6,994 | 9 | ACTIVE | Open rate, sequences launched |
-| 05 | Soshie | Social Media | W3aE7gdjj2CTapyG | 6,853 | 7 | ACTIVE | Posts/week, engagement |
-| 06 | Buddy | Business Dev | (see agent_06) | 8,071 | 8 | ACTIVE | Bids submitted, pipeline value |
-| 07 | Cassie | Customer Support | (see agent_07) | 14,468 | 16 | ACTIVE | Response time, satisfaction |
-| 08 | Seomi | SEO Specialist | (see agent_08) | 7,722 | 16 | ACTIVE | Rankings, organic sessions |
-| 09 | Scouty | Recruiter/HR | (see agent_09) | 5,795 | 13 | ACTIVE | Applicants sourced, hires |
-| 10 | Gigi | Personal Coach | (see agent_10) | 6,610 | 15 | ACTIVE | Weekly check-in, health trend |
-| 11 | Commet | eCommerce Mgr | 8v3B7RqpkH9ltMvm | 7,658 | 12 | ACTIVE | Package sales, AMP growth |
-| 12 | Dexter | Data Analyst | (see agent_12) | 7,887 | 17 | ACTIVE | Reports delivered, accuracy |
+## Handoff Graph (which agent calls which)
 
-## Notes
-- Penn SM updated 2026-04-22: premium G/B/B pricing added (8,322 chars)
-- Commet: weekly cron X9CJeuwPHXFTF2ta active (Mon 9AM CDT)
-- Dexter: QB needs manual reconnect in n8n UI to unlock financial reporting
-- Emmie: 40/day Instantly send limit (cleanmycommercialproperty@gmail.com) -- 2 more accounts to reconnect
+Vizzy -> ALL (orchestrator routes everything)
+Milli -> Penn (proposals), Emmie (sequences), Dexter (financial check), Cassie (handoff after close)
+Penn -> Emmie (deploy copy), Milli (warm reply)
+Emmie -> Milli (hot lead), Cassie (complaint)
+Soshie -> Penn (copy), Emmie (deploy)
+Buddy -> Milli (qualified lead), Penn (bid copy)
+Cassie -> Milli (upsell after support), Dexter (billing)
+Seomi -> Penn (content), Soshie (social SEO)
+Scouty -> Cassie (hiring onboard), Dexter (payroll check)
+Gigi -> Dexter (financials), Milli (personal deal)
+Commet -> Penn (package copy), Emmie (deploy), Soshie (promote)
+Dexter -> Milli (flag hot leads by revenue)
 
-## Action Log
+## KPI Targets Per Agent
 
-> Vizzy appends after major events
+| Agent | Primary KPI | Current | Target |
+|-------|------------|---------|--------|
+| Milli | Pipeline closed/month | ~$68K YTD | $166K/mo |
+| Buddy | Qualified bids found/week | N/A (new) | 5/week |
+| Emmie | Email open rate | N/A | >40% |
+| Soshie | Posts/week | 7 | 14 |
+| Seomi | Conway #1 rankings | In progress | 10 keywords |
+| Dexter | Reports generated/week | Daily briefings | 5 |
+| Cassie | Review responses <1hr | Live | 100% |
+| Penn | Proposals written/week | On demand | 10 |
+| Commet | Avg ticket size | $649 Better | $1,200 |
 
-| Date | Agent | Action | Result |
-|------|-------|--------|--------|
-| 2026-04-22 | Penn | SM updated -- premium G/B/B pricing | 8,322 chars both SMs verified |
-| 2026-04-22 | Claude | GitHub Brain audit -- 10 empty files populated | All memory files have real data |
-| 2026-04-21 | All | PRESS START -- 12/12 deployed | Full autonomous system live |
-| 2026-04-21 | Commet | Weekly monitoring cron deployed | X9CJeuwPHXFTF2ta ACTIVE |
-| 2026-04-21 | Scouty | GHL HTTP tool added | 13 tools -- CRM 404 fixed |
-| 2026-04-21 | Vizzy | Slack Error Log bug fixed | No more Chat/MCP crashes |
+## Agent System — Key Architecture Notes
+
+1. ALL standalones use $json.query as input field (not chatInput)
+2. Orchestrator JAYrzGWR8A0tCBzB = Telegram + Chat Interface ONLY (no executeWorkflowTrigger)
+3. Vizzy has no separate standalone — it IS the orchestrator
+4. Dual SM rule: always update BOTH standalone + orchestrator when changing agent instructions
+5. Slack: every agent posts to #agent-activity (C0ARKTU2HR6) + their own channel
+6. All external comms: say "American Services AR" never "ASAR"
