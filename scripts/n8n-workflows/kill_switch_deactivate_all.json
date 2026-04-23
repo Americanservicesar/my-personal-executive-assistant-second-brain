@@ -1,0 +1,271 @@
+{
+  "name": "KILL SWITCH — Deactivate All Outbound",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Manual Trigger (Press Button)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "kill-switch",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "trigger-webhook",
+      "name": "Webhook (Phone/URL Trigger)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 500],
+      "webhookId": "kill-switch-asar"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://americanservicesar.app.n8n.cloud/api/v1/workflows?active=true",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Accept", "value": "application/json" }
+          ]
+        },
+        "options": { "response": { "response": { "fullResponse": false } } }
+      },
+      "id": "list-active-wf",
+      "name": "n8n — List Active Workflows",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 400],
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_WITH_N8N_API_KEY_CRED_ID", "name": "n8n API Key Header" }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "split-workflows",
+      "name": "Split Workflow List",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [720, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "strict" },
+          "conditions": [
+            {
+              "id": "skip-self",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "KILL SWITCH",
+              "operator": { "type": "string", "operation": "notContains" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "filter-self",
+      "name": "Skip Kill Switch Itself",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [960, 400]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://americanservicesar.app.n8n.cloud/api/v1/workflows/{{ $json.id }}/deactivate",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Accept", "value": "application/json" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "deactivate-wf",
+      "name": "n8n — Deactivate Workflow",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1220, 340],
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_WITH_N8N_API_KEY_CRED_ID", "name": "n8n API Key Header" }
+      }
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.instantly.ai/api/v2/campaigns?limit=100",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Accept", "value": "application/json" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "list-instantly-campaigns",
+      "name": "Instantly — List Campaigns",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 700],
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_WITH_INSTANTLY_BEARER_CRED_ID", "name": "Instantly Bearer" }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "options": {}
+      },
+      "id": "split-campaigns",
+      "name": "Split Instantly Campaigns",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [720, 700]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "strict" },
+          "conditions": [
+            {
+              "id": "active-only",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "1",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "filter-active-campaigns",
+      "name": "Active Campaigns Only",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [960, 700]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.instantly.ai/api/v2/campaigns/{{ $json.id }}/pause",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Accept", "value": "application/json" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "pause-campaign",
+      "name": "Instantly — Pause Campaign",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1220, 640],
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_WITH_INSTANTLY_BEARER_CRED_ID", "name": "Instantly Bearer" }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Aggregate results for Slack summary\nconst allItems = $input.all();\nconst n8nDeactivated = allItems.filter(i => i.json && i.json.active === false && i.json.id).length;\nconst instantlyPaused = allItems.filter(i => i.json && (i.json.status === 'paused' || i.json.status === 2)).length;\nreturn [{\n  json: {\n    n8n_deactivated: n8nDeactivated,\n    instantly_paused: instantlyPaused,\n    timestamp: new Date().toISOString(),\n    summary: `KILL SWITCH FIRED — n8n workflows deactivated: ${n8nDeactivated}, Instantly campaigns paused: ${instantlyPaused}. HCP and GHL automations must be paused manually.`\n  }\n}];"
+      },
+      "id": "summarize",
+      "name": "Build Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1480, 500]
+    },
+    {
+      "parameters": {
+        "authentication": "accessToken",
+        "select": "channel",
+        "channelId": { "__rl": true, "value": "C0ARKTU2HR6", "mode": "id" },
+        "text": "=:rotating_light: *KILL SWITCH FIRED* :rotating_light:\n{{ $json.summary }}\n\n*Still required (manual):*\n• GoHighLevel / Service Robot — Automation → Workflows → Pause all\n• Housecall Pro — Settings → Customer Communications → toggle off\n• Google Ads / Facebook Ads — pause campaigns if needed\n\nTriggered: {{ $json.timestamp }}",
+        "otherOptions": {}
+      },
+      "id": "slack-notify",
+      "name": "Slack — Alert #agent-activity",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [1720, 500],
+      "credentials": {
+        "slackApi": { "id": "REPLACE_WITH_SLACK_CRED_ID", "name": "Slack ASAR" }
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger (Press Button)": {
+      "main": [[
+        { "node": "n8n — List Active Workflows", "type": "main", "index": 0 },
+        { "node": "Instantly — List Campaigns", "type": "main", "index": 0 }
+      ]]
+    },
+    "Webhook (Phone/URL Trigger)": {
+      "main": [[
+        { "node": "n8n — List Active Workflows", "type": "main", "index": 0 },
+        { "node": "Instantly — List Campaigns", "type": "main", "index": 0 }
+      ]]
+    },
+    "n8n — List Active Workflows": {
+      "main": [[{ "node": "Split Workflow List", "type": "main", "index": 0 }]]
+    },
+    "Split Workflow List": {
+      "main": [[{ "node": "Skip Kill Switch Itself", "type": "main", "index": 0 }]]
+    },
+    "Skip Kill Switch Itself": {
+      "main": [
+        [{ "node": "n8n — Deactivate Workflow", "type": "main", "index": 0 }],
+        []
+      ]
+    },
+    "n8n — Deactivate Workflow": {
+      "main": [[{ "node": "Build Summary", "type": "main", "index": 0 }]]
+    },
+    "Instantly — List Campaigns": {
+      "main": [[{ "node": "Split Instantly Campaigns", "type": "main", "index": 0 }]]
+    },
+    "Split Instantly Campaigns": {
+      "main": [[{ "node": "Active Campaigns Only", "type": "main", "index": 0 }]]
+    },
+    "Active Campaigns Only": {
+      "main": [
+        [{ "node": "Instantly — Pause Campaign", "type": "main", "index": 0 }],
+        []
+      ]
+    },
+    "Instantly — Pause Campaign": {
+      "main": [[{ "node": "Build Summary", "type": "main", "index": 0 }]]
+    },
+    "Build Summary": {
+      "main": [[{ "node": "Slack — Alert #agent-activity", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": {
+    "purpose": "One-button emergency shutdown for all outbound automation. Fires on manual click or webhook POST. Deactivates every active n8n workflow (except itself), pauses every active Instantly campaign, posts summary to #agent-activity. HCP + GHL must still be paused manually — their APIs do not expose bulk-automation-pause for PIT/API-key auth.",
+    "instructions": [
+      "1. Import this JSON into n8n via Workflows → Import from File.",
+      "2. Create n8n API Key credential: n8n Settings → API → Create API Key → add as HTTP Header Auth credential (header Name: X-N8N-API-KEY, Value: the key). Replace REPLACE_WITH_N8N_API_KEY_CRED_ID in both n8n HTTP nodes.",
+      "3. Create Instantly Bearer credential: HTTP Header Auth → header Name: Authorization, Value: Bearer YzI3YTdhODUtMGMxNy00ZTNkLWE1ZTktYzA0NDI1OGNlMjM5OkZSVEV2Y3JCd0daWQ==  Replace REPLACE_WITH_INSTANTLY_BEARER_CRED_ID in both Instantly nodes.",
+      "4. Attach existing Slack credential to the Slack node (REPLACE_WITH_SLACK_CRED_ID).",
+      "5. Pin this workflow — do NOT deactivate. Rename if needed but keep 'KILL SWITCH' in the name so the self-exclusion filter works.",
+      "6. Bookmark the Webhook Production URL on Anthony's phone home screen for one-tap panic button."
+    ]
+  }
+}
