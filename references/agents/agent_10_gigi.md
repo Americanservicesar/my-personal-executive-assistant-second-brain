@@ -4,11 +4,12 @@ role: Personal Growth
 standalone_workflow_id: TKCDLwYceeA0tCix
 orchestrator_workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-system_message_chars: 6807
-standalone_tool_count: 15
+system_message_chars: 6953
+standalone_tool_count: 18
 handoff_targets: Dexter, Milli
 game_plan_doc_id: 14yJ6T9ZDZzLY9OUyvIyVpC-bj-Dt3JYilI75O-ibiHQ
-last_synced: 2026-04-19
+last_synced: 2026-04-24
+originSessionId: 4544c810-b712-4482-b270-31711374cf0c
 ---
 # Gigi — Personal Growth
 
