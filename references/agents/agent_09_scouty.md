@@ -4,11 +4,12 @@ role: Recruiter
 standalone_workflow_id: KYkM8ymQybnit3Gb
 orchestrator_workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-system_message_chars: 5645
-standalone_tool_count: 12
+system_message_chars: 6328
+standalone_tool_count: 13
 handoff_targets: Cassie, Dexter
 game_plan_doc_id: 1AW13Y-C6Qbzek7wUMMX3-c2PD96QxcImU1SunB8o98A
-last_synced: 2026-04-19
+last_synced: 2026-04-24
+originSessionId: 4544c810-b712-4482-b270-31711374cf0c
 ---
 # Scouty — Recruiter
 
