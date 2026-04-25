@@ -401,6 +401,7 @@ Schedule / calendar           → Vizzy
 Coordinate a campaign         → Vizzy (orchestrates all)
 "Who should handle this?"     → Vizzy answers instantly
 Cold outreach reply came in   → Buddy (qualify) then Milli (close)
+New lead / client info given  → GHL contact + HCP customer + estimate (automatic, no prompt)
 ```
 
 ---
@@ -438,6 +439,34 @@ Cold outreach reply came in   → Buddy (qualify) then Milli (close)
 | Gigi | 14yJ6T9ZDZzLY9OUyvIyVpC-bj-Dt3JYilI75O-ibiHQ |
 | Commet | 1tKG29CZ7vCjsf4DVTX5nsoamTLqY-q7tXU-Ib1wy3DQ |
 | Dexter | 1rfvDSxUgisDWKIslBacVMbsx0UV4rK4zEsR36JWdlUs |
+
+---
+
+## Contact Intake — Lead Capture (GHL + HCP)
+
+When Anthony gives a potential client's info from any channel (Telegram, Slack, Claude), execute all 3 steps automatically without being asked:
+
+**Intake format** (any order accepted):
+```
+Name / Company / Phone / Email / Address / Service needed / Notes
+```
+
+**Step 1 — GHL contact** via `HTTP - HighLevel (Vizzy)`:
+- `POST https://services.leadconnectorhq.com/contacts/upsert`
+- Auth: `Bearer pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9` | Version: `2021-07-28`
+- Body: `locationId: PQp7xlYjxZKsi0CWsSA7` + contact fields + `source: "In-Person Lead - Anthony"` + `tags: ["in-person-lead", "estimate-requested"]`
+
+**Step 2 — HCP customer + estimate** via Milli:
+- Milli `POST https://api.housecallpro.com/customers` (name, phone, email, address) | Auth: `Token 13317c556f61472e8a57c60e0bea930f`
+- Milli `POST https://api.housecallpro.com/estimates` (customer_id, note = service + scope, work_status: `needs_estimate`)
+
+**Step 3 — Confirm to Anthony:**
+```
+LEAD CAPTURED — [Name]
+✅ GHL contact created (tagged in-person-lead)
+✅ HCP estimate created — open HCP to add line items and send
+→ Milli notified for 24hr follow-up
+```
 
 ---
 
