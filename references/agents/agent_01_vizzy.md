@@ -4,12 +4,12 @@ role: CEO Executive Assistant & Operations Orchestrator
 standalone_workflow_id: IRW7bAYVlhIa3WDi
 orchestrator_workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-system_message_chars: 8672
+system_message_chars: 9999
 standalone_tool_count: 0
 orchestrator_tool_count: 24
 handoff_targets: all_agents
 game_plan_doc_id: 1x8t9RCkjcDIg2wn2Y3OocZjV-5JDBvFxrxtVs5Om7WU
-last_synced: 2026-04-21
+last_synced: 2026-04-24
 originSessionId: 4544c810-b712-4482-b270-31711374cf0c
 ---
 # Vizzy — CEO Executive Assistant & Operations Orchestrator
