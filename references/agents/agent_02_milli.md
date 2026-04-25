@@ -4,11 +4,11 @@ role: Sales Manager
 standalone_workflow_id: BJ8RLrbjuZ8pSmAL
 orchestrator_workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-system_message_chars: 13684
+system_message_chars: 17936
 standalone_tool_count: 23
 handoff_targets: Penn, Emmie, Dexter, Cassie
 game_plan_doc_id: 1tRCsQ010R5sbXFUbl976UNnAF5FNtI4nTILtOceJkTw
-last_synced: 2026-04-21
+last_synced: 2026-04-24
 originSessionId: c9247327-3286-4c3e-b098-877979335ec0
 ---
 # Milli — Sales Manager
