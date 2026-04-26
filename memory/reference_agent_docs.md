@@ -2,7 +2,7 @@
 name: Agent Reference Docs — Sync Locations
 description: All 12 agent reference docs synced across Desktop, GitHub Brain, and Google Drive
 type: reference
-last_synced: 2026-04-17
+last_synced: 2026-04-21
 originSessionId: 28538f79-b607-429a-8177-d3fcdd418bfb
 ---
 ## Sync Locations
