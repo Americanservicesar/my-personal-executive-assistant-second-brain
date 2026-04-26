@@ -203,6 +203,32 @@ const resp = await this.helpers.httpRequest({
 
 **Also:** `Promise.all()` with `fetch` fails for the same reason. Use sequential `await` calls in a loop, or restructure into parallel branches feeding a Merge node.
 
+## Email Safety — Never Fabricate Email Addresses in Agent Workflows
+
+**Confirmed bug (2026-04-26):** Milli was hallucinating email addresses using `@example.com` (e.g., `carolyn.kennedy@example.com`, `Kristen.Williams@example.com`) when it could not find a verified email in the inbound notification. The Gmail Monitor workflow was passing only the raw email body to Milli without explicit instructions on how to resolve the contact's real email.
+
+**Root cause:** The `Format Email Query` node instruction said "Upsert contact in GHL (name, email, phone if included)" — no guidance on HOW to find the email. The AI filled in the gap by fabricating an address from the person's name.
+
+**Fix applied 2026-04-26:**
+- Added CRITICAL EMAIL SAFETY block to `Format Email Query` node in workflow `mqSWSLhNl3Qy0Nyy`
+- Added same block to Milli standalone system message in `BJ8RLrbjuZ8pSmAL`
+
+**Pattern to enforce on ALL email-sending workflows:**
+```
+To find the prospect email:
+  a. Scan notification BODY for "Email: xxx@xxx.com" — use that exact address
+  b. If not in body: GET /contacts/?locationId=PQp7xlYjxZKsi0CWsSA7&query=<phone_or_name>
+  c. Use email from GHL contact record
+  d. If NO verified email: DO NOT SEND — post to Slack requesting the email
+  e. HARD BLOCK: never send to @example.com, @email.com, or any placeholder domain
+```
+
+**Internal agent emails do not exist:** `cassie@americanservicesar.com`, `emmie@americanservicesar.com`, `penn@americanservicesar.com` — none of these are real mailboxes. Route internal alerts to `office@` or `sales@` instead.
+
+**Why:** `example.com` is an RFC-reserved domain that explicitly rejects all email. Any send to `@example.com` will always bounce. It also reveals that the AI fabricated the address.
+
+**How to apply:** Add the email safety block to every new Gmail Monitor or auto-reply workflow. Put it in the Format Query node AND in the agent system message.
+
 ## Fan-In Duplicate Execution — Code Nodes Run N Times
 
 When N HTTP nodes all connect to a single downstream Code node (`runOnceForAllItems`), the Code node executes **once per upstream branch** = N times, producing N identical output sets. This causes duplicate rows in Sheets, duplicate Slack messages, etc.
