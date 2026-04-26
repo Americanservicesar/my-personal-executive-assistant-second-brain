@@ -7,16 +7,17 @@ originSessionId: 28538f79-b607-429a-8177-d3fcdd418bfb
 ## Agent Optimization — Issues to Fix After All Agents Complete
 
 ### CREDENTIALS NEEDED
-- [ ] **HighLevel OAuth2** — Create `highLevelOAuth2Api` credential in n8n UI (OAuth2 app in GHL Settings → Integrations). Needed by Vizzy + any other agents that need GHL access.
+- [x] **HighLevel OAuth2** — RESOLVED via workaround. GHL OAuth2 app not available. All agents use PIT token (`pit-9f981ca1-b6b2-4e1c-a9b0-2f39a4a81fb9`) via HTTP Request nodes (credential `I99pH7lTosyVqinb`). HL Tool v2 nodes not used.
 - [ ] **Gmail account separation** — All 4 Vizzy Gmail nodes share one OAuth2 credential (`BzBgoySpZrWPcE09`). If each email (sales@, office@, asons@, sonsfamily2012@) needs its own credential, create 3 more Gmail OAuth2 creds in n8n.
 
 ### WORKFLOW-LEVEL ISSUES
-- [ ] **Telegram→Chat path conflict** — Send Telegram Reply, Slack Telegram Log, and Slack Agent Activity nodes reference `$("Format for Vizzy")` which only exists on Telegram path. When triggered via Chat/MCP, these error out. Non-blocking but noisy. Fix: wrap expressions in `$if($("Format for Vizzy").isExecuted, ...)`.
-- [ ] **Settings reset on PUT** — REST API PUT resets `availableInMCP` to false. Must re-enable in n8n UI after every API push.
+- [x] **Telegram→Chat path conflict** — FIXED 2026-04-21. Slack Error Log node updated with `$if($('Format for Vizzy').isExecuted, ...)` check. Orchestrator versionId: c857ede6. All 5 nodes confirmed safe.
+- [x] **Settings reset on PUT** — RESOLVED: All 10 standalones verified MCP=True. No resets occurred.
 
-### OUTREACH SYSTEM — NEW (2026-04-16)
-- [ ] **Instantly → GHL webhook** — Configure Instantly reply webhook to POST to n8n webhook URL → create/update GHL contact with tags: instantly-reply, V-[vertical], T-warm → notify Buddy in #buddy-bizdev
-- [ ] **Launch first Instantly campaign** — ASAR-01-Apartments — verify end-to-end before launching ASAR-02
+### OUTREACH SYSTEM
+- [x] **Instantly → GHL webhook** — BUILT + ACTIVE 2026-04-21. Workflow ID: OhcsTjpdQ83Zwv9R. Path: /webhook/instantly-replies. Auto-creates/updates GHL contacts with tags: instantly-reply, V-[vertical], T-warm. Notifies #buddy-bizdev and #agent-activity.
+- [ ] **Configure Instantly settings** — Anthony: Go to Instantly.ai → Settings → Webhooks → add `https://americanservicesar.app.n8n.cloud/webhook/instantly-replies` for Reply event
+- [ ] **Launch first Instantly campaign** — ASAR-01-Apartments — verify end-to-end with Buddy before launching ASAR-02
 
 ### VIZZY (Agent 1) — DONE
 - [x] System message updated (5,277 chars)
@@ -87,8 +88,10 @@ originSessionId: 28538f79-b607-429a-8177-d3fcdd418bfb
 - [x] Game plan doc ID in standalone SM (1ISFb5BQtaKvymizuFGom6DP-bUMnsPLvr2Jm43O16fk)
 - [x] agent_08_seomi.md pushed to GitHub Brain (SHA: d68242a76b58094f82af01e1c00969bcd1137f72)
 
-### SCOUTY (Agent 9) — FULLY COMPLETE 2026-04-19
-- [x] SM verified 5,645 chars / 12 tools
+### SCOUTY (Agent 9) — UPDATED 2026-04-21
+- [x] SM verified 5,645 chars / 12 tools (was)
+- [x] **GHL HTTP tool added 2026-04-21** — "HTTP - GHL API (Scouty)" with PIT token. Now 13 tools. SM updated with GHL location ID (vQdpSFX4H6nRoRPh2g4Z) and endpoint guide. Fixes CRM 404 error.
+- [x] **Orchestrator agentTool SM updated** — GHL Hiring Pipeline section added (versionId: ae23526d)
 - [x] Game plan doc: 1AW13Y-C6Qbzek7wUMMX3-c2PD96QxcImU1SunB8o98A (WHO/WHAT/WHERE/WHEN/HOW)
 - [x] Synced to GitHub Brain + skill SKILL.md
 
@@ -97,8 +100,11 @@ originSessionId: 28538f79-b607-429a-8177-d3fcdd418bfb
 - [x] Game plan doc: 14yJ6T9ZDZzLY9OUyvIyVpC-bj-Dt3JYilI75O-ibiHQ (WHO/WHAT/WHERE/WHEN/HOW)
 - [x] Synced to GitHub Brain + skill SKILL.md
 
-### COMMET (Agent 11) — FULLY COMPLETE 2026-04-19
+### COMMET (Agent 11) — UPDATED 2026-04-21
 - [x] SM verified 7,947 chars / 12 tools
+- [x] Standalone workflow: 8v3B7RqpkH9ltMvm (Commet - Data Analysis) ACTIVE
+- [x] **Section 3B monitoring cron** — BUILT + ACTIVE 2026-04-21. WF: X9CJeuwPHXFTF2ta. Mon 9AM CDT: weekly store review every week + monthly report on first Monday of month.
+- [x] **Commet↔Dexter Agent Request Router** — WF: kAyZtGcsJ9biWh6I ACTIVE. Webhook: /webhook/commet-dexter-request → calls Dexter standalone. NOTE: Webhook not registered (API-created). Anthony must toggle in n8n UI.
 - [x] Game plan doc: 1tKG29CZ7vCjsf4DVTX5nsoamTLqY-q7tXU-Ib1wy3DQ (WHO/WHAT/WHERE/WHEN/HOW)
 - [x] Synced to GitHub Brain + skill SKILL.md
 
