@@ -4,7 +4,7 @@ role: Sales Manager
 standalone_workflow_id: BJ8RLrbjuZ8pSmAL
 orchestrator_workflow_id: JAYrzGWR8A0tCBzB
 model: claude-sonnet-4-6
-system_message_chars: 17936
+system_message_chars: 19854
 standalone_tool_count: 23
 handoff_targets: Penn, Emmie, Dexter, Cassie
 game_plan_doc_id: 1tRCsQ010R5sbXFUbl976UNnAF5FNtI4nTILtOceJkTw
