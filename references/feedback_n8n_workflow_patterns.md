@@ -203,6 +203,32 @@ const resp = await this.helpers.httpRequest({
 
 **Also:** `Promise.all()` with `fetch` fails for the same reason. Use sequential `await` calls in a loop, or restructure into parallel branches feeding a Merge node.
 
+## Email Safety — Never Fabricate Email Addresses in Agent Workflows
+
+**Confirmed bug (2026-04-26):** Milli was hallucinating email addresses using `@example.com` (e.g., `carolyn.kennedy@example.com`, `Kristen.Williams@example.com`) when it could not find a verified email in the inbound notification. The Gmail Monitor workflow was passing only the raw email body to Milli without explicit instructions on how to resolve the contact's real email.
+
+**Root cause:** The `Format Email Query` node instruction said "Upsert contact in GHL (name, email, phone if included)" — no guidance on HOW to find the email. The AI filled in the gap by fabricating an address from the person's name.
+
+**Fix applied 2026-04-26:**
+- Added CRITICAL EMAIL SAFETY block to `Format Email Query` node in workflow `mqSWSLhNl3Qy0Nyy`
+- Added same block to Milli standalone system message in `BJ8RLrbjuZ8pSmAL`
+
+**Pattern to enforce on ALL email-sending workflows:**
+```
+To find the prospect email:
+  a. Scan notification BODY for "Email: xxx@xxx.com" — use that exact address
+  b. If not in body: GET /contacts/?locationId=PQp7xlYjxZKsi0CWsSA7&query=<phone_or_name>
+  c. Use email from GHL contact record
+  d. If NO verified email: DO NOT SEND — post to Slack requesting the email
+  e. HARD BLOCK: never send to @example.com, @email.com, or any placeholder domain
+```
+
+**Internal agent emails do not exist:** `cassie@americanservicesar.com`, `emmie@americanservicesar.com`, `penn@americanservicesar.com` — none of these are real mailboxes. Route internal alerts to `office@` or `sales@` instead.
+
+**Why:** `example.com` is an RFC-reserved domain that explicitly rejects all email. Any send to `@example.com` will always bounce. It also reveals that the AI fabricated the address.
+
+**How to apply:** Add the email safety block to every new Gmail Monitor or auto-reply workflow. Put it in the Format Query node AND in the agent system message.
+
 ## Fan-In Duplicate Execution — Code Nodes Run N Times
 
 When N HTTP nodes all connect to a single downstream Code node (`runOnceForAllItems`), the Code node executes **once per upstream branch** = N times, producing N identical output sets. This causes duplicate rows in Sheets, duplicate Slack messages, etc.
@@ -217,3 +243,124 @@ When N HTTP nodes all connect to a single downstream Code node (`runOnceForAllIt
 - 7 HTTP calls (FB + 6 GHL tags) → consolidated into 1 Code node
 - 1 Google Ads HTTP node (needs OAuth2 cred, can't be inside Code node) → Merge node input 1
 - Code node output → Merge node → Format Code node (runs exactly once, no duplicates)
+
+## HTTP Request Tool Node — Required Format for AI Agent Tools
+
+When adding HTTP Request Tool nodes to AI agent workflows:
+
+**typeVersion MUST be 4.4** — NOT 1.1. Using 1.1 causes `Cannot read properties of undefined (reading 'supplyData')` error when uploading via API.
+
+**POST body requires:**
+- `"specifyBody": "json"` (NOT `"contentType": "json"`)
+- `"jsonBody": "={{ $fromAI('body', '...', 'string') }}"` (NOT `"body": "..."`)
+
+**$fromAI() expressions:** Use single quotes inside the expression. Double quotes inside cause parse errors.
+
+**Working POST with JSON body pattern (verified 2026-04-26):**
+```json
+{
+  "sendBody": true,
+  "specifyBody": "json",
+  "jsonBody": "={{ $fromAI('body', 'Description here', 'string') }}"
+}
+```
+
+**For predefined credentials in tool nodes:** `authentication: "predefinedCredentialType"` + `nodeCredentialType: "googleAdsOAuth2Api"` works at typeVersion 4.4.
+
+**Google Service Account for GSC tool:** Use `nodeCredentialType: "googleApi"` with credential `nWnxAUry9O6tRyTm` (Google Service Account account). This gives SA-based auth to GSC/Search Console APIs.
+
+---
+
+## n8n v2 IF Node: `boolean.equal` Never Matches — Use `boolean.true`
+
+**Confirmed bug (2026-04-28):** In n8n v2 IF nodes, the operator `{"type":"boolean","operation":"equal"}` with `rightValue: true` NEVER correctly matches a JavaScript boolean `true` returned from a Code node — even when the value clearly equals true. Executions silently route to the false/drop path every time.
+
+**Fix:** Change the operator to `{"type":"boolean","operation":"true"}` with NO `rightValue` field. This checks truthiness instead of equality and works correctly.
+
+```json
+// WRONG — never matches boolean true from Code nodes
+{"type": "boolean", "operation": "equal", "rightValue": true}
+
+// CORRECT — works in n8n v2
+{"type": "boolean", "operation": "true"}
+```
+
+**Affected workflows confirmed:** `d8xiKaMU7rZ0Ldxp` (Address Processor — Has Valid Input), `4XY3iZmgB6jm4YlD` (HCP Webhook Router — 5 IF nodes). Any workflow with IF nodes checking `$json.success`, `$json.contactFound`, `$json.oppFound`, `$json.isCompleted`, etc. is likely broken.
+
+**How to apply:** Any time an IF node checks a boolean value from a Code node output, always use `boolean.true`. Audit all existing IF nodes when debugging silent drop/routing failures.
+
+## n8n HTTP Request Body: `jsonBody` Must Start With `=` for Expressions to Evaluate
+
+**Confirmed bug (2026-04-28):** In HTTP Request nodes with `specifyBody: "json"`, if the `jsonBody` string does NOT start with `=`, any `={{ expr }}` expressions inside are sent as literal strings to the API — GHL responds 422 Unprocessable Entity.
+
+**Fix:** Prefix `jsonBody` with `=` and use `{{ expr }}` (not `={{ expr }}`) inside the string:
+
+```json
+// WRONG — sends "firstName": "={{ $json.firstName }}" literally to the API
+"jsonBody": "{\"firstName\": \"={{ $json.firstName }}\"}"
+
+// CORRECT — evaluates expressions, sends actual values
+"jsonBody": "={\"firstName\": \"{{ $json.firstName }}\"}"
+```
+
+**Why:** n8n only evaluates the entire `jsonBody` value as an expression when it starts with `=`. Without the prefix, the curly-brace syntax is treated as a literal string, not an n8n expression.
+
+**Affected nodes in HCP Webhook Router (`4XY3iZmgB6jm4YlD`):** Update GHL Stage, Create GHL Contact, Create GHL Opportunity (New), Create GHL Opportunity (No Opp), Update GHL Contact — all 5 were broken.
+
+**Also wrong (do NOT do):** Changing `specifyBody` to `"string"` and renaming `jsonBody` to `body`. This causes n8n to parse the body as a malformed JSON object.
+
+**How to apply:** When writing any HTTP Request node with dynamic fields, always start `jsonBody` with `=` and use `{{ }}` for expressions inside.
+
+## HCP Webhook: `approval_status` Is Nested at `options[0]`, Not Entity Top Level
+
+**Confirmed bug (2026-04-28):** For `estimate.option.approval_status_changed` events from HousecallPro, `approval_status` is NOT at `entity.approval_status` or `body.approval_status`. It lives at `entity.options[0].approval_status`.
+
+**Fix:** Add `options[0]` as a fallback in the lookup chain:
+```javascript
+const approvalStatus = (
+  body.approval_status ||
+  entity.approval_status ||
+  (entity.options && entity.options[0] && entity.options[0].approval_status) ||
+  ''
+).toLowerCase();
+```
+
+**Why it matters:** Without this fix, approval events always route as 'declined' (empty string doesn't match 'approved'), so estimates approved by customers never move GHL stage to Estimate Approved.
+
+**How to apply:** In any HCP webhook parser handling estimate events, always check the `options` array for approval_status.
+
+## GHL Contact Search: Always Phone-First, Email as Fallback
+
+**Confirmed pattern (2026-04-28):** GHL contacts created from HCP often have no email (if email was blank in HCP). Phone-first search (`$json.phone || $json.email`) finds these contacts reliably. Email-first (`$json.email || $json.phone`) misses them and triggers a duplicate Create.
+
+**Fix:**
+```
+// WRONG — misses contacts with no email
+/contacts/?locationId=...&query={{ $json.email || $json.phone }}
+
+// CORRECT — finds contacts even when email is null
+/contacts/?locationId=...&query={{ $json.phone || $json.email }}
+```
+
+**How to apply:** In any GHL contact lookup, default to phone-first. Only use email-first if you know the contact always has an email.
+
+## HCP Placeholder Node Is a Stub — Does Not Create HCP Customers
+
+**Confirmed 2026-04-28:** The "HCP Placeholder" Code node in the ASAR Lead Address Processor (`d8xiKaMU7rZ0Ldxp`) contains ONLY this code:
+```javascript
+// Pass all data through — HCP creation bypassed until API access confirmed
+return items;
+```
+
+It passes data through without creating anything in HousecallPro. Every customer who replies with their address gets moved through GHL stages and receives an SMS — but NO HCP customer record is ever created.
+
+**Impact:** Technicians and Anthony cannot schedule or send estimates in HCP for these contacts. Manual HCP customer creation is required for every address-collected lead until this is replaced.
+
+**Fix needed:** Replace the HCP Placeholder with real HCP API calls:
+1. `POST https://api.housecallpro.com/customers` (create customer)
+2. `POST https://api.housecallpro.com/customers/{id}/addresses` (add service address)
+Auth: `Token 13317c556f61472e8a57c60e0bea930f`
+
+**Manual workaround (confirmed working 2026-04-28):** Use HCP API directly to create customer + address, then PUT to add email/phone. Used for David Carver (`cus_3d3ebaca3cf843ce9e79e95b2d9a01af`).
+
+**How to apply:** Flag any new address-collected lead for manual HCP creation until Placeholder is replaced. Log in n8n execution notes or Slack.
