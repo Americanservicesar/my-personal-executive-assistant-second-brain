@@ -139,3 +139,43 @@ Affected: Commet-Dexter router (kAyZtGcsJ9biWh6I).
 LinkedIn in GHL expires approximately every 60 days.
 Current expiry: May 12, 2026. Reconnect by May 5 to avoid posting blackout.
 GHL sends Pre-Expiry email alerts (already enabled).
+---
+
+## 2026-04-28 — HCP Webhook Router Full Repair (4XY3iZmgB6jm4YlD)
+
+**Problem:** Zero HCP events (estimate sent, approvals, job completion) were ever moving GHL stages. The entire pipeline tracker was silent from day one.
+
+**Root causes (4 bugs):**
+
+1. **n8n v2 boolean.equal never matches** — All 5 IF nodes (Has Contact Info, Contact Found, Opportunity Found, Is Job Completed x2) used `boolean.equal + rightValue: true`. In n8n v2, this NEVER matches boolean `true` from Code nodes. Every event silently dropped at the first IF node. Fix: changed all 5 to `boolean.true` (no rightValue).
+
+2. **HCP approval_status nested at `options[0]`** — Parser was checking `entity.approval_status` (undefined). Actual path: `entity.options[0].approval_status`. Fix: added options[0] as 3rd fallback in lookup chain. Without this, approvals always mapped as 'declined'.
+
+3. **GHL contact search email-first** — Many GHL contacts (created from HCP) have null email. Phone-first search (`$json.phone || $json.email`) finds them; email-first misses them and creates duplicate contacts. Fix: swapped order.
+
+4. **HTTP node jsonBody expressions not evaluating** — `specifyBody: "json"` only evaluates `{{ expr }}` inside `jsonBody` when the string starts with `=`. Without the `=` prefix, GHL receives literal `={{ $json.firstName }}` strings and returns 422. Fix: prefixed all 5 HTTP node jsonBody values with `=` and replaced `={{ }}` with `{{ }}` inside.
+
+**Verification:** Replayed real Michael King events (estimate.sent + estimate.option.approval_status_changed). Both returned `{"success":true,"action":"stage_updated","stage":"estimate_approved"}`. GHL opportunity confirmed at pipelineStageId `69428a6a` (Estimate Approved). ✅
+
+---
+
+## 2026-04-28 — Address Processor boolean.equal Bug (d8xiKaMU7rZ0Ldxp)
+
+**Problem:** Address Processor executions completed in 1-2 seconds instead of 49+ seconds — Has Valid Input node was always routing to false path even when `success: true`.
+
+**Root cause:** Same n8n v2 boolean.equal bug. `{"type":"boolean","operation":"equal","rightValue":true}` never matches boolean `true` from Code node output.
+
+**Fix:** Changed Has Valid Input IF node operator to `{"type":"boolean","operation":"true"}` with no rightValue.
+
+**Verification:** Execution 2080 — 49-second run, full pipeline executed through Wait node, SMS sent, stage moved to Estimate Scheduled, tags updated. ✅
+
+---
+
+## 2026-04-28 — HCP Placeholder Is a Stub (Address Processor)
+
+**Finding:** The "HCP Placeholder" Code node in d8xiKaMU7rZ0Ldxp contains only:
+```
+// Pass all data through — HCP creation bypassed until API access confirmed
+return items;
+```
+No HCP customer is ever created automatically. Every address-collected lead needs manual HCP customer creation via API (POST /customers + POST /customers/{id}/addresses, Token 13317c556f61472e8a57c60e0bea930f) until this is replaced with real integration.
