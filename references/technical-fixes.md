@@ -179,3 +179,72 @@ GHL sends Pre-Expiry email alerts (already enabled).
 return items;
 ```
 No HCP customer is ever created automatically. Every address-collected lead needs manual HCP customer creation via API (POST /customers + POST /customers/{id}/addresses, Token 13317c556f61472e8a57c60e0bea930f) until this is replaced with real integration.
+
+---
+
+## 2026-05-01 — Vizzy Orchestrator "Has Input?" Node Broken Expression (JAYrzGWR8A0tCBzB)
+
+**Problem:** Every Telegram message sent to Vizzy errored immediately — no leads were being processed.
+
+**Root cause:** "Has Input?" IF node (id: `has-input-guard-001`) had `leftValue: "={{ .chatInput.trim() }}"`. n8n expression syntax requires `$json.fieldName` — bare `.fieldName` without the `$json.` prefix is invalid and throws `invalid syntax` at renderExpression.
+
+**Fix:** Changed `leftValue` to `={{ $json.chatInput.trim() }}` and added `looseTypeValidation: true`. Pushed via n8n REST API PUT.
+
+**How to apply:** In any n8n IF/Switch node condition `leftValue` field, always use `$json.fieldName`. Never use bare `.fieldName` shorthand.
+
+---
+
+## 2026-05-01 — Estimate Engine new_gutter_install Routing Bug — Root Cause of HCP Never Creating Estimates (KffILLHBKDAG4RYf)
+
+**Problem:** HCP estimates were never automatically created for new gutter installation leads. The "HCP Placeholder" node was unreachable. Leads went to SMS-only custom quote branch instead.
+
+**Root cause:** `new_gutter_install` was hardcoded in the `CUSTOM_QUOTE_SERVICES` array in the Estimate Engine's Calculate Price node. This caused the engine to return `{success:false, needsCustomQuote:true}` with no `price` field for all gutter install jobs. The downstream `Estimate Calculable` IF node checks `$json.price` not empty — always false — so it always routed to the custom quote (SMS-only) branch, completely skipping HCP Placeholder.
+
+**Fix:** Removed `new_gutter_install` and `new_gutter_installation` from `CUSTOM_QUOTE_SERVICES`. Added LF-based G/B/B pricing block:
+```javascript
+if (service === 'new_gutter_install' || service === 'new_gutter_installation') {
+  const lf = linearFt || 150;
+  const goodPrice   = Math.round(lf * 7.50 / 5) * 5;
+  const betterPrice = Math.round(lf * 9.00 / 5) * 5;
+  const bestPrice   = Math.round(lf * 11.00 / 5) * 5;
+  return [{json:{
+    success: true, serviceName: '6" Seamless Gutter Installation',
+    price: betterPrice, priceLow: goodPrice, priceHigh: bestPrice,
+    goodPrice, betterPrice, bestPrice, linearFt: lf, isGBB: true,
+    contactId: inp.contactId||null, opportunityId: inp.opportunityId||null
+  }}];
+}
+```
+
+Pricing: Good = LF x $7.50, Better = LF x $9.00, Best = LF x $11.00 (rounded to nearest $5).
+
+---
+
+## 2026-05-01 — HCP Placeholder Upgraded to Full G/B/B Estimate Creation + Slack Alert (d8xiKaMU7rZ0Ldxp)
+
+**Problem:** HCP Placeholder Code node was a pass-through stub (`return items;`). No HCP estimates were ever created automatically.
+
+**Fix:** Replaced stub with full implementation:
+1. Search HCP for existing customer by name, match on phone or email
+2. Create HCP customer if not found (with service address)
+3. Build G/B/B estimate options array when `est.isGBB` is true, single option otherwise
+4. POST estimate to HCP (status: needs scheduling = pending Anthony review)
+5. PUT GHL contact custom fields: HCP ID, address, AI Handled=Yes, good/better/best prices
+6. PUT GHL opportunity monetary value to betterPrice
+7. POST Slack alert to #milli-sales (C0AQN7QDEP7) via `$env.SLACK_BOT_TOKEN`
+
+**G/B/B option name format:** `6" Seamless Gutter Installation - Good/$X`, `- Better (Recommended)/$X`, `- Best/$X`
+
+**Note:** Slack alert requires `SLACK_BOT_TOKEN` env var to be set in n8n instance settings. Verify this is configured.
+
+---
+
+## 2026-05-01 — Commercial Pipeline Routing Rule Added
+
+**Rule:** Any lead that includes a company/business name must be routed to the Commercial Master Pipeline (`OyuNwhoc79Lb8YS7h3kg`), starting at stage "New Commercial Lead" (`deb10121-eaa4-49ac-be06-7aa266a0bd0b`). Tag contact with `commercial`.
+
+**Residential pipeline** (`STK7CNhP5z1pNmtMckPM`) is for individuals with no company affiliation.
+
+**Why:** Commercial jobs (churches, apartments, businesses) have a different sales process — site walk, tier identification, proposal — vs. residential estimate flow.
+
+**How to apply:** This rule must be enforced in the Vizzy orchestrator lead intake logic and documented in Vizzy's system message. Examples: "Central Baptist Church" → commercial. Individual homeowner → residential.
