@@ -248,3 +248,45 @@ Pricing: Good = LF x $7.50, Better = LF x $9.00, Best = LF x $11.00 (rounded to 
 **Why:** Commercial jobs (churches, apartments, businesses) have a different sales process — site walk, tier identification, proposal — vs. residential estimate flow.
 
 **How to apply:** This rule must be enforced in the Vizzy orchestrator lead intake logic and documented in Vizzy's system message. Examples: "Central Baptist Church" → commercial. Individual homeowner → residential.
+
+---
+
+## 2026-05-01 — HCP Webhook Router: estimate.option.created Prematurely Moving Stage to "Estimate Sent" (4XY3iZmgB6jm4YlD)
+
+**Problem:** When the automation created a G/B/B estimate in HCP (3 options), HCP fired `estimate.option.created` three times. The HCP Webhook Router had this mapped to `'estimate_sent'` stage, so GHL contacts were automatically moved to "Estimate Sent" immediately after estimate creation — before Anthony ever reviewed or sent the estimate.
+
+**Root cause:** In `Parse HCP Event` Code node, EVENT_STAGE_MAP had:
+```javascript
+'estimate.option.created': 'estimate_sent',
+```
+Options being created on an estimate is NOT the same as the estimate being sent to the customer.
+
+**Fix:** Changed mapping to `null` (value sync only, no stage change):
+```javascript
+'estimate.option.created': null, // options created ≠ estimate sent; stage set only on estimate.sent
+```
+
+**Correct pipeline flow:**
+1. `estimate.created` → Estimate Scheduled (estimate exists, pending Anthony review)
+2. `estimate.option.created` → null (no stage change — just building options)
+3. `estimate.sent` → Estimate Sent (Anthony clicked Send in HCP)
+4. `estimate.option.approval_status_changed` (approved) → Estimate Approved
+5. `estimate.copy_to_job` → Job Scheduled
+
+**How to apply:** Never map option-creation events to pipeline stages. Only `estimate.sent` should trigger "Estimate Sent" stage.
+
+---
+
+## 2026-05-01 — G/B/B Gutter Option Names Updated — Good/Better/Best Now Reflect Guard Tiers (d8xiKaMU7rZ0Ldxp)
+
+**Change:** HCP Placeholder G/B/B estimate options for new gutter installation updated to reflect actual product tiers:
+
+| Tier | Name | What's Included |
+|---|---|---|
+| Good | 6" Seamless Gutter Installation - Good | Basic K-style aluminum + downspouts |
+| Better | 6" Seamless Gutter Installation - Better | Gutters + GutterRX gutter guards |
+| Best | 6" Seamless Gutter Installation - Best | Gutters + Leafblaster Pro gutter guards |
+
+Better and Best now have 2 line items each: one for gutters (at Good price) + one for guards (at the upgrade delta).
+
+**Why:** Guards are a separate upsell product with a specific brand name. "Micro-mesh guards" was too generic — customer needs to see exactly what they're getting.
