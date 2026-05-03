@@ -115,3 +115,26 @@ Covers: routing table (all 11 agents), email account routing, inbox management p
 | Gigi | 14yJ6T9ZDZzLY9OUyvIyVpC-bj-Dt3JYilI75O-ibiHQ |
 | Commet | 1tKG29CZ7vCjsf4DVTX5nsoamTLqY-q7tXU-Ib1wy3DQ |
 | Dexter | 1rfvDSxUgisDWKIslBacVMbsx0UV4rK4zEsR36JWdlUs |
+
+## Address Processor Architecture (Updated 2026-05-01)
+
+**Workflow:** `d8xiKaMU7rZ0Ldxp` (ASAR Lead Address Processor)
+
+The original single `HCP Placeholder` Code node was replaced with 8 properly separated nodes after discovering n8n cloud Code nodes cannot make outbound HTTP calls.
+
+**New node chain:**
+1. **Prepare HCP Data** (Code) - Transform/format input data
+2. **HCP Search Customer** (HTTP GET) - Search for existing HCP customer
+3. **HCP Create Customer** (HTTP POST, continueOnFail) - Create new customer if not found
+4. **Resolve HCP Customer ID** (Code) - Pick existing or newly created customer ID
+5. **Build Estimate Body** (Code) - Assemble G/B/B estimate payload with 3 options
+6. **HCP Create Estimate** (HTTP POST) - Create estimate in HCP
+7. **GHL Update Contact** (HTTP PUT) - Update GHL contact with HCP customer ID
+8. **GHL Update Opportunity** (HTTP PUT) - Move opportunity to correct pipeline stage
+
+**G/B/B Option Names (exact):**
+- Good: "6\" Seamless Gutter Installation - Good"
+- Better: "6\" Seamless Gutter Installation - Better" (gutters + GutterRX guards)
+- Best: "6\" Seamless Gutter Installation - Best" (gutters + Leafblaster Pro guards)
+
+**Key rule:** Code nodes in n8n cloud cannot make HTTP calls. Always use HTTP Request nodes for API calls.
