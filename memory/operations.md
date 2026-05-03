@@ -37,9 +37,23 @@ type: memory
 $300 minimum — bundle to hit minimum. Always quote BETTER or BEST first.
 
 ## Crew
-- Anthony Sons — Owner/Operator
-- Subcontractors as needed (see references/subcontractor-list.md)
-- Google Sheet: 1pB7-csrUFU_58HM56Usv3yhWhgoiFCYZ62Es098NZgI (17 trades, 51 companies)
+
+| Name | Role | HCP ID | Notes |
+|------|------|--------|-------|
+| Anthony Sons | Owner/Operator | — | Goal: out of field by Q2 2026 |
+| Tyler George | Lead Technician | pro_118577ebab724631996f89098f9204e2 | Workweek Mon–Thu, paid Fridays 7AM |
+
+### Tyler George Pay Structure (approved)
+- **Lead Solo** (only tech on job): 16% of sell price
+- **Lead w/ others on job**: 9% of sell price
+- **Laborer**: 7% of sell price
+- **Incomplete jobs**: half rate on all tiers
+- **Tips**: 100% to tech
+- **Google reviews left**: $10 bonus each
+- Pay period: Mon 12:00 AM – Thu 11:59 PM CDT. Dexter calculates + alerts Anthony every Friday 7AM via n8n (TO BUILD)
+
+### Subcontractors
+- Google Sheet: 1pB7-csrUFU_58HM56Usv3yhWhgoiFCYZ62Es098NZgI (17 trades, 51 companies — top 3 per trade)
 
 ## Job Workflow (Autonomous)
 1. Lead in (call / HCP booking / website / email / Instantly reply)
