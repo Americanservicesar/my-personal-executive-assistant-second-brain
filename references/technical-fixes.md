@@ -290,3 +290,90 @@ Options being created on an estimate is NOT the same as the estimate being sent 
 Better and Best now have 2 line items each: one for gutters (at Good price) + one for guards (at the upgrade delta).
 
 **Why:** Guards are a separate upsell product with a specific brand name. "Micro-mesh guards" was too generic — customer needs to see exactly what they're getting.
+
+---
+
+## 2026-05-01 — HCP Estimate Chain Fixes (Multiple Workflows)
+
+### Fix 1: n8n Code Node — No Outbound HTTP Allowed
+
+**Problem:** n8n cloud Code nodes cannot make ANY outbound HTTP calls. All of these fail silently or with errors:
+- `$http.request()`
+- `fetch()`
+- `$helpers.httpRequest()`
+- `require('https')`
+
+**Root cause:** n8n cloud sandboxes Code nodes and blocks all network access.
+
+**Rule:** Code nodes = data transformation ONLY. HTTP Request nodes = all API calls.
+
+**Correct pattern:**
+```
+Code (transform/prepare) → HTTP Request (API call) → Code (parse response) → HTTP Request (next call)
+```
+Never attempt HTTP inside a Code node. Refactor any existing Code nodes that make HTTP calls into separate HTTP Request nodes.
+
+**Affected workflow:** `d8xiKaMU7rZ0Ldxp` (ASAR Lead Address Processor) — HCP Placeholder node was attempting HTTP calls, fixed by splitting into 8 proper nodes.
+
+---
+
+### Fix 2: HCP Webhook Router — G/B/B Value Calculation Using Wrong Total
+
+**Problem:** Router was summing ALL 3 option `total_amount` values for G/B/B estimates (Good+Better+Best ≈ $5,364 instead of the correct ~$1,755).
+
+**Root cause:** `Parse HCP Event` Code node used `.reduce((s, opt) => s + opt.total_amount, 0)` which summed all options.
+
+**Fix:** Find the "Better" option by name match (or middle index as fallback); use that option's `total_amount` only.
+
+**Additional note:** HCP stores `total_amount` in **cents** — always divide by 100 to get dollar value for GHL.
+
+**Workflow:** `4XY3iZmgB6jm4YlD` (HCP Webhook Router), node: `Parse HCP Event`
+
+---
+
+### Fix 3: Address Processor — HCP Placeholder Restructured into 8 Proper Nodes
+
+**Problem:** A single `HCP Placeholder` Code node attempted to make HTTP calls to both HCP and GHL APIs. This fails completely in n8n cloud (see Fix 1 above).
+
+**Fix:** Replaced `HCP Placeholder` with 8 properly separated nodes:
+
+| # | Node Name | Type | Purpose |
+|---|-----------|------|---------|
+| 1 | Prepare HCP Data | Code | Transform/format input data |
+| 2 | HCP Search Customer | HTTP GET | Search for existing HCP customer by email/phone |
+| 3 | HCP Create Customer | HTTP POST (continueOnFail) | Create new HCP customer if not found |
+| 4 | Resolve HCP Customer ID | Code | Pick existing or newly created customer ID |
+| 5 | Build Estimate Body | Code | Assemble G/B/B estimate payload |
+| 6 | HCP Create Estimate | HTTP POST | Create estimate with 3 options in HCP |
+| 7 | GHL Update Contact | HTTP PUT | Update GHL contact with HCP customer ID |
+| 8 | GHL Update Opportunity | HTTP PUT | Move opportunity to correct pipeline stage |
+
+**Workflow:** `d8xiKaMU7rZ0Ldxp` (ASAR Lead Address Processor)
+
+---
+
+### Fix 4: Send Ack SMS — Stale Node Reference After Rename
+
+**Problem:** After deleting `HCP Placeholder` and replacing it with the 8-node chain, the `Send Ack SMS` node still referenced `$('HCP Placeholder').first().json.goodPrice` — causing a "referenced node not found" error.
+
+**Fix:** Updated all references to point to the new node:
+- `$('HCP Placeholder').first().json.goodPrice` → `$('Prepare HCP Data').first().json.goodPrice`
+- `$('HCP Placeholder').first().json.bestPrice` → `$('Prepare HCP Data').first().json.bestPrice`
+
+**Lesson:** Whenever you rename or replace a node, search ALL other nodes in the workflow for references to the old node name before saving.
+
+---
+
+### Fix 5: G/B/B Gutter Option Names — Exact Names Required
+
+**Confirmed canonical G/B/B option names for new gutter installation estimates:**
+
+| Tier | Exact Name | Contents |
+|------|-----------|----------|
+| Good | 6" Seamless Gutter Installation - Good | Basic 6" K-style aluminum gutters + downspouts |
+| Better | 6" Seamless Gutter Installation - Better | Gutters (Good price) + GutterRX gutter guards |
+| Best | 6" Seamless Gutter Installation - Best | Gutters (Good price) + Leafblaster Pro gutter guards |
+
+Better and Best each have 2 line items: one for gutters at Good tier price, one for the guard upgrade delta.
+
+The router identifies the "Better" option by matching the name containing "Better" — these exact names must be preserved.
