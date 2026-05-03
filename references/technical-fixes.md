@@ -377,3 +377,12 @@ Never attempt HTTP inside a Code node. Refactor any existing Code nodes that mak
 Better and Best each have 2 line items: one for gutters at Good tier price, one for the guard upgrade delta.
 
 The router identifies the "Better" option by matching the name containing "Better" — these exact names must be preserved.
+
+
+## 2026-05-03 — Cassie Email Duplication Bug
+
+**Problem:** Cassie sent a job scheduled booking confirmation email from office@ to a customer. GHL workflows already handle all transactional customer notifications (job scheduled, appointment reminders, estimates). Cassie duplicating these causes double-emails and confuses customers.
+
+**Fix:** Added `## EMAIL — WHAT CASSIE MUST NEVER SEND` prohibition block to Cassie's system message in workflow `X9OndKjPk1rspj5l`. Approved email categories: complaint resolution, post-job follow-up (24+ hrs after complete), review requests, direct replies to inbound emails, retention/win-back.
+
+**Rule for all agents with Gmail tools:** GHL owns all transactional notifications. Agents supplement (follow up, escalate, reply) — never duplicate what GHL auto-sends.
