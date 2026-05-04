@@ -1,13 +1,30 @@
 # Cassie — Follow-Up Email to Layne Smith
 
-**Status:** DRAFT — ready for Cassie to send via Gmail (sales@americanservicesar.com)
-**Recipient:** Layne Smith (GHL contact — verify email before send; do NOT send to placeholder)
-**Stage:** Estimate Sent → Awaiting Response
+> **HOLD — DO NOT SEND.** Job is not scheduled and not finished in HCP. Pipeline stage in GHL must be verified live before this goes out. The "Estimate Sent" status below comes from the 2026-05-03 GHL pull stored in memory/clients.md and may be stale.
+
+## Verification Gate (Required Before Send)
+
+- [ ] Open Layne Smith's GHL contact and confirm current pipeline stage (Estimate Sent? Awaiting Approval? New Lead? Lost?)
+- [ ] Confirm the actual service that was quoted (clients.md shows TBD)
+- [ ] Confirm HCP estimate is still active and pricing is unchanged
+- [ ] Confirm verified email + phone on the GHL contact record (NEVER send to @example.com — see mistakes-and-fixes.md 2026-04-26)
+- [ ] Pick the matching email version below based on actual stage:
+  - **Estimate Sent** (no response) → Version A or B as drafted
+  - **Awaiting Approval** → switch language to "ready to lock in a date?" (do not write a new draft yet — flag to Anthony)
+  - **New Lead / cold** → don't send this draft; needs re-engagement hook from Penn
+  - **Lost / unqualified** → do not send; move to Emmie's 90-day re-engage list
+
+## Snapshot at Draft Time (Source: memory/clients.md, 2026-05-03 GHL pull)
+
+**Status:** DRAFT — pending stage verification
+**Recipient:** Layne Smith (GHL contact)
+**Sender:** sales@americanservicesar.com (Cassie)
+**Stage (per stale memory):** Estimate Sent
 **Estimate Value:** $4,599
-**Estimate Sent:** 2026-04-23 (11 days ago)
-**Last Touch:** 2026-04-23
-**HCP Status:** Not scheduled yet
-**Cadence Position:** Touch 4–5 (per sales-playbook.md follow-up cadence)
+**Service Quoted:** TBD — needs HCP/GHL pull
+**Estimate Sent:** 2026-04-23 (11 days ago as of 2026-05-04)
+**HCP Status:** Not scheduled, not finished (confirmed 2026-05-04)
+**Cadence Position (if stage holds):** Touch 4–5 (per sales-playbook.md)
 
 ---
 
