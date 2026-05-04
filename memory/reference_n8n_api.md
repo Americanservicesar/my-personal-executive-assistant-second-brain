@@ -17,7 +17,9 @@ originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 |-------------|------|----------|--------|
 | `e6PnFg6YZpagNq7j` | ASAR Weekly Rank Tracker | Mon 8AM CDT (`0 13 * * 1`) | ACTIVE |
 | `9AdSMJNMkym65Y5V` | ASAR Daily GSC Check | Daily 9AM CDT | ACTIVE |
-| `ibcZUQdHjcT81HTV` | Soshie — Monday Weekly Batch | Mon 7AM CDT (`0 12 * * 1`) | ACTIVE |
+| `ibcZUQdHjcT81HTV` | Soshie — Daily Post | Daily 7AM CDT (`0 12 * * *`) | ACTIVE — updated 2026-04-28, was Monday-only |
+| `Pzq9vmQCyYx5JH1I` | Seomi — Daily GBP Review Response | Daily 8AM CDT (`0 13 * * *`) | ACTIVE — built 2026-04-28 |
+| `n7auzFXPu9Ywt7UY` | Seomi — Daily Backlink & Citation Builder | Daily 10AM CDT (`0 15 * * *`) | ACTIVE — built 2026-04-28 |
 | `X9CJeuwPHXFTF2ta` | Commet — Weekly & Monthly Monitoring | Mon 9AM CDT (`0 14 * * 1`) | ACTIVE |
 | `OhcsTjpdQ83Zwv9R` | Instantly Reply → GHL Contact Update | Webhook `/webhook/instantly-replies` | ACTIVE |
 | `kAyZtGcsJ9biWh6I` | Commet <-> Dexter: Agent Request Router | Webhook `/webhook/commet-dexter-request` | ACTIVE (webhook needs UI toggle to register) |
@@ -28,6 +30,12 @@ originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 | `kYoHWjauNEMqMcPe` | Scouty — Monday Hiring Pipeline Check | Mon 9AM CDT (`0 14 * * 1`) → Scouty | ACTIVE — built 2026-04-24 |
 | `VGleuqFdJF7KOPU6` | Emmie — Weekly Campaign Performance | Mon 9AM CDT (`0 14 * * 1`) → Emmie | ACTIVE — built 2026-04-24 |
 | `dXJ2yOXqHCVmlvHu` | Gigi — Daily Morning Check-In | Daily 7AM CDT (`0 12 * * *`) → Gigi | ACTIVE — built 2026-04-24 |
+| `lgI2T4IEPzvNzKNB` | Seomi — Monthly SEO KW Research & Gap Analysis | 1st of month 8AM CDT (`0 13 1 * *`) → Seomi standalone | ACTIVE — built 2026-04-26 |
+| `Pzq9vmQCyYx5JH1I` | Seomi — Daily GBP Review Response | Daily 8AM CDT (`0 13 * * *`) → Seomi standalone | ACTIVE — built 2026-04-28 |
+| `n7auzFXPu9Ywt7UY` | Seomi — Daily Backlink & Citation Builder | Daily 10AM CDT (`0 15 * * *`) → Seomi standalone | ACTIVE — built 2026-04-28 |
+| `eYwG3UNsCnZcs86D` | Gigi — Sunday CEO Check-In (Slack) | Sunday 9AM CDT (`0 14 * * 0`) → #gigi-personal Slack + #agent-activity | ACTIVE — rebuilt 2026-05-03 (replaced deleted Telegram version `mhNPBKaaUzAsVlfI`) |
+| `zOtcjEC8obKtzzCs` | Gigi — CEO Check-In Reply Handler | Slack Trigger on #gigi-personal → logs to ceo-performance.md via Gigi standalone + #agent-activity | ACTIVE — built 2026-05-03 |
+| `WJJpJT1AhHrx7WIG` | Dexter — Monthly Agent Scorecard | 1st of month 8AM CDT (`0 13 1 * *`) → Dexter standalone `bT5En2FMmvXhIiDl` + #agent-activity | ACTIVE — built 2026-05-03 |
 
 ## Gmail Monitor Workflows (Autonomous Email Processing)
 | Workflow ID | Name | Trigger | Routes To | Status |
