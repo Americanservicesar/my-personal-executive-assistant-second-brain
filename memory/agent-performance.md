@@ -56,17 +56,34 @@ Dexter -> Milli (flag hot leads by revenue)
 
 ## KPI Targets Per Agent
 
-| Agent | Primary KPI | Current | Target |
-|-------|------------|---------|--------|
-| Milli | Pipeline closed/month | ~$68K YTD | $166K/mo |
-| Buddy | Qualified bids found/week | N/A (new) | 5/week |
-| Emmie | Email open rate | N/A | >40% |
-| Soshie | Posts/week | 7 | 14 |
-| Seomi | Conway #1 rankings | In progress | 10 keywords |
-| Dexter | Reports generated/week | Daily briefings | 5 |
-| Cassie | Review responses <1hr | Live | 100% |
-| Penn | Proposals written/week | On demand | 10 |
-| Commet | Avg ticket size | $649 Better | $1,200 |
+| Agent | Primary KPI | Current (May 2026) | Target |
+|-------|------------|-------------------|--------|
+| Milli | Pipeline closed/month | $68,142 YTD (thru Apr) | $166K/mo |
+| Buddy | Qualified bids/week | Live — 20 companies + 14 vendor signups fired | 5 bids/week |
+| Emmie | Email open rate | ASAR-01 loaded (1,251 leads) — campaign pending launch | >40% |
+| Soshie | Posts/week | Mon/Wed/Fri Facebook direct + 7-day calendar weekly | 14/week |
+| Seomi | Pages live | 143 pages live, RankMath set, DA 9 | Conway #1 on 10 keywords |
+| Dexter | Daily briefings delivered | Active — 6AM CDT daily | 5 reports/week |
+| Cassie | Review request automation | Review Engine LIVE (ciBlDuYcknxv9dES) — 24h+72h SMS | 100% <1hr response |
+| Penn | Copy pieces on demand | Active — segment copy, bids, proposals | 10/week |
+| Commet | Recurring contracts | 89 AMP programs active (~$45K/mo potential) | $200K/yr eComm |
+| Scouty | Hiring pipeline | GHL pipeline active — 0 active candidates | 2 hires/quarter |
+| Gigi | Weekly CEO check-in | Framework live | Weekly log |
+| Vizzy | Handoffs routed/week | Orchestrator active — Telegram + Chat | 100% tasks routed |
+
+## Known Wins (As of 2026-05-03)
+
+| Date | Agent | Action | Outcome |
+|------|-------|--------|---------|
+| 2026-04-27 | Seomi | 143 city×service pages published | Phase 2 complete, sitemap 143/143 |
+| 2026-04-21 | Dexter | G/B/B pricing research + competitor benchmark | Anthony approved — all agents now quoting premium |
+| 2026-04-21 | Emmie | ASAR-01 apartments campaign built | 1,251 leads enriched, ready to launch |
+| 2026-04-21 | Buddy | Instantly→GHL webhook built | Live — replies auto-route to GHL + #buddy-bizdev |
+| 2026-04-19 | All | PRESS START — all 12 agents deployed | Full autonomous network live |
+| 2026-04-22 | Milli | Review Engine activated | 24h+72h SMS review requests post-job |
+| 2026-05-01 | Vizzy | Telegram chatInput bug fixed | Orchestrator stable — no more crashes |
+| 2026-05-01 | Buddy | Vendor pipeline live | Daily 6AM pulse + webhook intake active |
+| 2026-04-17 | Dexter | QB reconnected to production | Live financial data — realmId 123146373988304 |
 
 ## Agent System — Key Architecture Notes
 

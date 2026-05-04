@@ -159,3 +159,36 @@ QB, sending accounts, ASAR-01 campaign — all were "pending" in notes but alrea
 Don't let completed steps stay as "pending" in memory.
 Wrong: "QB needs reconnecting" (stale, was fixed 2026-04-17)
 Right: "QB resolved 2026-04-17, credential T1Uyc7utOiuqYJWO connected to realmId 123146373988304"
+
+---
+
+## Agent Outcome Log — HOW TO USE
+
+Every agent should append an entry here after any measurable action using this format:
+
+```
+[YYYY-MM-DD] AGENT: [name] | ACTION: [what was done] | OUTCOME: [result] | LEARNING: [what to do differently or repeat]
+```
+
+### What counts as a measurable action
+- Email campaign sent (Emmie) — log open rate, reply rate, warm leads
+- Bid submitted (Buddy) — log bid amount, won/lost, reason
+- Proposal sent (Milli) — log value, accepted/declined, days to decision
+- Content published (Soshie/Penn/Seomi) — log impressions, clicks, leads
+- Review requested (Cassie) — log response rate, review left Y/N
+- Report generated (Dexter) — log key insight surfaced
+- Hire made or declined (Scouty) — log source, days to fill
+
+### Agent Outcome Log (append below — newest first)
+
+[2026-05-03] AGENT: Dexter | ACTION: Full memory file audit across disk + GitHub Brain | OUTCOME: Found 2 missing files, 11 orphan files, 6 Brain memory files blank — all gaps identified and filled | LEARNING: Brain repo drifts from disk memory over time. Run quarterly audit to keep in sync.
+
+[2026-05-01] AGENT: Vizzy | ACTION: Fixed chatInput.trim() expression bug in orchestrator | OUTCOME: Telegram execution stable — no more crashes on every message | LEARNING: Always use $json.fieldName prefix in n8n expressions, never .fieldName alone.
+
+[2026-05-01] AGENT: Buddy | ACTION: Fired 20 company profiles + 14 vendor signups to Buddy intake webhook | OUTCOME: Daily Pulse + webhook both live and processing | LEARNING: Backlog intake works best when batched by priority (Sedgwick, Contractor Connection first).
+
+[2026-04-27] AGENT: Seomi | ACTION: Published 143 service×city pages with RankMath meta | OUTCOME: Phase 2 complete, sitemap 143/143, all pages indexed | LEARNING: Set RankMath meta BEFORE submitting to Google — never index with blank meta.
+
+[2026-04-21] AGENT: Dexter | ACTION: Competitor pricing research for all 13 services | OUTCOME: Found ASAR was 60% below market on gutter cleaning — G/B/B repricing approved by Anthony | LEARNING: Pricing audits should run quarterly. HCP actuals + market rates together reveal underpricing fast.
+
+[2026-04-21] AGENT: Emmie | ACTION: Built ASAR-01-Apartments campaign with 1,251 leads | OUTCOME: Campaign loaded, blocked by 1K/month upload cap — leads ready to send when cap resets | LEARNING: Check Instantly upload caps before planning batch uploads. Never re-upload CSV if leads already in system.
