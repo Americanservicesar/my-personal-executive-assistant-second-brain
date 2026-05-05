@@ -386,3 +386,29 @@ The router identifies the "Better" option by matching the name containing "Bette
 **Fix:** Added `## EMAIL — WHAT CASSIE MUST NEVER SEND` prohibition block to Cassie's system message in workflow `X9OndKjPk1rspj5l`. Approved email categories: complaint resolution, post-job follow-up (24+ hrs after complete), review requests, direct replies to inbound emails, retention/win-back.
 
 **Rule for all agents with Gmail tools:** GHL owns all transactional notifications. Agents supplement (follow up, escalate, reply) — never duplicate what GHL auto-sends.
+
+
+## WordPress Plugin Crash — PixelYourSite Reddit Module (2026-05-05)
+
+### What Crashed
+PixelYourSite plugin auto-update pushed corrupt `reddit.php` — PHP fatal error took down entire site.
+
+### Error
+```
+PHP Fatal error: Namespace declaration statement has to be the very first statement
+in /home1/ericaqw6/public_html/wp-content/plugins/pixelyoursite/modules/reddit/reddit.php line 4
+```
+
+### Diagnostic
+```bash
+curl -s -H "Range: bytes=-30000" https://americanservicesar.com/wp-content/debug.log | grep -i fatal
+```
+
+### Fix
+Used cPanel UAPI to overwrite the broken file with a valid PHP namespace stub.
+Full fix details: `references/fixes/feedback_wp_pixelyoursite_crash.md`
+
+### Prevention
+- Disable auto-updates on all plugins
+- Manual plugin updates only, check changelog first
+- Keep debug.log enabled for fast diagnostics
