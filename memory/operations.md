@@ -87,6 +87,26 @@ Webhooks Live:
 
 All 12 Agent Standalones: active, callable on demand or via orchestrator
 
+## Email & Outbound Architecture (RULE — Anthony confirmed 2026-05-04)
+
+**No agent sends email directly from sales@, office@, or asons@ Gmail.** Those accounts are inbound-only — they trigger Milli/Cassie/Buddy via n8n Gmail monitor workflows.
+
+| Outbound Channel | Use Case | Triggered By |
+|---|---|---|
+| **GHL Workflows** | All estimate + job follow-ups (email + SMS) | Pipeline stage change (auto) |
+| **GHL Conversations** | One-off personal touches to existing GHL contacts | Manual via GHL UI or `POST /conversations/messages` |
+| **Instantly Campaigns** | Cold outreach to new prospects only | Emmie campaigns |
+| **Phone (human)** | Re-engagement when GHL automated workflow has run its course | Milli (sales) / Anthony (decisions) |
+
+**Rules:**
+- Estimates and jobs follow up via GHL workflows. Period.
+- If GHL workflow has run and prospect is unresponsive, next touch is Milli on the phone — not another email.
+- Personal one-off "Hey [name]" outreach to existing contacts → GHL Conversations (sends from sales@ via GHL SMTP, but tracked in contact record).
+- Cold to new prospects → Instantly only.
+- Never have an agent draft a Gmail send to a contact. If it feels like a Gmail send, it's a GHL Conversation or a phone call.
+
+**Implication for n8n agent tools:** Do not add Gmail Send tool nodes to the orchestrator. Add GHL Workflow Enrollment + GHL Conversations Send Message tools instead.
+
 ## Cold Outreach Pipeline
 
 ### Instantly Campaigns (Active)

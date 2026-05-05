@@ -104,13 +104,25 @@ All use HCP API key (need to store in n8n credentials if not already there).
 
 ---
 
-### Layer 3 — Gmail Send/Draft via Tool Node (Currently Read-Only)
+### Layer 3 — Email Architecture (NO Gmail Send Tool — by design)
 
-Right now n8n agents can read Gmail (inbox triggers) but agents can't **send or draft** emails on demand mid-conversation. Add a Gmail tool node to the orchestrator so Cassie/Milli/Buddy can send from any account during a Telegram session.
+**Confirmed by Anthony (2026-05-04):** Agents do NOT send email from sales@ or office@.
 
-**Add to orchestrator:**
-- `Gmail Send` tool → Auth: per-account OAuth2 (already have 4 credentials)
-- Parameters: `to`, `subject`, `body`, `from` (account selector)
+| Email Channel | Purpose | Who Sends |
+|---|---|---|
+| sales@ Gmail | Inbound only — triggers Milli via n8n monitor | Inbound only |
+| office@ Gmail | Inbound only — triggers Cassie via n8n monitor | Inbound only |
+| asons@ Gmail | Inbound only — triggers Buddy via n8n monitor | Inbound only |
+| **GHL workflows** | All estimate + job follow-ups (email + SMS) | Automated, triggered by pipeline stage |
+| **GHL Conversations** | One-off personal touches to existing contacts | Routed through GHL — keeps history attached |
+| **Instantly** | Cold outreach to new prospects | Emmie campaigns only |
+
+**What this means for the orchestrator:**
+
+- ❌ Do NOT add a Gmail Send/Draft tool to n8n agents
+- ✅ Add a **GHL Workflow Enrollment** tool: `POST /contacts/{id}/workflow/{workflowId}` (per mistakes-and-fixes.md 2026-04-15 — tag triggers don't fire from API)
+- ✅ Add a **GHL Conversations Send Message** tool for one-off personal touches: `POST /conversations/messages`
+- ✅ Add an **Instantly Add to Campaign** tool for cold outreach: Emmie's existing Instantly API
 
 ---
 
@@ -118,10 +130,10 @@ Right now n8n agents can read Gmail (inbox triggers) but agents can't **send or 
 
 | Priority | Fix | Effort | Impact |
 |---|---|---|---|
-| 1 | GHL HTTP Request tools in orchestrator (contacts, pipeline, opportunities) | 2–3 hrs | Unblocks live pipeline queries from Telegram |
+| 1 | GHL HTTP Request tools (contacts, pipeline, opportunities, workflow enrollment, conversations send) | 3–4 hrs | Unblocks live pipeline queries + correct outbound architecture |
 | 2 | HCP HTTP Request tools (jobs, estimates, customers) | 1–2 hrs | Unblocks job status checks from Telegram |
-| 3 | Gmail Send/Draft tool node in orchestrator | 1 hr | Agents can draft/send email mid-conversation |
-| 4 | MCP Client Tool nodes for Slack, Airtable, Google MCPs | 2–3 hrs | Closes remaining parity gap |
+| 3 | Instantly tools (add to campaign, get campaign status) for Emmie | 1 hr | Cold outreach controllable from Telegram |
+| 4 | MCP Client Tool nodes for Slack, Airtable, Google Calendar/Drive/Docs | 2–3 hrs | Closes remaining parity gap |
 | 5 | QuickBooks + DocuSign MCP Client tools | 1–2 hrs | Dexter can pull live financials, Buddy can trigger docs |
 
 ---
@@ -134,10 +146,10 @@ Right now n8n agents can read Gmail (inbox triggers) but agents can't **send or 
 
 **After fix:**
 > Anthony: "Where is Layne Smith in the pipeline?"
-> Vizzy: [calls `ghl_search_contacts` → gets live stage, last touch, notes]
-> Vizzy: "Layne is in Estimate Sent at $4,599. Last touched 2026-04-23 — 11 days stale. Want me to have Cassie send a follow-up from sales@?"
+> Vizzy: [calls `ghl_search_contacts` → gets live stage, last touch, workflow enrollment]
+> Vizzy: "Layne is in Estimate Sent at $4,599. GHL estimate-follow-up workflow ran 4 touches, last on 2026-05-02 — no engagement. Recommend Milli call him today. Want me to assign?"
 
-That's Claude Code Desktop parity inside Telegram.
+That's Claude Code Desktop parity inside Telegram — and it respects the email architecture (GHL handles automated touches, humans handle phone, no Gmail outbound).
 
 ---
 
