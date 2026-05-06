@@ -121,4 +121,53 @@
 - **Fix applied:** Consolidated HTTP calls inside Code node, or inserted Merge node (mode: append) before Code.
 - **Prevention rule:** Never connect N branches directly to one Code node. Always Merge first.
 
+### 2026-05-06 — WordPress auto-update crash #5 (WP Rocket Logger.php)
+- **Agent:** Claude/general (WordPress maintenance)
+- **What went wrong:** Site went down with PHP fatal error: "Namespace declaration has to be the very first statement" in wp-rocket/inc/Logger/Logger.php — 5th auto-update crash in 3 weeks.
+- **Root cause:** Plugin auto-updates were enabled on PHP 8.2 (strict) with no staging or rollback. Bad file pushed directly to production.
+- **Fix applied:** (1) Stubbed Logger.php via cPanel browser session. (2) Added `define('AUTOMATIC_UPDATER_DISABLED', true);` to wp-config.php — no plugin can auto-update now. (3) Updated WP Rocket to 3.21.2 cleanly via WP Admin. (4) Blocked debug.log via wp-content/.htaccess.
+- **Prevention rule:** AUTOMATIC_UPDATER_DISABLED is now permanent in wp-config.php. All plugin updates must be done manually via WP Admin. Never re-enable auto-updates.
+
+### 2026-05-06 — debug.log publicly accessible (1.5GB security hole)
+- **Agent:** Claude/general (WordPress maintenance)
+- **What went wrong:** /wp-content/debug.log was publicly accessible at https://americanservicesar.com/wp-content/debug.log — 1.5GB file with full stack traces, DB credentials, file paths.
+- **Root cause:** WordPress debug logging enabled with no .htaccess protection on the wp-content directory.
+- **Fix applied:** Created /home1/ericaqw6/public_html/wp-content/.htaccess with `<Files "debug.log"> Deny from all </Files>`. Now returns 403.
+- **Prevention rule:** Always create wp-content/.htaccess blocking debug.log on any new WordPress site. Check with curl -o /dev/null -w "%{http_code}" before and after.
+
+### 2026-05-06 — cPanel UAPI curl fails from external IPs — must use browser
+- **Agent:** Claude/general
+- **What went wrong:** curl to americanservicesar.com:2083 returns exit code 6 (host unreachable). All cPanel UAPI calls via curl fail.
+- **Root cause:** Bluehost blocks direct port 2083 access from external IPs. Only accessible via browser.
+- **Fix applied:** Navigate browser to americanservicesar.com:2083, log in (ericaqw6 / Addieleobell@1), then use `fetch()` via JS console to call UAPI: `fetch('/cpsessXXXXXX/execute/Fileman/save_file_content', {method:'POST', body:params})`.
+- **Prevention rule:** For Bluehost cPanel file operations: browser + JS fetch only. Never try curl to port 2083.
+
+### 2026-05-06 — Meta Ads: empty audience targeting after TOS-pending build
+- **Agent:** Emmie / Claude (Meta Ads setup)
+- **What went wrong:** Ad sets built while Custom Audiences TOS was pending had empty targeting after TOS was accepted — audiences existed but weren't wired to ad sets.
+- **Root cause:** Meta silently skips audience assignment when TOS is pending at build time. No error returned.
+- **Fix applied:** Re-wired all 5 ad sets to correct audiences via API post-TOS acceptance.
+- **Prevention rule:** Always accept Custom Audiences TOS BEFORE building ad sets. After TOS, verify each ad set has targeting_spec.custom_audiences populated.
+
+### 2026-05-06 — Meta dedup blocks 2%/3% HCP lookalike after deletion
+- **Agent:** Emmie / Claude (Meta Ads setup)
+- **What went wrong:** Deleted 2% and 3% HCP lookalike audiences could not be recreated from the same source — Meta dedup silently blocks it.
+- **Root cause:** Meta dedup logic prevents recreating lookalikes with identical source + ratio combos even after deletion.
+- **Fix applied:** Built from alternate source: website visitors 90d and 30d instead of HCP customer list.
+- **Prevention rule:** Never delete lookalike audiences expecting to recreate from same source. If must rebuild, use a different source audience or different ratio.
+
+### 2026-05-06 — Token typo in bash produces malformed access token
+- **Agent:** Claude/general (Meta Ads API)
+- **What went wrong:** Access token constructed in bash was malformed — API returned invalid token error.
+- **Root cause:** Token value had a typo introduced during variable assignment. bash string interpolation is fragile for long tokens.
+- **Fix applied:** Read token directly from build_ads.py config file, never re-type inline.
+- **Prevention rule:** Always read API tokens from the source file (build_ads.py, .env, credentials sheet). Never retype long tokens in bash — copy-paste or read programmatically.
+
+### 2026-05-03 — n8n GET+PUT workflow update strips all Slack node metadata
+- **Agent:** n8n/automation
+- **What went wrong:** All 16 scheduled workflows had Slack nodes break after a workflow update cycle — nodes lost their channel/message configuration silently.
+- **Root cause:** n8n public API GET returns Slack nodes without full metadata. Subsequent PUT overwrites with the incomplete version.
+- **Fix applied:** Replaced all Slack nodes with HTTP Request nodes using slackApi credential (ID: 6yUg4MuD1ruBxZQY) — these survive GET+PUT cycles intact.
+- **Prevention rule:** Never use native n8n Slack nodes in scheduled workflows that may be updated via API. Use HTTP Request + slackApi credential instead.
+
 <!-- New entries go above this line, newest first -->
