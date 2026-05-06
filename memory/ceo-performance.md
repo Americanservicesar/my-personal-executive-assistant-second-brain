@@ -39,37 +39,19 @@
 
 ## Weekly Check-In Log
 
-> Gigi logs every Monday. Anthony answers 5 questions in Telegram — Gigi formats and appends.
-> Prompt: "Quick CEO check-in: Revenue this week? Hours in field? Hours on strategy? Energy 1-5? Family time?"
+> Gigi logs every Monday
 
 | Week | Revenue | Deals Closed | Field Hrs | CEO Hrs | Sleep | Energy | Family | Notes |
 |------|---------|-------------|----------|---------|-------|--------|--------|-------|
-| 2026-04-21 | $68,142 YTD | PRESS START — all 12 agents live | TBD | TBD | TBD | TBD | TBD | Milestone: full agent network deployed |
-| 2026-04-28 | TBD | Tyler: Michael King (incomplete) + Terry Alexander ($2,520) | TBD | TBD | TBD | TBD | TBD | Tyler pay: $369.90 this week |
-| 2026-05-03 | Active pipeline: $82,915+ (362 open opps) | 6 jobs scheduled this week | TBD | TBD | TBD | TBD | TBD | LinkedIn GHL reconnect due by May 5 |
+| 2026-04-21 | $68,142 YTD | PRESS START | TBD | TBD | TBD | TBD | TBD | All 12 agents deployed |
 
 ## Health Tracking
 
-> Hume Health Band — Gigi pulls weekly when API/export available.
-> Short term: Anthony self-reports in Telegram Sunday evening.
-> Long term: Dexter automates pull when Hume API access confirmed.
+> Hume Health Band -- Gigi pulls weekly
 
 | Week | Sleep Score | Activity | Recovery | Notes |
 |------|-------------|----------|---------|-------|
-| (Anthony self-reports Sunday via Telegram → Gigi logs) | | | | |
-
-## How to Log Weekly (Until Automation Built)
-
-Every Sunday at 7PM Anthony gets this Telegram prompt from Gigi:
-```
-CEO Check-In (takes 60 seconds):
-1. Revenue this week?
-2. Hours in the field?
-3. Hours on strategy/vision?
-4. Energy level 1-5?
-5. Any family events this week?
-```
-Gigi formats responses and appends to the Weekly Check-In Log above.
+| (Gigi populates weekly) | | | | |
 
 ## Burnout Watch Flags
 
