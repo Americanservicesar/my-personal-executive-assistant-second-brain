@@ -1,5 +1,5 @@
 # ASAR Meta Audiences — Full Inventory
-Last updated: 2026-05-06
+Last updated: 2026-05-06 (audience refreshed with master list — 1,392 unique customers)
 
 ---
 
@@ -8,7 +8,7 @@ Last updated: 2026-05-06
 ### Customer List
 | ID | Name | Records | Status |
 |---|---|---|---|
-| `120246249754120723` | ASAR HCP Customer List — 1397 Past Customers | 1,214 emails + 1,363 phones | Matching (24-48h) |
+| `120246249754120723` | ASAR HCP Customer List — 1392 Customers (Master) | 1,215 emails + 1,353 phones + 1,339 name/city/state + 1,332 name/zip | Matching (24-48h) — refreshed 2026-05-06 |
 
 ### Website Pixel Audiences (7)
 | ID | Name | Retention | Purpose |
