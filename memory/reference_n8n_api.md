@@ -5,7 +5,8 @@ type: reference
 originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 ---
 - n8n instance: `americanservicesar.app.n8n.cloud`
-- API key location: `C:\Users\sales\OneDrive\Documents\n8n-env-template.txt` (line 43)
+- API key (active as of 2026-05-06): `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0MzYxYWZiNS1kZjFkLTQyZmItOWZjYi04MWI3NjEyODE3ZDgiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiMDgzZjI4OWQtYTVjYi00YjQzLWIxNDAtNGU1MmY5YzNiNTAyIiwiaWF0IjoxNzc4MDk0NzU5fQ.knlgc5iiSPGLOwChHYr3IxACso0ldkgdEnI_d58zIgc`
+- API key location: `C:\Users\sales\OneDrive\Documents\n8n-env-template.txt` (line 43) — update this file with new key above
 - Main workflow ID: `JAYrzGWR8A0tCBzB` (Autonomous Agent Team Task Handler)
 - Update pattern: GET current state → modify nodes/connections in Python → re-apply all credentials → PUT via REST API
 - PUT requires `settings.executionOrder: 'v1'` and all nodes must have valid credentials assigned
@@ -21,7 +22,8 @@ originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 | `Pzq9vmQCyYx5JH1I` | Seomi — Daily GBP Review Response | Daily 8AM CDT (`0 13 * * *`) | ACTIVE — built 2026-04-28 |
 | `n7auzFXPu9Ywt7UY` | Seomi — Daily Backlink & Citation Builder | Daily 10AM CDT (`0 15 * * *`) | ACTIVE — built 2026-04-28 |
 | `X9CJeuwPHXFTF2ta` | Commet — Weekly & Monthly Monitoring | Mon 9AM CDT (`0 14 * * 1`) | ACTIVE |
-| `OhcsTjpdQ83Zwv9R` | Instantly Reply → GHL Contact Update | Webhook `/webhook/instantly-replies` | ACTIVE |
+| `OhcsTjpdQ83Zwv9R` | Instantly Reply → GHL Contact Update | Webhook `/webhook/instantly-replies` | ACTIVE — URL mismatch fixed 2026-05-05 (was /instantly-reply singular). Now also auto-triggers Buddy standalone Qa4j2OFzxmbPMpug on every reply. |
+| `mie1LQGw8YytjQPf` | Emmie — Hourly ASAR-01 Campaign Monitor | Every hour cron → #emmie-email C0AQPHWR26S | ACTIVE — built 2026-05-05 |
 | `kAyZtGcsJ9biWh6I` | Commet <-> Dexter: Agent Request Router | Webhook `/webhook/commet-dexter-request` | ACTIVE (webhook needs UI toggle to register) |
 | `3a8Wv9UQjSWgZ8Pn` | Vizzy 6AM Daily Briefing | Daily 6AM CDT (`0 11 * * *`) → Dexter | ACTIVE — built 2026-04-22 |
 | `mF1Amt2LXGMWkfwt` | Buddy — Weekly Bid Check | Mon+Thu 8AM CDT (`0 13 * * 1,4`) → Buddy | ACTIVE — built 2026-04-22 |
@@ -36,6 +38,9 @@ originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 | `eYwG3UNsCnZcs86D` | Gigi — Sunday CEO Check-In (Slack) | Sunday 9AM CDT (`0 14 * * 0`) → #gigi-personal Slack + #agent-activity | ACTIVE — rebuilt 2026-05-03 (replaced deleted Telegram version `mhNPBKaaUzAsVlfI`) |
 | `zOtcjEC8obKtzzCs` | Gigi — CEO Check-In Reply Handler | Slack Trigger on #gigi-personal → logs to ceo-performance.md via Gigi standalone + #agent-activity | ACTIVE — built 2026-05-03 |
 | `WJJpJT1AhHrx7WIG` | Dexter — Monthly Agent Scorecard | 1st of month 8AM CDT (`0 13 1 * *`) → Dexter standalone `bT5En2FMmvXhIiDl` + #agent-activity | ACTIVE — built 2026-05-03 |
+| `vrlc0Up4HTsBbfdq` | Milli — Inbound SMS Auto-Responder | Every 1 min cron → polls GHL conversations → Milli standalone `BJ8RLrbjuZ8pSmAL` | ACTIVE — built 2026-05-05. Filters: lastMessageDirection=inbound + TYPE_SMS + within last 2 min. Sends SMS reply via GHL API. GHL Conversation AI bot (Home Services Chat Agent) removed from SMS channels same date. |
+| `9pyPeDS3BOM2e0on` | PW LP Form Intake | Webhook `/webhook/pw-lp-form` | Upserts GHL contact, creates Residential opportunity, triggers Address Processor | ACTIVE — built 2026-05-05 |
+| `4jtIAZZR9QFz7Nx2` | Milli — Inbound SMS Handler (webhook) | Webhook `/webhook/milli-inbound-sms` | Calls Milli standalone — reserved for future GHL workflow trigger | ACTIVE — built 2026-05-05 |
 
 ## Gmail Monitor Workflows (Autonomous Email Processing)
 | Workflow ID | Name | Trigger | Routes To | Status |
