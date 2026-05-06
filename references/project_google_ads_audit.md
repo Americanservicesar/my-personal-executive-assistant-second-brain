@@ -113,15 +113,43 @@ Based on all-time historical data (1,075 clicks, 58 conversions, $8,498 spend):
 
 ---
 
+## GCLID / Offline Conversion Research — COMPLETED 2026-05-06
+**Finding: GHL does NOT capture GCLID. Offline pipeline is unnecessary.**
+
+Checked all 54 GHL custom fields + reviewed recent contact attributions (4,299 contacts):
+- Zero contacts have a `gclid` field
+- All web lead attributions show `medium: "other"` — no UTM data at all
+- Root cause: GHL form is embedded as a cross-origin iframe. Browser blocks the iframe from reading the parent page URL, so GHL never sees the `gclid` URL parameter.
+
+**Offline conversion pipeline (GHL Click ctId) → SKIP.** No GCLID to upload.
+
+**Correct path (already partially built):** GA4 → Google Ads auto-import.
+- The landing page already fires `generate_lead` (postMessage listener when GHL form submits), `book_online_click`, and `phone_call_click` events to GA4
+- GA4 property `315915509` is linked to Google Ads `AW-557411864`
+- GA4 sees the GCLID from the Google Ads tag already firing on the ASAR page
+- So attribution is intact — just needs the events marked as conversions
+
+**⚠️ Anthony action required (one-time, takes 2 minutes):**
+Go to GA4 → property 315915509 → Admin → Conversions → mark these 3 events:
+1. `generate_lead`
+2. `book_online_click`
+3. `phone_call_click`
+Google Ads starts receiving these conversions with GCLID attribution within 24h. No code changes needed.
+
+---
+
 ## Remaining TODO (priority order)
 1. **Create /thank-you/ WP page** — Site was rate-limited during 2026-05-06 session. Run the curl command above when site is accessible. HCP redirect is already set.
-2. **Fix WEBSITE LEAD FORM SUBMISSION tracking** — Needs GTM trigger on americanservicesar.com firing on form submit, OR n8n GCLID pipeline for offline conversion upload. Currently tracking wrong domain (myservicerobot.com).
-3. **Build GHL Click offline conversion pipeline** — n8n captures GCLID from GHL lead intake, uploads to Google Ads API. Currently 0 conversions ever recorded.
-4. **Vent Cleaning campaign rebuild** — B2B ad groups, commercial/apartment/HOA targeting, air vent + dryer vent separate ad groups
-5. **Remarketing audience** — 90-day website visitor list + Customer Match CSV from HCP customer list
-6. **Set up Local Services Ads (LSA)** — Maps presence, pay-per-lead model, Google-verified badge. Better than PMax for local service business at this budget level.
-7. **Core Aeration campaign** — Blocked until dedicated landing page is built
-8. **PMax optimization** — Skipped for now. Stays paused. Revisit after LSA is live.
+2. **Anthony marks 3 GA4 events as conversions** — `generate_lead`, `book_online_click`, `phone_call_click` in GA4 property 315915509. This replaces the broken WEBSITE LEAD FORM SUBMISSION conversion and the offline pipeline entirely.
+3. **Vent Cleaning campaign rebuild** — B2B ad groups, commercial/apartment/HOA targeting, air vent + dryer vent separate ad groups
+4. **Remarketing audience** — 90-day website visitor list + Customer Match CSV from HCP customer list
+5. **Set up Local Services Ads (LSA)** — Maps presence, pay-per-lead model, Google-verified badge. Better than PMax for local service business at this budget level.
+6. **Core Aeration campaign** — Blocked until dedicated landing page is built
+7. **PMax optimization** — Skipped for now. Stays paused. Revisit after LSA is live.
+
+**Removed from TODO:**
+- ~~Fix WEBSITE LEAD FORM SUBMISSION tracking~~ — Replaced by GA4 import approach. GHL domain mismatch issue is irrelevant since attribution flows through GA4 on the ASAR page itself.
+- ~~Build GHL Click offline conversion pipeline~~ — GCLID never reaches GHL (cross-origin iframe blocks URL params). No data to upload.
 
 ---
 
