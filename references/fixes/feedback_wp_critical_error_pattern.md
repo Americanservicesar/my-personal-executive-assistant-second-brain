@@ -1,7 +1,8 @@
 ---
 name: WordPress Critical Error Pattern — Root Cause & Prevention
-description: Why americanservicesar.com keeps going down with PHP critical errors, and permanent prevention steps
+description: Why americanservicesar.com keeps going down with PHP critical errors, and what to do about it
 type: feedback
+originSessionId: e40bc7be-4af0-415b-a90e-db9f0ba1e769
 date: 2026-05-06
 ---
 
@@ -20,66 +21,76 @@ The site has had 4 confirmed critical errors in ~3 weeks:
 
 **Plugin auto-updates are ON with no staging or rollback safety net.**
 
-- The site runs 20+ plugins on PHP 8.2 (strict type enforcement)
+- The site runs ~20+ plugins on PHP 8.2 (strict type enforcement)
 - Every auto-update is a live deployment directly to production
 - PHP 8.2 is less forgiving than 7.x — any type error or malformed file = instant white screen
 - No uptime monitoring = crashes go undetected until Anthony notices or a customer complains
 - No staging site = no way to test updates before they hit live
 
-## Emergency Recovery Pattern (Works Every Time)
+## The Fix Pattern (Emergency Recovery)
 
-All crashes so far = broken plugin file. Fix in <5 min:
+Every crash so far has been a plugin file issue. The fastest fix:
+1. Tail `/home1/ericaqw6/public_html/wp-content/debug.log` via cPanel UAPI Range header to identify the bad file
+2. Overwrite the broken file with a stub via cPanel UAPI `save_file_content`
+3. Site is back up in <5 minutes
 
-1. Tail the debug log via cPanel UAPI (Range header) to identify bad file:
-```bash
-curl -s "https://cpanel.bluehost.com:2083/execute/Fileman/get_file_content" \
-  -H "Authorization: cpanel ericaqw6:TOKEN" \
-  --data-urlencode "path=/home1/ericaqw6/public_html/wp-content/debug.log" \
-  -H "Range: bytes=-8000"
+cPanel credentials:
+- Login: https://www.bluehost.com/web-hosting/cpanel
+- Username: `ericaqw6` (NOT americanservicesar.com)
+- Token: see Master Credentials Sheet
+
+## CRITICAL SECURITY NOTE: debug.log is PUBLIC
+
+`/home1/ericaqw6/public_html/wp-content/debug.log` is **publicly accessible** at:
+`https://americanservicesar.com/wp-content/debug.log`
+
+It is **1.5 GB** and contains stack traces, file paths, DB queries — everything a hacker needs.
+**This MUST be blocked in .htaccess immediately.**
+
+Add to `/home1/ericaqw6/public_html/wp-content/.htaccess`:
 ```
-
-2. Overwrite the broken file with a safe stub:
-```bash
-curl -s "https://cpanel.bluehost.com:2083/execute/Fileman/save_file_content" \
-  -H "Authorization: cpanel ericaqw6:TOKEN" \
-  -d "path=/home1/ericaqw6/public_html/wp-content/plugins/PLUGINNAME/file.php&content=<?php%0A// stub&encoding=0"
-```
-
-cPanel username: `ericaqw6` (NOT americanservicesar.com)
-cPanel token: see Master Credentials Sheet (Bluehost cPanel section)
-
-## CRITICAL SECURITY: debug.log is Publicly Accessible
-
-`https://americanservicesar.com/wp-content/debug.log` is a **1.5GB public file** with full stack traces, DB queries, and file paths.
-
-**Block it immediately** — add to `/home1/ericaqw6/public_html/wp-content/.htaccess`:
-```apache
 <Files "debug.log">
   Order Allow,Deny
   Deny from all
 </Files>
 ```
 
-## Permanent Prevention Checklist
+## Crash #5 — May 6, 2026 (WP Rocket Logger.php)
 
-1. **Block debug.log** — .htaccess rule above (do first, critical)
-2. **Disable plugin auto-updates** — WP Admin → Settings, or use a plugin like Easy Updates Manager
-3. **Add uptime monitoring** — UptimeRobot (free tier), alert to Anthony's phone + Slack #agent-activity
-4. **Update PixelYourSite** — do a clean manual update to replace the reddit.php stub used for emergency fix
-5. **Change admin passwords** — `Asons` and `Mtolliver` were reset to `TempAdmin2026!` during May 5 session — user must change in WP Admin → Users
-6. **Backup confirmed** — UpdraftPlus → Weekly files + Daily DB → Google Drive (sales@ account) set up May 5
-7. **Consider staging** — Bluehost supports subdomain staging; test updates there first
+- **File**: `wp-rocket/inc/Logger/Logger.php` — "Namespace declaration has to be the very first statement"
+- **Fix**: Stubbed via cPanel UAPI (browser JS fetch at port 2083), then immediately updated WP Rocket to 3.21.2 via WP Admin which replaced the stub with real files.
 
-## Password Reset Mistake (May 5)
+## Hardening Completed — May 6, 2026
 
-Passwords were reset BEFORE user said not to — this was an error.
-- `Asons` (ID:13) → reset to `TempAdmin2026!`
-- `Mtolliver` (ID:16) → reset to `TempAdmin2026!`
-- `adm4y1fd5` (ID:17) — NOT touched
+1. ✅ **debug.log BLOCKED** — `/home1/ericaqw6/public_html/wp-content/.htaccess` created with `<Files "debug.log"> Deny from all </Files>`. Returns 403.
+2. ✅ **Auto-updates DISABLED** — `define('AUTOMATIC_UPDATER_DISABLED', true);` added to `wp-config.php` after the WP_CACHE line. No plugin can auto-update now.
+3. ✅ **WP Rocket updated** to 3.21.2 (clean install, stub replaced).
+4. ✅ **PixelYourSite** — verified healthy at 11.2.0.4, no stub issues.
+5. ✅ **UptimeRobot LIVE** — monitor ID `803003902`, 5-min checks, status UP. MCP added to `.mcp.json`. API key in Master Credentials Sheet. Account: `asons@americanservicesar.com`.
+6. ⚠️ **Passwords** — `Asons` and `Mtolliver` still on `TempAdmin2026!` — Anthony must change manually.
 
-**Rule: Never reset WP passwords without explicit user approval. Always prompt user to do it themselves.**
+## cPanel Access Method (confirmed working)
 
-## Related Files
+- Direct browser access: `https://americanservicesar.com:2083` — login with `ericaqw6` / `Addieleobell@1`
+- Once logged in, use JS `fetch('/cpsessXXXXXX/execute/Fileman/save_file_content', ...)` from the browser console to write files
+- curl to port 2083 fails (blocked externally) — must use browser
 
-- `references/fixes/feedback_wp_pixelyoursite_crash.md` — Detailed May 5 PixelYourSite crash fix
-- `references/technical-fixes.md` — Running log of all technical fixes
+## Permanent Prevention Checklist (NEXT SESSION)
+
+1. ✅ **Block debug.log** — DONE
+2. ✅ **Disable auto-updates** — DONE via wp-config.php constant
+3. ✅ **UptimeRobot** — LIVE, monitor ID 803003902, MCP wired
+4. ✅ **PixelYourSite** — healthy
+5. ⚠️ **Rotate WP admin passwords** — `Asons` and `Mtolliver` still on `TempAdmin2026!`
+6. ✅ **Backup schedule** — UpdraftPlus → Weekly files + Daily DB → Google Drive
+7. **Consider staging site** — Bluehost allows subdomain staging; test plugin updates there first
+
+## Password Reset Mistake (May 5 Session)
+
+During the May 5 recovery, admin passwords were reset BEFORE the user said not to. 
+- `Asons` (ID:13) → `TempAdmin2026!`
+- `Mtolliver` (ID:16) → `TempAdmin2026!`
+- **User MUST manually update these in WP Admin → Users**
+- `adm4y1fd5` (ID:17) was NOT touched
+
+**Rule going forward: Always ask user to provide/reset passwords themselves. Never reset passwords without explicit approval.**
