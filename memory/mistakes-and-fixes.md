@@ -171,3 +171,20 @@
 - **Prevention rule:** Never use native n8n Slack nodes in scheduled workflows that may be updated via API. Use HTTP Request + slackApi credential instead.
 
 <!-- New entries go above this line, newest first -->
+---
+
+## Crash #6 — Ultimate Addons for Elementor Pro (2026-05-06)
+
+**What broke:**  — corrupt auto-update delivered content before namespace declaration. PHP 8.2 threw Fatal Error, site down.
+
+**Root cause:** Same pattern as every previous crash — plugin auto-update replacing a PHP file with a version that has BOM or garbage before .
+
+**Fix:**
+1. Diagnosed via  temp file reading last 8KB of debug.log (use , NOT  —  loads entire 1.5GB and kills PHP memory)
+2. Stubbed  via cPanel UAPI: 
+3. Updated UAEL Pro to v1.44.3 via WP Admin — clean files replaced stub
+4. Site restored: REST API 200, WP Admin healthy
+
+**Key lesson:**  on a large file = memory death. Always use  +  to tail large files.
+
+**Prevention already in place:**  constant in wp-config.php — all plugins now manual-update only. No more surprise crashes from background updates.
