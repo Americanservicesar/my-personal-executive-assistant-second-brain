@@ -2,19 +2,19 @@
 name: GHL Social Planner Settings — Audit & Config Status
 description: Full audit of Social Planner settings tabs, notification config, and account status
 type: reference
-lastAudited: 2026-04-19
+lastAudited: 2026-05-06
 originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 ---
 ## Social Accounts (7 connected)
-| Platform | Account | Type | Validity | Notes |
-|----------|---------|------|----------|-------|
-| Google Business Profile | American Services AR | Location | — (permanent) | ✅ |
-| Facebook | American Services AR | Page | 54 days | ✅ |
-| Instagram | anthonylewissons | Professional | 59 days | ✅ Creator account linked to ASAR |
-| LinkedIn | American Services AR | Page | 22 days (exp ~May 12) | ⚠️ Reconnect before May 12 |
-| TikTok | americanservicesar | Business | 7 months | ✅ |
-| Pinterest | American Services AR | Profile | 59 days | ✅ |
-| YouTube | American Services AR | Profile | — (permanent) | ✅ |
+| Platform | Account | Type | Expiry | Status |
+|----------|---------|------|--------|--------|
+| Google Business Profile | American Services AR | Location | 2026-05-06 (TODAY) | 🔴 EXPIRED — reconnect now |
+| Facebook | American Services AR | Page | 2026-06-25 | ✅ |
+| Instagram | anthonylewissons | Professional | 2026-06-18 | ✅ |
+| LinkedIn | American Services AR | Page | 2026-06-25 | ✅ (was stale — not May 12) |
+| TikTok | americanservicesar | Business | 2026-11-19 | ✅ |
+| Pinterest | American Services AR | Profile | 2026-07-03 | ✅ |
+| YouTube | American Services AR | Profile | 2026-05-06 (TODAY) | 🔴 EXPIRED — reconnect now |
 
 ## Notifications (configured 2026-04-19)
 | Type | User | Frequency | Status |
@@ -70,5 +70,10 @@ American Services AR, Gutter Services, Fleet Wash, Lawn Care, HVAC, Commercial P
 ## GHL Settings URL
 `https://login.myservicerobot.com/v2/location/PQp7xlYjxZKsi0CWsSA7/marketing/social-planner/settings`
 
-## Action Items
-- ⚠️ Reconnect LinkedIn ~May 5 (7 days before May 12 expiry) — will get Pre-Expiry email alerts
+## Action Items (as of 2026-05-06)
+- 🔴 RECONNECT GOOGLE BUSINESS PROFILE — expired TODAY May 6
+- 🔴 RECONNECT YOUTUBE — expired TODAY May 6
+  - Go to: https://login.myservicerobot.com/v2/location/PQp7xlYjxZKsi0CWsSA7/marketing/social-planner/settings
+  - Settings → Connected Accounts → reconnect GBP and YouTube
+  - After reconnect: verify both are back in the AmServ group
+- ✅ LinkedIn reconnected (now expires June 25 — was stale in memory as May 12)
