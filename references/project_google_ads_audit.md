@@ -93,9 +93,29 @@ Based on all-time historical data (1,075 clicks, 58 conversions, $8,498 spend):
 
 ---
 
+## HCP Booking Redirect — COMPLETED 2026-05-06
+- **Redirect URL set:** `https://americanservicesar.com/thank-you/`
+- Location: HCP → Settings → Booking → Online Booking → Advanced Settings → Booking redirect
+- After any successful HCP online booking, customer is now redirected to the thank-you page
+- This will fire the "Thank You Page - Service Booked" conversion (ctId=7600444527) on the first booking
+
+## WordPress /thank-you/ Page — PENDING (site rate-limited)
+- WP REST API auth: user=`Asons`, app password=`qWzH 9qXZ z3L4 US1p cQyV GXwk`
+- Basic auth header: `Basic QXNvbnM6cVd6SCA5cVhaIHozTDQgVVMxcCBjUXlWIEdYd2s=`
+- Create command (run when site recovers):
+  ```
+  curl -s -X POST "https://americanservicesar.com/wp-json/wp/v2/pages" \
+    -H "Authorization: Basic QXNvbnM6cVd6SCA5cVhaIHozTDQgVVMxcCBjUXlWIEdYd2s=" \
+    -H "Content-Type: application/json" \
+    -d '{"title":"Thank You","slug":"thank-you","status":"publish","content":"<h2>Thank You for Booking!</h2><p>Your request has been received. A member of the American Services AR team will be in touch shortly to confirm your appointment.</p>"}'
+  ```
+- Verify with: `curl -s "https://americanservicesar.com/wp-json/wp/v2/pages?slug=thank-you" -H "Authorization: Basic QXNvbnM6cVd6SCA5cVhaIHozTDQgVVMxcCBjUXlWIEdYd2s="`
+
+---
+
 ## Remaining TODO (priority order)
-1. **Fix WEBSITE LEAD FORM SUBMISSION tracking** — Needs GTM trigger on americanservicesar.com firing on form submit, OR n8n GCLID pipeline for offline conversion upload. Currently tracking wrong domain (myservicerobot.com).
-2. **Verify /thank-you/ page** — Check americanservicesar.com/thank-you/ exists + HCP redirects there after booking (activates "Thank You Page - Service Booked" conversion)
+1. **Create /thank-you/ WP page** — Site was rate-limited during 2026-05-06 session. Run the curl command above when site is accessible. HCP redirect is already set.
+2. **Fix WEBSITE LEAD FORM SUBMISSION tracking** — Needs GTM trigger on americanservicesar.com firing on form submit, OR n8n GCLID pipeline for offline conversion upload. Currently tracking wrong domain (myservicerobot.com).
 3. **Build GHL Click offline conversion pipeline** — n8n captures GCLID from GHL lead intake, uploads to Google Ads API. Currently 0 conversions ever recorded.
 4. **Vent Cleaning campaign rebuild** — B2B ad groups, commercial/apartment/HOA targeting, air vent + dryer vent separate ad groups
 5. **Remarketing audience** — 90-day website visitor list + Customer Match CSV from HCP customer list
