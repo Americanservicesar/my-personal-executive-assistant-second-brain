@@ -5,8 +5,13 @@ type: reference
 originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 ---
 - n8n instance: `americanservicesar.app.n8n.cloud`
-- API key (active as of 2026-05-06): `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0MzYxYWZiNS1kZjFkLTQyZmItOWZjYi04MWI3NjEyODE3ZDgiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiMDgzZjI4OWQtYTVjYi00YjQzLWIxNDAtNGU1MmY5YzNiNTAyIiwiaWF0IjoxNzc4MDk0NzU5fQ.knlgc5iiSPGLOwChHYr3IxACso0ldkgdEnI_d58zIgc`
-- API key location: `C:\Users\sales\OneDrive\Documents\n8n-env-template.txt` (line 43) — update this file with new key above
+## API Keys (both active as of 2026-05-06)
+| Name | Key | Use |
+|------|-----|-----|
+| claude-code | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0MzYxYWZiNS1kZjFkLTQyZmItOWZjYi04MWI3NjEyODE3ZDgiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiMDgzZjI4OWQtYTVjYi00YjQzLWIxNDAtNGU1MmY5YzNiNTAyIiwiaWF0IjoxNzc4MDk0NzU5fQ.knlgc5iiSPGLOwChHYr3IxACso0ldkgdEnI_d58zIgc` | General read/query — workflow status, active count |
+| claude-workflow-save | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0MzYxYWZiNS1kZjFkLTQyZmItOWZjYi04MWI3NjEyODE3ZDgiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiMmIxYmFiMTYtODExMC00YzA1LTg0NDgtNDg5MDQxMmE2MDJhIiwiaWF0IjoxNzc4MDk0ODExfQ.4jQvTQN2llKDDXqEbPwha9wfZ1Xm8XCJ3n-QzRxxGvA` | Workflow create/update (PUT/POST) |
+
+- API key location: `C:\Users\sales\OneDrive\Documents\n8n-env-template.txt` (line 43) — update this file with new keys above
 - Main workflow ID: `JAYrzGWR8A0tCBzB` (Autonomous Agent Team Task Handler)
 - Update pattern: GET current state → modify nodes/connections in Python → re-apply all credentials → PUT via REST API
 - PUT requires `settings.executionOrder: 'v1'` and all nodes must have valid credentials assigned
