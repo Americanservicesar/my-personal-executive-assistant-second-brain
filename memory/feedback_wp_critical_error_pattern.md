@@ -18,6 +18,7 @@ The site has had 4 confirmed critical errors in ~3 weeks:
 | May 5 | PixelYourSite | `reddit.php` — content before namespace declaration (corrupt update) |
 | May 6 | WP Rocket | `Logger.php` — namespace declaration not first statement (corrupt update) |
 | May 6 | Ultimate Addons for Elementor Pro | `svg-animator/module.php` — namespace declaration not first statement (corrupt update) |
+| May 7 | Gravity Forms | `class-hidden.php` — namespace not first statement. GF bypasses AUTOMATIC_UPDATER_DISABLED via own cron. Stubbed — no update available yet. |
 
 ## Root Cause
 
@@ -56,6 +57,15 @@ Add to `/home1/ericaqw6/public_html/wp-content/.htaccess`:
   Deny from all
 </Files>
 ```
+
+## Crash #7 — May 7, 2026 (Gravity Forms — class-hidden.php)
+
+- **File**: `gravityforms/includes/settings/fields/class-hidden.php` — "Namespace declaration has to be the very first statement"
+- **Namespace**: `Gravity_Forms\Gravity_Forms\Settings\Fields`
+- **Fix**: Stubbed with `<?php namespace Gravity_Forms\Gravity_Forms\Settings\Fields; class Hidden { ... }` (no parent class — `Field` base also not available). Site restored.
+- **No update available**: GF already on 2.10.1 (latest). Stub will stay until next GF release triggers a WP Admin update.
+- **ROOT CAUSE DISCOVERED**: `AUTOMATIC_UPDATER_DISABLED` does NOT stop Gravity Forms. GF has its own auto-update cron (`gform_check_updates`) that bypasses WordPress's native `WP_Automatic_Updater`. Premium plugins with their own updaters (GF, ACF, etc.) are NOT covered by the constant.
+- **Fix for GF specifically**: Add to wp-config.php or functions.php: `add_filter('auto_update_plugin', function($update,$item){ if($item->slug==='gravityforms') return false; return $update; }, 10, 2);` — but this may also block GF license checks. Better: monitor manually.
 
 ## Crash #6 — May 6, 2026 (Ultimate Addons for Elementor Pro — svg-animator/module.php)
 
