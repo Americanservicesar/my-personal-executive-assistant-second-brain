@@ -19,6 +19,7 @@ The site has had 4 confirmed critical errors in ~3 weeks:
 | May 6 | WP Rocket | `Logger.php` — namespace declaration not first statement (corrupt update) |
 | May 6 | Ultimate Addons for Elementor Pro | `svg-animator/module.php` — namespace declaration not first statement (corrupt update) |
 | May 7 | Gravity Forms | `class-hidden.php` — namespace not first statement. GF bypasses AUTOMATIC_UPDATER_DISABLED via own cron. Stubbed — no update available yet. |
+| May 7/8 | WP Rocket | Multiple files in `inc/Dependencies/League/Container/Inflector/` — strict_types cascading errors. Stubbed entire `wp-rocket.php` (header only) to kill plugin cleanly. Caching is OFF until WP Rocket manually reinstalled. |
 
 ## Root Cause
 
@@ -94,15 +95,41 @@ Add to `/home1/ericaqw6/public_html/wp-content/.htaccess`:
 - Once logged in, use JS `fetch('/cpsessXXXXXX/execute/Fileman/save_file_content', ...)` from the browser console to write files
 - curl to port 2083 fails (blocked externally) — must use browser
 
-## Permanent Prevention Checklist (NEXT SESSION)
+## PERMANENT FIX — MU Plugin (Deployed 2026-05-08)
 
-1. ✅ **Block debug.log** — DONE
-2. ✅ **Disable auto-updates** — DONE via wp-config.php constant
+**File**: `/home1/ericaqw6/public_html/wp-content/mu-plugins/asar-disable-autoupdates.php`
+**Status**: ✅ LIVE — shows in WP Admin → Plugins → Must-Use (3 items)
+
+Filters applied (priority 99):
+- `auto_update_plugin` → `__return_false` — blocks all plugin auto-updates
+- `auto_update_theme` → `__return_false`
+- `auto_update_core` → `__return_false`
+- `wpr_allow_auto_update` → `__return_false` — WP Rocket specific
+- `gform_disable_auto_update` → `__return_true` — Gravity Forms specific
+- `init` action clears `gform_check_updates` cron at priority 1
+- `upgrader_pre_install` filter blocks non-admin upgrade attempts
+
+**Why MU plugin instead of wp-config.php constant**: `AUTOMATIC_UPDATER_DISABLED` only blocks WP's native updater. WP Rocket and Gravity Forms have their own cron-based updaters that bypass it. MU plugin catches everything because it loads before all regular plugins.
+
+## WP Rocket Status — Needs Manual Restore (2026-05-08)
+
+WP Rocket `wp-rocket.php` is currently a **header-only stub** — no caching active.
+- Account email: `clickcallsell@gmail.com` (wp-rocket.me)
+- License: Multi-500, expires ~2026, status: active
+- Last clean version: 3.21.2
+
+**To restore**: Log into wp-rocket.me → My Account → Downloads → download latest zip → WP Admin → Plugins → Add New → Upload Plugin → upload zip → Activate
+
+## Permanent Prevention Checklist
+
+1. ✅ **Block debug.log** — DONE (403)
+2. ✅ **Disable auto-updates** — MU plugin deployed 2026-05-08 (covers ALL plugins including premium self-updaters)
 3. ✅ **UptimeRobot** — LIVE, monitor ID 803003902, MCP wired
-4. ✅ **PixelYourSite** — healthy
+4. ✅ **PixelYourSite** — healthy at 11.2.0.4
 5. ⚠️ **Rotate WP admin passwords** — `Asons` and `Mtolliver` still on `TempAdmin2026!`
 6. ✅ **Backup schedule** — UpdraftPlus → Weekly files + Daily DB → Google Drive
-7. **Consider staging site** — Bluehost allows subdomain staging; test plugin updates there first
+7. ⚠️ **Restore WP Rocket** — currently stubbed, no caching. Login to wp-rocket.me and upload fresh zip.
+8. **Consider staging site** — Bluehost allows subdomain staging; test plugin updates there first
 
 ## Password Reset Mistake (May 5 Session)
 
