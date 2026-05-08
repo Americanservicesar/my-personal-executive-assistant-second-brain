@@ -5,8 +5,24 @@ type: project
 originSessionId: b24e5b60-f5fe-476b-89f9-ab1fc617db72
 ---
 
-## LP Status: LIVE ✅ — https://americanservicesar.com/pressure-washing/
-## Google Ads URLs: UPDATED ✅ — 2026-05-06 (20 RSAs pending review, ETAs deprecated/uneditable)
+## LP v1 Status: LIVE ✅ — https://americanservicesar.com/pressure-washing/ (WP Page ID 3468)
+## LP v2 Status: LIVE ✅ — https://americanservicesar.com/pressure-washing-lp-2/ (WP Page ID 10260) — 2026-05-08
+## Google Ads URLs: UPDATED ✅ — 2026-05-08 (25 RSAs updated to /pressure-washing-lp-2/, under review)
+
+### LP v2 Details (2026-05-08)
+- File: `C:\Users\sales\OneDrive\Documents\CLAUDE\landing-pages\pressure-washing-v2.html`
+- WP Page: ID 10260, slug `/pressure-washing-lp-2/`, published, all Astra meta set (header/footer/sidebar disabled)
+- Deploy method: XML-RPC `wp.editPost` with body-only content (CSS minified, tracking scripts, body — no DOCTYPE)
+- Before/After: Real photo `pw-driveway-before-after.jpg` (WP media ID 10431) — driveway collage, top=AFTER clean, bottom=BEFORE dirty
+- All 14 content checks pass: style, no DOCTYPE, v2-hero, v2-bar, GA4, Meta Pixel, Clarity, pw-lp-form, v2-ba-photo, photo URL, AFTER label, BEFORE label, v2-ba-labels, v2-trust
+- Google Ads: 25 RSAs updated to /pressure-washing-lp-2/ via bulk Edit → Change ads → Final URL (2026-05-08)
+
+### Optimization Targets (set 2026-05-08)
+- CVR target: 12%+ (LP clicks → form submissions)
+- CPL target: ≤$50 ($37.50 for 10x ROAS)
+- ROAS goal: 10x+ (elite tier, achievable after 90d optimization + smart bidding)
+- Path: CVR up → Quality Score up → CPC down → negative keywords → smart bidding at 30+ conversions
+- Full Google Ads audit scheduled for next dedicated session
 
 **Deployed 2026-05-06** — WP Page ID 3468, published, RankMath SEO meta set.
 - Title: "Pressure Washing Conway AR | American Services AR"
