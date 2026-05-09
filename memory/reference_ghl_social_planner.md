@@ -8,13 +8,13 @@ originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 ## Social Accounts (7 connected)
 | Platform | Account | Type | Expiry | Status |
 |----------|---------|------|--------|--------|
-| Google Business Profile | American Services AR | Location | 2026-05-06 (TODAY) | 🔴 EXPIRED — reconnect now |
+| Google Business Profile | American Services AR | Location | No expiry | ✅ Reconnected 2026-05-08 |
 | Facebook | American Services AR | Page | 2026-06-25 | ✅ |
 | Instagram | anthonylewissons | Professional | 2026-06-18 | ✅ |
-| LinkedIn | American Services AR | Page | 2026-06-25 | ✅ (was stale — not May 12) |
+| LinkedIn | American Services AR | Page | 2026-06-25 | ✅ |
 | TikTok | americanservicesar | Business | 2026-11-19 | ✅ |
 | Pinterest | American Services AR | Profile | 2026-07-03 | ✅ |
-| YouTube | American Services AR | Profile | 2026-05-06 (TODAY) | 🔴 EXPIRED — reconnect now |
+| YouTube | American Services AR | Profile | No expiry | ✅ Reconnected 2026-05-08 |
 
 ## Notifications (configured 2026-04-19)
 | Type | User | Frequency | Status |
@@ -70,10 +70,14 @@ American Services AR, Gutter Services, Fleet Wash, Lawn Care, HVAC, Commercial P
 ## GHL Settings URL
 `https://login.myservicerobot.com/v2/location/PQp7xlYjxZKsi0CWsSA7/marketing/social-planner/settings`
 
-## Action Items (as of 2026-05-06)
-- 🔴 RECONNECT GOOGLE BUSINESS PROFILE — expired TODAY May 6
-- 🔴 RECONNECT YOUTUBE — expired TODAY May 6
-  - Go to: https://login.myservicerobot.com/v2/location/PQp7xlYjxZKsi0CWsSA7/marketing/social-planner/settings
-  - Settings → Connected Accounts → reconnect GBP and YouTube
-  - After reconnect: verify both are back in the AmServ group
-- ✅ LinkedIn reconnected (now expires June 25 — was stale in memory as May 12)
+## Soshie Workflow — Updated 2026-05-08
+- Soshie standalone (W3aE7gdjj2CTapyG): GHL Social Planner tool node added — posts to FB+IG+LI+TT+PIN via GHL API
+- Daily batch (ibcZUQdHjcT81HTV): query updated to post Mon/Wed=FB+IG+LI, Tue/Thu=FB+IG+TikTok, Fri-Sun=FB+IG
+- UMA brand colors fixed: Blue #0050A0 + Red #CC2030 (was wrong #1B3A6B + orange)
+- GBP still EXPIRED — skip in accountIds until Anthony reconnects
+
+## Notes (updated 2026-05-08)
+- GBP and YouTube do NOT have token expiry — they only need reconnecting if GHL disconnects them
+- Both reconnected by Anthony on 2026-05-08 and verified active via GHL API
+- GBP account ID: 64b007f6bc971ab25b25a0b0_PQp7xlYjxZKsi0CWsSA7_13724995530775627829
+- GBP is now back in Soshie daily posting rotation (Mon/Wed/Fri)
