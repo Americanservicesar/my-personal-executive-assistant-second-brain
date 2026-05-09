@@ -117,6 +117,17 @@ Pricing calibrated to Florida market using RS Means 2025-2026 and Gordian data. 
 
 ## Active Job Bids
 
+### MRC Vicksburg — GSA Repair & Alteration (2026-05-09)
+- **Sheet ID:** `1rByoYERny1w227aKes3ifbciKH6QRN_ScsTD04Iasus`
+- **URL:** https://docs.google.com/spreadsheets/d/1rByoYERny1w227aKes3ifbciKH6QRN_ScsTD04Iasus
+- **Solicitation:** 47PB5226R0005 | Vicksburg, MS | 59,832 GSF historic federal building
+- **Scope:** Option 4 — ADA ramp/stairs, stamped concrete, final cleaning, striping (sub)
+- **Grand Total:** $109,655 (incl. 7% federal site premium + travel)
+- **Status:** Partner review in progress. Striping sub quote pending — enter in STRIPING tab E50.
+- **New tabs added this job:** FINAL CLEANING, STRIPING SIGNS & CURB STOPS, SUBCONTRACTORS, FEDERAL SITE PREMIUM
+- **Sub markup standard:** 10% on all subcontractor bids (pavement markings, signs, curb stops)
+- **Federal premium:** 7% for federal civilian; 10-15% for military base; 15-25% for SCIF — see reference_federal_site_premium.md
+
 ### Amazon OOH9 — 44 Commerce Pkwy, West Jefferson, OH (2026-04-24)
 - **v1 Sheet ID:** `1Mba-9LJHqw459OSov8BBHFHk0uYjrCSc-ZbKDKsqF8I`
 - **v2 Sheet ID:** `10b5MPcs-2xclVtl_R3AK0fPL4ejhhzxcCBuXzAQMxQI` ← CURRENT WORKING VERSION
