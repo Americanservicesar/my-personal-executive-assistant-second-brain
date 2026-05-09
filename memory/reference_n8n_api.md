@@ -17,13 +17,14 @@ originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 - PUT requires `settings.executionOrder: 'v1'` and all nodes must have valid credentials assigned
 - GET responses strip credential bindings — must re-apply from known credential IDs on every PUT
 - n8n MCP SDK code tools (`validate_workflow`, `update_workflow`) are broken as of 2026-04 — use REST API instead
+- **API call method**: Use **PowerShell `Invoke-RestMethod`** for ALL external API calls (n8n, Meta Graph, GHL REST). Bash has DNS resolution failures on this machine. Chrome JS fetch was a workaround — PowerShell is the correct approach. GHL MCP tools preferred for GHL operations.
 
 ## Key Autonomous Workflows (Scheduled)
 | Workflow ID | Name | Schedule | Status |
 |-------------|------|----------|--------|
 | `e6PnFg6YZpagNq7j` | ASAR Weekly Rank Tracker | Mon 8AM CDT (`0 13 * * 1`) | ACTIVE |
 | `9AdSMJNMkym65Y5V` | ASAR Daily GSC Check | Daily 9AM CDT | ACTIVE |
-| `ibcZUQdHjcT81HTV` | Soshie — Daily Post | Daily 7AM CDT (`0 12 * * *`) | ACTIVE — updated 2026-04-28, was Monday-only |
+| `ibcZUQdHjcT81HTV` | Soshie — Daily Post + Video Wednesday | Daily 7AM CDT (`0 12 * * *`) | ACTIVE — updated 2026-05-08: day-of-week content calendar (Mon=before/after, Tue=service, Wed=tip+UMA Reel, Thu=local, Fri=meme, Sat=BTS, Sun=tip/testimonial). UMA task updated to animate Drive After photo to 9:16 Reel every Wednesday via Image-to-Video tool (`evLJ07WjsmQLjJYC`). |
 | `Pzq9vmQCyYx5JH1I` | Seomi — Daily GBP Review Response | Daily 8AM CDT (`0 13 * * *`) | ACTIVE — built 2026-04-28 |
 | `n7auzFXPu9Ywt7UY` | Seomi — Daily Backlink & Citation Builder | Daily 10AM CDT (`0 15 * * *`) | ACTIVE — built 2026-04-28 |
 | `X9CJeuwPHXFTF2ta` | Commet — Weekly & Monthly Monitoring | Mon 9AM CDT (`0 14 * * 1`) | ACTIVE |
@@ -46,6 +47,14 @@ originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 | `vrlc0Up4HTsBbfdq` | Milli — Inbound SMS Auto-Responder | Every 1 min cron → polls GHL conversations → Milli standalone `BJ8RLrbjuZ8pSmAL` | ACTIVE — built 2026-05-05. Filters: lastMessageDirection=inbound + TYPE_SMS + within last 2 min. Sends SMS reply via GHL API. GHL Conversation AI bot (Home Services Chat Agent) removed from SMS channels same date. |
 | `9pyPeDS3BOM2e0on` | PW LP Form Intake | Webhook `/webhook/pw-lp-form` | Upserts GHL contact, creates Residential opportunity, triggers Address Processor | ACTIVE — built 2026-05-05 |
 | `4jtIAZZR9QFz7Nx2` | Milli — Inbound SMS Handler (webhook) | Webhook `/webhook/milli-inbound-sms` | Calls Milli standalone — reserved for future GHL workflow trigger | ACTIVE — built 2026-05-05 |
+| `NbZ9wg3fmwITp5xl` | ASAR — Photo Inbox Processor (11 PM Daily) | `0 4 * * *` (11 PM CDT) | Lists Drive inbox, Claude Vision classifies, GPS-injects 10 cities, uploads to WP Media ×10, renames+moves in Drive, logs to Photo Queue sheet, posts After photos to GBP+FB+IG via GHL | ACTIVE — built 2026-05-07 |
+| `toq0WTdUfq1ijMyY` | ASAR — Reels Pipeline | Webhook `/webhook/reels-pipeline` | Receives fileID+caption+service+location → builds UMA task → calls UMA to create 9:16 video via Image-to-Video tool → UMA posts to IG Reels+TikTok+FB Reels+YouTube Shorts → reports to #soshie-social | ACTIVE — built 2026-05-08 |
+| `WtrrOiTTIWur4O57` | ASAR — Photo After: GBP + Social Auto-Post | Webhook `/webhook/photo-after-post` | Posts After job photos to GBP + Facebook + Instagram via GHL Social API | ACTIVE — built 2026-05-07 |
+| `FL3Hs3YbQcS37phK` | GA4 — Phone Call Click (GHL Call → GA4 MP) | Webhook `/webhook/ga4-phone-call-click` | GHL call event → GA4 Measurement Protocol `phone_call_click` | ACTIVE — built 2026-05-08 |
+| `QoFk1aADtzgjI5Vd` | GA4 — Book Online Click (HCP Job → GA4 MP) | Webhook `/webhook/ga4-book-online-click` | HCP job created → GA4 Measurement Protocol `book_online_click` | ACTIVE — built 2026-05-08 |
+| `KHDpIeICyERLW5Ni` | Emmie — Daily Google Ads Monitor | Daily 9AM CDT (`0 14 * * *`) → Emmie standalone `Cxb4JDBsMF8fvRqP` | Pulls ad metrics via Google Ads API v20, flags issues, logs to Ad Performance Log sheet, posts to #agent-activity | ACTIVE — built 2026-05-08 |
+| `zS76iCXSaG9tLaeR` | Milli — Inbound FB/IG DM Auto-Responder | Every 1 min cron → polls GHL conversations → Milli standalone `BJ8RLrbjuZ8pSmAL` | ACTIVE — built 2026-05-08. Filters: lastMessageDirection=inbound + TYPE_FACEBOOK or TYPE_INSTAGRAM + within last 2 min. Replies via GHL conversations API with type=Facebook or type=Instagram. |
+| `toq0WTdUfq1ijMyY` | ASAR — Reels Pipeline | Webhook `/webhook/reels-pipeline` (POST: fileID, service, location, caption) | Receives params → builds UMA query → calls UMA Image-to-Video (`evLJ07WjsmQLjJYC`) → posts to IG+FB Reels | ACTIVE — built 2026-05-08 |
 
 ## Gmail Monitor Workflows (Autonomous Email Processing)
 | Workflow ID | Name | Trigger | Routes To | Status |
@@ -73,8 +82,8 @@ originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 - **Creative Agent** — orchestrates all content creation
   - **Create Image** → sub-workflow `vaOMFyrzhissdhO7` ("ASAR Media - Create Image Tool") — text prompt → image
   - **Edit Image** → sub-workflow `jcpaAH5PZiwy2cbA` ("Edit Image Tool") — edit existing image
-  - **Create Video** → sub-workflow `EZtbnyp1CXFdsTst` ("Create Video Tool") — text prompt → video (16:9, 9:16, 1:1)
-  - **Image to Video** → sub-workflow `evLJ07WjsmQLjJYC` ("Image to Video Tool") — Drive image → video
+  - **Create Video** → sub-workflow `EZtbnyp1CXFdsTst` ("ASAR Media - Create Video Tool") — text prompt → video via **Kling AI** (updated 2026-05-09 from Fal/Veo3). Model: kling-v1-6, 5s, std mode. JWT via Code node "Kling JWT T2V".
+  - **Image to Video** → sub-workflow `evLJ07WjsmQLjJYC` ("ASAR Media - Image to Video Tool") — Drive image → 9:16 video via **Kling AI** (updated 2026-05-09 from Fal/Veo3). Auth: JWT generated by Code node using Access Key + Secret Key from reference_master_credentials.md. API: `api.klingai.com/v1/videos/image2video`, model: `kling-v1-6`.
 - **Social Media Agent** — scrapes Instagram/TikTok/YouTube via Apify for trends
 - **Posting Agent** — posts images to social platforms
 - **Web Agent** — Tavily + OpenAI Research for deep research
