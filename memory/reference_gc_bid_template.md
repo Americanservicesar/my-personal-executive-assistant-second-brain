@@ -2,7 +2,7 @@
 name: GC Bid Template — General Construction
 description: Google Sheets bid estimating template for ASAR general construction (concrete, dirt work, flatwork, asphalt). Calibrated to FL and OH market rates. Includes production rates, markup structure, and auto-populated BID summary tab.
 type: reference
-last_updated: 2026-04-24
+last_updated: 2026-05-09
 originSessionId: 47f14857-e37c-4b6b-b5e5-49e61d4b8a76
 ---
 ## Spreadsheet
@@ -145,6 +145,108 @@ Pricing calibrated to Florida market using RS Means 2025-2026 and Gordian data. 
 - Aggregate base: ODOT #304, 8-10" vs FL 4-6"
 - Prevailing wages apply (Franklin County, OH)
 - Winter protection premium included in indirects
+
+---
+
+## HIGH-END RATE TABLE (optimized 2026-05-09 — Columbus OH comparison)
+
+All rates below are the ceiling of RS Means + Columbus OH market cross-reference. Use these as defaults for any new bid.
+
+### Dirtwork / Earthwork
+| Item | Rate | Unit |
+|------|------|------|
+| Clearing & Grubbing | $6,000 | /AC |
+| Topsoil Strip | $0.25 | /SF |
+| Rough Grade / Level Up | $0.30 | /SF |
+| Fine Grade | $0.45 | /SF |
+| Lime Stabilization 6" | $5.50 | /SY |
+| Cement Stabilization 6" | $6.00 | /SY |
+| Select Fill Import | $28 | /CY |
+| Haul Off (dirt) | $175 | /load |
+| Haul Off (concrete demo) | $250 | /load |
+| Geotextile | $3.00 | /SY |
+| Crack Sealant | $2.00 | /LF |
+| Concrete Apron | $8,000 | /EA |
+
+### Labor
+| Role | Rate |
+|------|------|
+| Dirtwork Crew | $520/man/day |
+| Dirtwork Foreman | $650/man/day |
+| Concrete Finishers | $550/man/day |
+| Form Setters | $650/man/day |
+| General Laborers | $500/man/day |
+| Asphalt Crew | $495/man/day |
+
+### Equipment
+| Equipment | Rate/Day |
+|-----------|----------|
+| Dozer | $900 |
+| Motor Grader | $1,000 ⚠️ Columbus uses $575 — DO NOT use Columbus rate |
+| Excavator (large) | $1,200 |
+| Excavator (mini) | $550 |
+| Skid Steer / Bobcat | $750 |
+| Sheepsfoot / Pad Roller | $650 |
+| Water Wagon | $300 ⚠️ Columbus uses $450 — Columbus rate is inflated |
+| Dump Truck | $500 |
+| Crew Truck | $150 |
+| Loader | $850 |
+| Paver | $850 |
+| Big Roller | $650 |
+| Boom Pump Truck | $1,200 |
+| Ride-On Power Trowel | $1,600 |
+| Walk-Behind Trowel | $175 |
+| Concrete Saw | $550 |
+
+### Asphalt (per SF unless noted)
+| Item | Rate | Unit |
+|------|------|------|
+| 2" Overlay | $1.65 | /SF |
+| 3" Base Course | $2.50 | /SF |
+| 4" Full Depth | $3.50 | /SF |
+| Milling 2" | $1.10 | /SF |
+| Tack Coat | $0.80 | /SY |
+| Crushed Stone / Base | $28 | /TON |
+| Black Base (asphalt) | $95 | /TON |
+| Hot Mix Surface | $100 | /TON |
+
+### Concrete Materials
+| Item | Rate | Unit |
+|------|------|------|
+| 3000 PSI pump mix (FL/OH) | $222 | /CY |
+| 4000 PSI air-entrained (OH winter) | $230-$235 | /CY |
+| OH local market (no pump premium) | $165-$175 | /CY |
+| Rebar #3 dowels | $1.75 | /LF |
+| Rebar #4 | $1.85 | /LF |
+| Curing compound | $0.15 | /SF |
+| Expansion joint saw cuts | $1.50 | /LF |
+| Debris haul-off | $450 | /load |
+
+### Travel / Indirect
+| Item | Rate |
+|------|------|
+| Hotel | $150/room/night |
+| Per Diem | $65/person/day |
+| MOB/Demob | $5,000 flat |
+| Fuel | $7.50/gal |
+| Misc/Consumables | $500 flat |
+
+---
+
+## Columbus OH Market Cross-Reference (2026-05-09)
+
+Columbus OH Workbook (C:\Users\sales\Downloads\Columbus OH Workbook.xlsx) was compared against this template. Key findings:
+- Columbus uses $165/CY concrete — Ohio local rate, no pump premium
+- Columbus motor grader is severely underpriced at $575 (likely owner-op) — always use $1,000
+- Columbus water trailer at $450 is inflated — use RS Means $300
+- Columbus markup is only ~30% vs our 1.5198× — their bid on same job = $3.16M vs our $4.25M
+
+**Three-scenario comparison (Columbus job scope):**
+| Scenario | Bid Total |
+|----------|-----------|
+| Columbus original (30% markup) | $3,158,746 |
+| Same job, ASAR original rates (1.5198×) | $3,692,819 |
+| Same job, ASAR high-end rates (1.5198×) | $4,252,115 |
 
 ---
 
