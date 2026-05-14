@@ -8,9 +8,11 @@ originSessionId: b79d4d89-c667-4a06-acaa-378787741284
 ## Campaign
 - **Name**: ASAR-01-Apartments
 - **Campaign ID**: `4b28e225-6e67-4e3f-8a72-489ddf034ee4`
-- **URL**: https://app.instantly.ai/app/campaign/4b28e225-6e67-4e3f-8a72-489ddf034ee4/leads
-- **Status**: Active — currently has **10 leads** (original CSV upload), sending 20–40/day
-- **Goal**: 1,251 AR apartment property manager leads loaded and sending
+- **URL**: https://app.instantly.ai/app/campaign/4b28e255-6e67-4e3f-8a72-489ddf034ee4/leads
+- **Status**: COMPLETED (10 leads ran all 4 steps — 38 emails sent, 0 replies, 0 opens [tracking was OFF])
+- **Tracking fixed 2026-05-14**: Open Tracking ON, Link Tracking ON, Delivery Optimization OFF
+- **Subject lines rewritten 2026-05-14**: All 8 variants updated to human-sounding (see feedback_instantly_campaign_lessons.md)
+- **Goal**: Move 1,251 Lead List leads into campaign via SuperSearch → Move to Campaign (NO CSV upload)
 
 ## Lead List (already in Instantly — no re-upload needed)
 - **List Name**: Arkansas, USA, Property Manager, Leasing Manager, Community Manager
@@ -19,12 +21,12 @@ originSessionId: b79d4d89-c667-4a06-acaa-378787741284
 - **Total leads**: ~1,251 (enriched via Fully Enriched Profile, 599 credits used)
 - **Location**: Instantly SuperSearch → Lead Lists — leads are ALREADY IN INSTANTLY, no re-upload required
 
-## Monthly Upload Cap — BLOCKER
-- **Plan limit**: 1,000 leads/month
-- **Used**: 994/1,000 (only **6 remaining**)
-- **Result**: "Move to Campaign" failed — couldn't push the 1,251 leads from Lead List → campaign
-- **Fix**: Wait for billing cycle to reset, then use **Move → Move to Campaign** from the Lead List (select all → Move → ASAR-01-Apartments → Copy Leads checked → Confirm)
-- **IMPORTANT**: The leads live in Instantly already. Do NOT re-upload from CSV. Just "Move to Campaign" from the Lead List when the cap resets.
+## Lead Quota — LESSON LEARNED
+- **Plan limit**: 1,000 leads/month upload cap (for EXTERNAL CSV uploads only)
+- **Mistake**: 994/1,000 credits were burned uploading Instantly SuperSearch leads back as CSV — circular, wasted quota
+- **Correct method**: SuperSearch leads → Move to Campaign (internal move, NO quota used)
+- **Next step**: Go to Lead List → Select All → Move → Move to Campaign → ASAR-01-Apartments → Copy Leads ✅ → Confirm
+- **IMPORTANT**: Do NOT export Lead List to CSV and re-upload. Leads are already in Instantly. Internal moves don't use quota.
 
 ## Google Drive Archive
 - **File**: `2026-04-22_ASAR-01-Apartments_AR-Full-State_leads.csv`
@@ -44,11 +46,10 @@ originSessionId: b79d4d89-c667-4a06-acaa-378787741284
 - **Location**: SALES Drive > Instantly Lead Lists
 - Tracks all 12 ASAR campaigns: enriched / uploaded / in campaign / pending / cap usage / activity log
 
-## Next Steps When Cap Resets (~May 1)
-1. Check tracker sheet first — confirm current in-campaign count
-2. Go to Lead List: https://app.instantly.ai/app/lead-finder/leads?listId=98f4f002-5c4a-464f-a1b7-7baaa88793b0
-3. Select ONLY leads NOT already in campaign → Move → Move to Campaign → ASAR-01-Apartments → Copy Leads ✅ → Confirm
-4. Upload remaining 257 leads from original CSV (NOT the full CSV — only the 257 not yet uploaded)
-5. Move the new 257 to campaign immediately after upload
-6. Update tracker sheet: IN CAMPAIGN count, NOT YET IN CAMPAIGN, STATUS, Activity Log row
-7. Post confirmation to #emmie-email
+## Next Steps
+1. Go to Lead List: https://app.instantly.ai/app/lead-finder/leads?listId=98f4f002-5c4a-464f-a1b7-7baaa88793b0
+2. Select All → Move → Move to Campaign → ASAR-01-Apartments → Copy Leads ✅ → Confirm (no CSV, no quota used)
+3. Resume campaign (it's in COMPLETED state — resuming will start sending to new leads)
+4. Review email body copy — subject lines updated 2026-05-14, body may also need humanizing
+5. Update tracker sheet: IN CAMPAIGN count, STATUS, Activity Log row
+6. Post confirmation to #emmie-email
