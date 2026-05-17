@@ -59,9 +59,16 @@ originSessionId: 47fc01bc-562d-4761-a9d3-352fa34638e2
 ## Gmail Monitor Workflows (Autonomous Email Processing)
 | Workflow ID | Name | Trigger | Routes To | Status |
 |-------------|------|---------|-----------|--------|
-| `mqSWSLhNl3Qy0Nyy` | Gmail Monitor — sales@ → Milli | Gmail sales@ (everyMinute) | Milli standalone `BJ8RLrbjuZ8pSmAL` | ACTIVE — built 2026-04-22 |
-| `L4xHG4YQcEeTHwei` | Gmail Monitor — office@ → Cassie | Gmail office@ (everyMinute) | Cassie standalone `X9OndKjPk1rspj5l` | ACTIVE — built 2026-04-22 |
-| `kO8GSRkAnYKVOp0X` | Gmail Monitor — asons@ → Buddy | Gmail asons@ (everyMinute) | Buddy standalone `Qa4j2OFzxmbPMpug` | ACTIVE — built 2026-04-22 |
+| `mqSWSLhNl3Qy0Nyy` | Gmail Monitor — sales@ → Milli | Gmail sales@ (everyMinute) | Milli standalone `BJ8RLrbjuZ8pSmAL` | ⚠️ INACTIVE (verified live 2026-05-17 — may be replaced by scheduled version) |
+| `L4xHG4YQcEeTHwei` | Gmail Monitor — office@ → Cassie | Gmail office@ (everyMinute) | Cassie standalone `X9OndKjPk1rspj5l` | ACTIVE — verified live 2026-05-17 |
+| `kO8GSRkAnYKVOp0X` | Gmail Monitor — asons@ → Buddy | Gmail asons@ (everyMinute) | Buddy standalone `Qa4j2OFzxmbPMpug` | ⚠️ INACTIVE (verified live 2026-05-17 — replaced by `MPUzpOKFzavgkMKd` Daily 9AM) |
+| `MPUzpOKFzavgkMKd` | Gmail Monitor — asons@ → Buddy (Daily 9AM CST) | Cron 9AM | Buddy standalone | ACTIVE — verified live 2026-05-17 |
+
+## n8n REST API Key Status (2026-05-17)
+⚠️ DRIFT DETECTED: The JWT keys in the table above return 401 Unauthorized as of 2026-05-17.
+The n8n MCP (via .mcp.json) still works fine for workflow queries.
+To get a fresh REST API key: n8n dashboard → Settings → API Keys → create new.
+Direct REST API calls via Python/Bash are currently broken until key is refreshed.
 
 ## Soshie Standalone Workflow
 - ID: `W3aE7gdjj2CTapyG`
