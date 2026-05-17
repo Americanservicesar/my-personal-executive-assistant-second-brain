@@ -27,7 +27,7 @@ We need to visually redesign the ASAR service pages on americanservicesar.com. T
 - 13 pillar/service pages (e.g. /pressure-washing/, /soft-washing/)
 - WP REST API auth: `Asons` / `qWzH 9qXZ z3L4 US1p cQyV GXwk`
 - Brand colors: primary blue (#1B3A6B or similar), orange accent, white
-- Company: American Services AR — veteran-owned pressure washing, Conway AR
+- Company: American Services AR — locally owned and operated pressure washing, Conway AR
 
 **Goal:**
 - Pages should feel like a modern local service business site
