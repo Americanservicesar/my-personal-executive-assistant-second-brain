@@ -111,14 +111,22 @@ Filters applied (priority 99):
 
 **Why MU plugin instead of wp-config.php constant**: `AUTOMATIC_UPDATER_DISABLED` only blocks WP's native updater. WP Rocket and Gravity Forms have their own cron-based updaters that bypass it. MU plugin catches everything because it loads before all regular plugins.
 
-## WP Rocket Status — Needs Manual Restore (2026-05-08)
+## WP Rocket Status — RESTORED 2026-05-17
 
-WP Rocket `wp-rocket.php` is currently a **header-only stub** — no caching active.
+WP Rocket restored to clean **3.21.1** via UpdraftPlus plugins-only restore from May 5 backup.
+- ✅ Full caching active — NOT a stub
+- License: Multi-500, expires July 18, 2026, status: Active
 - Account email: `clickcallsell@gmail.com` (wp-rocket.me)
-- License: Multi-500, expires ~2026, status: active
-- Last clean version: 3.21.2
+- NOTE: WP Rocket 3.21.2 is available (1 version behind) — update manually when ready
 
-**To restore**: Log into wp-rocket.me → My Account → Downloads → download latest zip → WP Admin → Plugins → Add New → Upload Plugin → upload zip → Activate
+## Security Note — 2026-05-17 Hack Recovery
+
+Site was compromised 2026-05-06 to 2026-05-14. See `feedback_asar_hack_recovery_complete.md` for full playbook.
+Key changes from hack recovery:
+- `asar-security-hardening.php` MU plugin updated: XML-RPC + Application Passwords re-enabled (required by n8n)
+- `asar-disable-autoupdates.php` MU plugin unchanged — still blocking all auto-updates
+- WP Table Builder plugin permanently deleted (was the attack entry point)
+- 28 backdoor files deleted across 3 Wordfence scan rounds
 
 ## Permanent Prevention Checklist
 
@@ -128,7 +136,7 @@ WP Rocket `wp-rocket.php` is currently a **header-only stub** — no caching act
 4. ✅ **PixelYourSite** — healthy at 11.2.0.4
 5. ⚠️ **Rotate WP admin passwords** — `Asons` and `Mtolliver` still on `TempAdmin2026!`
 6. ✅ **Backup schedule** — UpdraftPlus → Weekly files + Daily DB → Google Drive
-7. ⚠️ **Restore WP Rocket** — currently stubbed, no caching. Login to wp-rocket.me and upload fresh zip.
+7. ✅ **WP Rocket restored** — 3.21.1 active, caching live (updated 2026-05-17)
 8. **Consider staging site** — Bluehost allows subdomain staging; test plugin updates there first
 
 ## Password Reset Mistake (May 5 Session)
