@@ -54,7 +54,7 @@ Homepage layout is broken from OTTO SEO changes. Fix first before anything else.
 - [ ] Posts: set up weekly GBP posts (offers, updates, photos)
 - [ ] Messaging: confirm ON and set auto-reply
 - [ ] Service area: confirm all 11 cities are listed
-- [ ] Attributes: fill out all applicable attributes (veteran-owned, etc.)
+- [ ] Attributes: fill out all applicable attributes (locally owned and operated, etc.)
 - [ ] Review response: 57 review replies staged in SearchAtlas — DEPLOY THESE BEFORE ACCESS ENDS or manually respond in GBP
 - [ ] Address mismatch: GBP shows 220 Mill Pond Rd; NAP shows 1495 Highway 365 — verify which is correct
 
@@ -63,7 +63,7 @@ Homepage layout is broken from OTTO SEO changes. Fix first before anything else.
 - [ ] GSC → URL Inspection → Request Indexing for all 143 new pages
 - [ ] Create Google Site (sites.google.com) with ASAR content + links
 - [ ] Create Blogger post with NAP + links
-- [ ] Pitch Log Cabin Democrat (Conway) for veteran-owned business feature story
+- [ ] Pitch Log Cabin Democrat (Conway) for locally owned and operated business feature story
 - [ ] Submit press release to PRLog.org and OpenPR.com (free)
 - [ ] Write LinkedIn article linking to americanservicesar.com
 
