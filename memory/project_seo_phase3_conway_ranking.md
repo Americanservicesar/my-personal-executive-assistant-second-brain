@@ -204,6 +204,77 @@ All 13 Conway pages exist, have correct URLs, return 200, have 9 H2s, FAQ, phone
 
 ---
 
+---
+
+## SESSION 2026-04-26 — SEOMI AUTOMATION (DONE)
+
+### Seomi Monthly SEO Automation — LIVE
+- **Workflow ID**: `lgI2T4IEPzvNzKNB` — "Seomi — Monthly SEO Keyword Research & Gap Analysis"
+- **Schedule**: 1st of every month at 8AM CDT (`0 13 1 * *`)
+- **What it does**: Triggers Seomi standalone with full 8-category keyword research task
+  1. Google Ads KW Planner API → 8 service categories × 4 seeds each (Arkansas geo = 21154)
+  2. GSC pull → 90 days rankings (impressions, clicks, position)
+  3. Gap analysis → GAP / PUSH / TREND opportunities
+  4. Update KW Tracker Sheet (ID: 1VDx6EMtriz1EgiZyQI5tvikbSCaliMP5R6jmJIAhqSE) with new tab KW-YYYY-MM
+  5. Slack report → #seomi-seo + #agent-activity
+
+### Seomi Standalone Workflow Updated (nygXpDVV5Lmn77hX)
+Added 2 new tool nodes (now 27 total tools):
+- **HTTP - Google Ads KW Planner (Seomi)** — Google Ads OAuth2 (`mvzr4UfAOA9u679W`) + dev token — POST to generateKeywordIdeas
+- **HTTP - Search Console API (Seomi)** — Google Service Account (`nWnxAUry9O6tRyTm`) — POST to searchAnalytics/query
+
+### HTTP Request Tool Pattern (critical for future nodes)
+- Always use `typeVersion: 4.4` (NOT 1.1)
+- For POST with JSON body: `specifyBody: "json"` + `jsonBody: "={{ $fromAI(...) }}"` (NOT `contentType: json` + `body`)
+- Use single quotes inside `$fromAI()` expressions to avoid escaping issues
+
+---
+
+## SESSION 2026-04-26 — SNOW/ICE SERVICE PAGES (DONE)
+
+### New Snow/Ice Pages Built (all LIVE)
+| URL | ID | Focus Keyword | Words |
+|-----|----|---------------|-------|
+| /snow-removal/ | 9722 | commercial snow removal Arkansas | hub |
+| /de-icing/ | 9724 | commercial de-icing Arkansas | hub |
+| /snow-plowing/ | 9725 | commercial snow plowing Arkansas | hub |
+| /snow-removal/conway/ | 9727 | commercial snow removal Conway AR | 1,500+ |
+| /snow-removal/little-rock/ | 9728 | commercial snow removal Little Rock AR | 1,500+ |
+| /de-icing/conway/ | 9729 | commercial de-icing Conway AR | 1,500+ |
+| /snow-plowing/conway/ | 9730 | snow plowing Conway AR | 1,500+ |
+
+All pages: RankMath meta set ✅ | FAQPage schema ✅ | LocalBusiness schema ✅ | Bing submitted ✅ | WP ping triggered ✅
+
+**KEY INSIGHT: Arkansas = ICE market.** Pages lead with ice removal angle, not snow.
+**Conway competition = ZERO.** Expect top-3 ranking within 48-72 hours.
+**Little Rock competition = weak** (S&L Snow Removal, U.S. Lawns, Southern Snow Services — all low DA).
+
+### GSC Manual Submission Needed
+Anthony: Go to GSC → URL Inspection → request indexing for each URL above. Or wait 24-48h for automatic crawl.
+
+### Domain Names to Check on Namecheap (Anthony)
+Recommended domains for snow/ice microsites (check availability):
+- snowremovalconway.com
+- iceremovalconway.com  
+- commercialiceremovalar.com
+- arkansasiceremoval.com
+- deicingconway.com
+- snowplowingconway.com
+- snowremovallittlerock.com
+- conwayiceremoval.com
+
+Strategy: Buy 2-3, point to ASAR snow pages, build basic 1-page sites with NAP + backlink to americanservicesar.com for DA boost.
+
+### Yelp Updates (2026-04-26 Session)
+- HVAC category removed ✅
+- New categories: Pressure Washers, Window Washing, Gutter Services ✅
+- Gutter sub-services configured ✅
+- Logo upload = paid ($1/day) — skipped per no-paid policy
+- 1-star fake review: Anthony flagging manually
+- YP listing fix: Anthony handling manually (requires phone verification)
+
+---
+
 ## AI WEBSITE BUILDER RESEARCH (for future visual redesign)
 - **Lovable.dev** ($20/mo) — AI builds full-stack app from prompt. Best for homepage/pillar visual rebuild. Weak on 143 SEO pages.
 - **Webflow** ($23-39/mo) — Best fit for full site rebuild at ASAR's scale. Handles 143 pages + visual design.
