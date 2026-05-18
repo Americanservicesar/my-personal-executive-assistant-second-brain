@@ -76,7 +76,7 @@ Format for hydrojetting: `Hydrojetting – PVC Drain Lines - Good/Better/Best - 
 
 Added `window_cleaning` to Estimate Engine PROJECT_TYPE_MAP (KffILLHBKDAG4RYf). Routes to `needsCustomQuote:true` with `reason:'window_cleaning_pricebook_pending'`. When Commet+Dexter finalize pricebook, add pricing tier to Estimate Engine and remove needsCustomQuote for that service.
 
-**Vizzy orchestrator SM** (JAYrzGWR8A0tCBzB) also needs 1 line added to "Vizzy - Supervisor Agent" node — PENDING (must do via n8n UI, REST API PUT fails due to credential stripping). See `feedback_n8n_rest_api_credential_stripping.md`.
+**Vizzy orchestrator SM** (JAYrzGWR8A0tCBzB) — ✅ DONE 2026-05-18. Window cleaning line added to "Vizzy - Supervisor Agent" node via Pinia store patch + Ctrl+S save. Confirmed in server response. See `feedback_n8n_rest_api_credential_stripping.md` for method.
 
 ## What Still Needs to Be Done
 
