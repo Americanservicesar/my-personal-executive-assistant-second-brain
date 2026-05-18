@@ -37,24 +37,38 @@ The n8n public REST API (`/api/v1/`) **strips credential bindings** from GET res
 2. **n8n MCP SDK format**: Only viable if you can reconstruct the entire workflow in SDK syntax. Not practical for 600k+ char workflows with AI agent subnodes.
 3. **API key rotation**: If editing is truly required via API, you'd need to know all credential IDs and re-apply them — not practical without credential ID documentation.
 
-## Specific Pending Edit (as of 2026-05-18)
+## Specific Pending Edit — ✅ COMPLETED 2026-05-18
 
 **Vizzy orchestrator** (JAYrzGWR8A0tCBzB) — "Vizzy - Supervisor Agent" node (ID: `d91623a2-dd4a-45d6-a6aa-bf34ee152a6f`)
 
-In the `options.systemMessage` parameter, add this line BEFORE "Anything else or unclear":
-
-```
-  - Window cleaning / window wash / window washing --> "window_cleaning"
-```
-
-Full context (find this block and insert the new line):
+Window cleaning line added and confirmed live in server response:
 ```
   - Hydrojetting / drain cleaning / PVC underground drain --> "hydrojetting"
-  - Window cleaning / window wash / window washing --> "window_cleaning"    ← ADD THIS LINE
+  - Window cleaning / window wash / window washing --> "window_cleaning"
   - Anything else or unclear --> "other"
 ```
 
-**n8n UI path**: n8n → Workflow `JAYrzGWR8A0tCBzB` → Click "Vizzy - Supervisor Agent" node → Parameters → System Message → Find the service mapping section → Add the line.
+## How It Was Done — Pinia Store Patch + Ctrl+S
+
+The REST API GET→PUT approach failed (credentials stripped → 500). The correct method for text edits on complex workflows:
+
+1. Navigate to the workflow in Chrome (`/workflow/JAYrzGWR8A0tCBzB`)
+2. Wait for Vue app to load (256 nodes)
+3. Via `javascript_tool`: find node in Pinia `workflows` store → patch `parameters.options.systemMessage` directly
+4. Dispatch `Ctrl+S` keyboard event → n8n detects the in-memory change and opens "Name version" save dialog
+5. Click Save → workflow saved and published ✅
+
+```javascript
+// Step 3: Pinia patch
+const workflowStore = pinia._s.get('workflows');
+const node = workflowStore.workflow.nodes.find(n => n.id === 'd91623a2-...');
+node.parameters.options.systemMessage = newSM;
+
+// Step 4: Trigger save
+document.dispatchEvent(new KeyboardEvent('keydown', {key:'s', ctrlKey:true, bubbles:true}));
+```
+
+This works because n8n tracks workflow state reactively — patching the Pinia store data is treated as a real edit.
 
 ## Note on API Keys
 
